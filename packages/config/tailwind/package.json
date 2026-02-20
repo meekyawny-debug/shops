@@ -1,0 +1,12 @@
+{
+  "name": "@shops/tailwind-config",
+  "private": true,
+  "version": "0.0.0",
+  "exports": {
+    ".": "./tailwind.config.ts"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4",
+    "tailwindcss-animate": "^1.0"
+  }
+}

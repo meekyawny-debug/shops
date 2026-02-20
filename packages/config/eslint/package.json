@@ -1,0 +1,15 @@
+{
+  "name": "@shops/eslint-config",
+  "private": true,
+  "version": "0.0.0",
+  "exports": {
+    "./base": "./base.js",
+    "./next": "./next.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^8",
+    "@typescript-eslint/parser": "^8",
+    "eslint-config-next": "^15",
+    "eslint-config-prettier": "^10"
+  }
+}

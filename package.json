@@ -1,0 +1,29 @@
+{
+  "name": "shops",
+  "private": true,
+  "packageManager": "pnpm@10.30.1",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "db:generate": "pnpm --filter @shops/db generate",
+    "db:migrate": "pnpm --filter @shops/db migrate",
+    "db:push": "pnpm --filter @shops/db push",
+    "db:seed": "pnpm --filter @shops/db seed",
+    "db:studio": "pnpm --filter @shops/db studio",
+    "clean": "turbo clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma",
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
+}
