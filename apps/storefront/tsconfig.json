@@ -1,0 +1,32 @@
+{
+  "extends": "@shops/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@shops/ui": [
+        "../../packages/ui/src"
+      ],
+      "@shops/api": [
+        "../../packages/api/src"
+      ],
+      "@shops/db": [
+        "../../packages/db/src"
+      ],
+      "@shops/types": [
+        "../../packages/types/src"
+      ]
+    },
+    "allowJs": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
