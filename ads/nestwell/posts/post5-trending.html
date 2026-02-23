@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Trending on TikTok</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(170deg, #faf8f5 0%, #f0ece5 60%, #e8dcc8 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #2d3a2a;
+    padding: 60px 70px;
+    display: flex;
+    flex-direction: column;
+  }
+  .brand-tag {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #7c9a6e;
+    margin-bottom: 20px;
+  }
+  .trending-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2d3a2a;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .heading-accent { color: #7c9a6e; }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.5);
+    margin-bottom: 40px;
+  }
+  .products {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .product-row {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 35px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    box-shadow: 0 6px 24px rgba(45, 58, 42, 0.05);
+    border: 1px solid rgba(124, 154, 110, 0.06);
+    position: relative;
+  }
+  .product-visual {
+    width: 110px; height: 110px;
+    min-width: 110px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  .product-row:nth-child(1) .product-visual { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+  .product-row:nth-child(2) .product-visual { background: linear-gradient(135deg, #fff8e1, #ffe0b2); }
+  .product-row:nth-child(3) .product-visual { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+  .product-row:nth-child(4) .product-visual { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+  .product-info {
+    flex: 1;
+  }
+  .product-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  .product-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.5);
+    margin-bottom: 8px;
+  }
+  .product-views {
+    font-size: 13px;
+    font-weight: 500;
+    color: #7c9a6e;
+  }
+  .product-price {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #7c9a6e;
+    min-width: 90px;
+    text-align: right;
+  }
+  .fire-badge {
+    position: absolute;
+    top: -8px; right: 20px;
+    background: #ff6b35;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .footer-cta {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .shop-btn {
+    display: inline-block;
+    background: #7c9a6e;
+    color: white;
+    padding: 18px 55px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(124, 154, 110, 0.2);
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">NESTWELL</div>
+  <div class="trending-badge">&#x1F525; Viral on TikTok</div>
+  <div class="heading">Trending <span class="heading-accent">Now</span></div>
+  <div class="subtitle">The products your feed can't stop talking about</div>
+
+  <div class="products">
+    <div class="product-row">
+      <div class="fire-badge">&#x1F525; TRENDING</div>
+      <div class="product-visual">&#x2601;&#xFE0F;</div>
+      <div class="product-info">
+        <div class="product-name">Rain Cloud Humidifier</div>
+        <div class="product-desc">The viral cloud that rains</div>
+        <div class="product-views">2.4M views</div>
+      </div>
+      <div class="product-price">$29.99</div>
+    </div>
+    <div class="product-row">
+      <div class="fire-badge">&#x1F525; TRENDING</div>
+      <div class="product-visual">&#x1F319;</div>
+      <div class="product-info">
+        <div class="product-name">Sunset Projector Lamp</div>
+        <div class="product-desc">Golden hour, any hour</div>
+        <div class="product-views">1.8M views</div>
+      </div>
+      <div class="product-price">$24.99</div>
+    </div>
+    <div class="product-row">
+      <div class="fire-badge">&#x1F525; TRENDING</div>
+      <div class="product-visual">&#x1F33F;</div>
+      <div class="product-info">
+        <div class="product-name">Mushroom Night Light</div>
+        <div class="product-desc">Cottagecore essential</div>
+        <div class="product-views">1.2M views</div>
+      </div>
+      <div class="product-price">$16.99</div>
+    </div>
+    <div class="product-row">
+      <div class="product-visual">&#x1F338;</div>
+      <div class="product-info">
+        <div class="product-name">Flower Aroma Diffuser</div>
+        <div class="product-desc">Blooms while it scents</div>
+        <div class="product-views">890K views</div>
+      </div>
+      <div class="product-price">$21.99</div>
+    </div>
+  </div>
+
+  <div class="footer-cta">
+    <div class="shop-btn">Shop Trending</div>
+  </div>
+</div>
+</body>
+</html>

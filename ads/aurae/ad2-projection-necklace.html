@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Projection Necklace Best Seller</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: #1a1a1a;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Dramatic light beam from necklace */
+  .light-cone {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -40%);
+    width: 0; height: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 500px solid rgba(201,168,76,0.06);
+    filter: blur(20px);
+  }
+  /* Gem / pendant center */
+  .gem-container {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .gem-outer {
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gem {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, #c9a84c 0%, #e8d48b 50%, #c9a84c 100%);
+    box-shadow: 0 0 60px rgba(201,168,76,0.5), 0 0 120px rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gem-inner {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #e8d48b 100%);
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+  }
+  /* Chain */
+  .chain-left, .chain-right {
+    position: absolute; top: 0;
+    width: 2px; height: 380px;
+    background: linear-gradient(180deg, rgba(201,168,76,0.6), rgba(201,168,76,0.1));
+  }
+  .chain-left { left: calc(50% - 52px); transform: rotate(-8deg); transform-origin: bottom center; }
+  .chain-right { left: calc(50% + 50px); transform: rotate(8deg); transform-origin: bottom center; }
+  /* Photo projection effect */
+  .projection {
+    position: absolute;
+    bottom: 120px; left: 50%; transform: translateX(-50%);
+    width: 280px; height: 180px; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+    border: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 40px rgba(201,168,76,0.1);
+  }
+  .projection-icon {
+    font-size: 48px; opacity: 0.4;
+  }
+  .projection-label {
+    position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: rgba(201,168,76,0.5);
+    letter-spacing: 3px; text-transform: uppercase; white-space: nowrap;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 85px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 6px;
+    color: #c9a84c;
+  }
+  .badge {
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: #c9a84c; font-size: 12px; font-weight: 600;
+    padding: 8px 18px; border-radius: 4px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 62px; font-weight: 700; line-height: 1.1;
+    color: white; margin-top: 40px;
+  }
+  .headline em { color: #c9a84c; font-style: italic; }
+  .sub {
+    font-size: 18px; color: rgba(255,255,255,0.45); font-weight: 300;
+    line-height: 1.7; margin-top: 24px; max-width: 450px;
+  }
+  .spacer { flex: 1; }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-btn {
+    background: #c9a84c; color: #1a1a1a;
+    font-size: 16px; font-weight: 700;
+    padding: 20px 48px; border-radius: 0;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .social-proof {
+    text-align: right;
+  }
+  .stars { font-size: 18px; color: #c9a84c; letter-spacing: 4px; margin-bottom: 6px; }
+  .sold { font-size: 14px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+  .customize { font-size: 12px; color: #c9a84c; margin-top: 8px; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="light-cone"></div>
+  <div class="chain-left"></div>
+  <div class="chain-right"></div>
+  <div class="gem-container">
+    <div class="gem-outer">
+      <div class="gem">
+        <div class="gem-inner"></div>
+      </div>
+    </div>
+  </div>
+  <div class="projection">
+    <div class="projection-icon">&#x1F5BC;&#xFE0F;</div>
+    <div class="projection-label">Your photo projects here</div>
+  </div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">AURAE</div>
+      <div class="badge">#1 Best Seller</div>
+    </div>
+    <h1 class="headline">A Secret<br>Message<br>Only <em>They</em><br>Can See</h1>
+    <p class="sub">Our projection necklace holds a custom photo inside the gem — visible only when light shines through it.</p>
+    <div class="spacer"></div>
+    <div class="bottom">
+      <div class="cta-btn">Customize Yours</div>
+      <div class="social-proof">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="sold">10,000+ sold</div>
+        <div class="customize">Upload any photo</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

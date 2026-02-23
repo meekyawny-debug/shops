@@ -19,6 +19,11 @@ interface VariantData {
   weight: number;
 }
 
+interface ImageData {
+  url: string;
+  alt: string;
+}
+
 interface ProductData {
   title: string;
   description: string;
@@ -27,10 +32,14 @@ interface ProductData {
   category: string;
   tags: string[];
   variants: VariantData[];
-  imageAlt: string;
+  images: ImageData[];
   storeIndex: number; // 0=glowhaven, 1=aurae, 2=nestwell
   isFeatured: boolean;
   position: number;
+}
+
+function unsplash(id: string): string {
+  return `https://images.unsplash.com/${id}?w=800&h=800&fit=crop&q=80`;
 }
 
 const products: ProductData[] = [
@@ -48,7 +57,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-PEEL-30ML", name: "30ml", costPrice: 4.5, retailPrice: 24.99, compareAtPrice: 32.99, stock: 100, weight: 0.15 },
     ],
-    imageAlt: "Peeling Exfoliating Serum",
+    images: [
+      { url: unsplash("photo-1611930022073-b7a4ba5fcccd"), alt: "Peeling Exfoliating Serum bottle" },
+      { url: unsplash("photo-1556228578-0d85b1a4d571"), alt: "Peeling Exfoliating Serum product" },
+    ],
     storeIndex: 0,
     isFeatured: true,
     position: 0,
@@ -64,7 +76,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-LED-MASK", name: "Standard", costPrice: 18.0, retailPrice: 69.99, compareAtPrice: 89.99, stock: 50, weight: 0.45 },
     ],
-    imageAlt: "LED Light Therapy Face Mask",
+    images: [
+      { url: unsplash("photo-1596944924616-7b38e7cfac36"), alt: "LED Light Therapy Face Mask" },
+      { url: unsplash("photo-1631729371254-42c2892f0e6e"), alt: "LED Face Mask glowing" },
+    ],
     storeIndex: 0,
     isFeatured: true,
     position: 1,
@@ -81,7 +96,10 @@ const products: ProductData[] = [
       { sku: "GH-ICER-PINK", name: "Pink", costPrice: 2.8, retailPrice: 12.99, compareAtPrice: 18.99, stock: 300, weight: 0.18 },
       { sku: "GH-ICER-WHITE", name: "White", costPrice: 2.8, retailPrice: 12.99, compareAtPrice: 18.99, stock: 300, weight: 0.18 },
     ],
-    imageAlt: "Ice Roller Face Massager",
+    images: [
+      { url: unsplash("photo-1620916566398-39f1143ab7be"), alt: "Ice Roller Face Massager" },
+      { url: unsplash("photo-1556228720-195a672e8a03"), alt: "Ice Roller skincare tool" },
+    ],
     storeIndex: 0,
     isFeatured: true,
     position: 2,
@@ -98,7 +116,10 @@ const products: ProductData[] = [
       { sku: "GH-GUAJ-ROSE", name: "Rose Quartz", costPrice: 3.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.22 },
       { sku: "GH-GUAJ-GREEN", name: "Green Jade", costPrice: 3.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.22 },
     ],
-    imageAlt: "Rose Quartz Gua Sha and Jade Roller Set",
+    images: [
+      { url: unsplash("photo-1612817288484-6f916006741a"), alt: "Rose Quartz Gua Sha and Jade Roller" },
+      { url: unsplash("photo-1598560917505-59a3ad559071"), alt: "Gua Sha stone close-up" },
+    ],
     storeIndex: 0,
     isFeatured: true,
     position: 3,
@@ -114,7 +135,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-SNML-100ML", name: "100ml", costPrice: 5.2, retailPrice: 22.99, compareAtPrice: 29.99, stock: 180, weight: 0.18 },
     ],
-    imageAlt: "Snail Mucin 96% Power Repairing Essence",
+    images: [
+      { url: unsplash("photo-1608248543803-ba4f8c70ae0b"), alt: "Snail Mucin Essence bottle" },
+      { url: unsplash("photo-1598440947619-2c35fc9aa908"), alt: "Snail Mucin skincare" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 4,
@@ -131,7 +155,10 @@ const products: ProductData[] = [
       { sku: "GH-VITC-30ML", name: "30ml", costPrice: 3.8, retailPrice: 18.99, compareAtPrice: 24.99, stock: 200, weight: 0.12 },
       { sku: "GH-VITC-60ML", name: "60ml", costPrice: 5.5, retailPrice: 28.99, compareAtPrice: 36.99, stock: 120, weight: 0.2 },
     ],
-    imageAlt: "20% Vitamin C Brightening Serum",
+    images: [
+      { url: unsplash("photo-1643379850623-7eb6442cd262"), alt: "Vitamin C Brightening Serum bottle" },
+      { url: unsplash("photo-1643379850274-77d2e3703ef9"), alt: "Vitamin C serum dropper" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 5,
@@ -148,7 +175,10 @@ const products: ProductData[] = [
       { sku: "GH-DRMP-STD", name: "Device + 3 Cartridges", costPrice: 12.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 80, weight: 0.25 },
       { sku: "GH-DRMP-PRO", name: "Device + 7 Cartridges", costPrice: 15.0, retailPrice: 59.99, compareAtPrice: 79.99, stock: 50, weight: 0.3 },
     ],
-    imageAlt: "Professional Derma Pen Microneedling Device",
+    images: [
+      { url: unsplash("photo-1711504039975-47a6f424d8b4"), alt: "Derma Pen Microneedling Device" },
+      { url: unsplash("photo-1711504041983-26992adf63bc"), alt: "Microneedling pen with cartridges" },
+    ],
     storeIndex: 0,
     isFeatured: true,
     position: 6,
@@ -166,7 +196,10 @@ const products: ProductData[] = [
       { sku: "GH-JELY-GOLD", name: "24K Gold", costPrice: 4.5, retailPrice: 18.99, compareAtPrice: 24.99, stock: 150, weight: 0.35 },
       { sku: "GH-JELY-LAVEN", name: "Lavender", costPrice: 4.0, retailPrice: 16.99, compareAtPrice: 22.99, stock: 150, weight: 0.35 },
     ],
-    imageAlt: "Peel-Off Hydro Jelly Face Mask Kit",
+    images: [
+      { url: unsplash("photo-1670201203150-bf8771401590"), alt: "Hydro Jelly Face Mask Kit" },
+      { url: unsplash("photo-1670201203270-7bc9b329d2eb"), alt: "Jelly mask application" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 7,
@@ -183,7 +216,10 @@ const products: ProductData[] = [
       { sku: "GH-CLBR-PINK", name: "Pink", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 120, weight: 0.15 },
       { sku: "GH-CLBR-MINT", name: "Mint", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 120, weight: 0.15 },
     ],
-    imageAlt: "Electric Silicone Face Cleansing Brush",
+    images: [
+      { url: unsplash("photo-1712481695743-510ab876c629"), alt: "Silicone Face Cleansing Brush" },
+      { url: unsplash("photo-1712482937664-5697b56ed6f1"), alt: "Electric cleansing brush pink" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 8,
@@ -199,7 +235,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-RETN-50ML", name: "50ml", costPrice: 4.8, retailPrice: 19.99, compareAtPrice: 28.99, stock: 160, weight: 0.18 },
     ],
-    imageAlt: "2.5% Retinol Anti-Aging Night Cream",
+    images: [
+      { url: unsplash("photo-1638301868496-43577744a46c"), alt: "Retinol Anti-Aging Night Cream" },
+      { url: unsplash("photo-1643379852776-308d9bbf8645"), alt: "Night cream jar on vanity" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 9,
@@ -216,7 +255,10 @@ const products: ProductData[] = [
       { sku: "GH-LIPM-HONEY", name: "Honey", costPrice: 2.2, retailPrice: 9.99, compareAtPrice: 14.99, stock: 400, weight: 0.08 },
       { sku: "GH-LIPM-BERRY", name: "Mixed Berry", costPrice: 2.2, retailPrice: 9.99, compareAtPrice: 14.99, stock: 400, weight: 0.08 },
     ],
-    imageAlt: "Honey Lip Sleeping Mask",
+    images: [
+      { url: unsplash("photo-1622399638175-b1d4457118e1"), alt: "Honey Lip Sleeping Mask pot" },
+      { url: unsplash("photo-1560249406-bbb118c4f6db"), alt: "Lip mask application" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 10,
@@ -232,7 +274,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-EYEP-GOLD", name: "24K Gold (30 pairs)", costPrice: 3.0, retailPrice: 14.99, compareAtPrice: 19.99, stock: 250, weight: 0.2 },
     ],
-    imageAlt: "24K Gold Collagen Under-Eye Patches",
+    images: [
+      { url: unsplash("photo-1670201202784-ec638a82bca8"), alt: "Gold Collagen Under-Eye Patches" },
+      { url: unsplash("photo-1670201202794-b589d5d7e9da"), alt: "Eye patches in jar" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 11,
@@ -249,7 +294,10 @@ const products: ProductData[] = [
       { sku: "GH-EXGL-3PK", name: "3-Pack", costPrice: 1.5, retailPrice: 7.99, compareAtPrice: 11.99, stock: 500, weight: 0.06 },
       { sku: "GH-EXGL-6PK", name: "6-Pack", costPrice: 2.8, retailPrice: 12.99, compareAtPrice: 18.99, stock: 300, weight: 0.12 },
     ],
-    imageAlt: "Korean Exfoliating Body Scrub Glove",
+    images: [
+      { url: unsplash("photo-1593360885059-85b63a3ac768"), alt: "Exfoliating Body Scrub Glove" },
+      { url: unsplash("photo-1609357912334-e96886c0212b"), alt: "Korean scrub mitt" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 12,
@@ -267,7 +315,10 @@ const products: ProductData[] = [
       { sku: "GH-SPAH-WHITE", name: "White", costPrice: 2.5, retailPrice: 11.99, compareAtPrice: 16.99, stock: 350, weight: 0.1 },
       { sku: "GH-SPAH-LAVEN", name: "Lavender", costPrice: 2.5, retailPrice: 11.99, compareAtPrice: 16.99, stock: 350, weight: 0.1 },
     ],
-    imageAlt: "Spa Headband and Wrist Washband Set",
+    images: [
+      { url: unsplash("photo-1627945861767-826948871673"), alt: "Spa Headband and Wrist Set" },
+      { url: unsplash("photo-1595846398252-213927165ffb"), alt: "Fluffy spa headband" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 13,
@@ -283,7 +334,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "GH-SPF-50ML", name: "50ml", costPrice: 4.0, retailPrice: 18.99, compareAtPrice: 26.99, stock: 200, weight: 0.12 },
     ],
-    imageAlt: "Glass Skin Dewy SPF 50+ Sunscreen",
+    images: [
+      { url: unsplash("photo-1683488780092-1643c389aace"), alt: "Glass Skin SPF 50 Sunscreen" },
+      { url: unsplash("photo-1584551012472-5fa498c9f86e"), alt: "Dewy sunscreen tube" },
+    ],
     storeIndex: 0,
     isFeatured: false,
     position: 14,
@@ -304,7 +358,10 @@ const products: ProductData[] = [
       { sku: "AU-PROJ-GOLD", name: "Gold", costPrice: 4.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 200, weight: 0.05 },
       { sku: "AU-PROJ-SILVER", name: "Silver", costPrice: 4.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 200, weight: 0.05 },
     ],
-    imageAlt: "Hidden Love Projection Necklace",
+    images: [
+      { url: unsplash("photo-1598009632415-1b42a2c686b6"), alt: "Hidden Love Projection Necklace" },
+      { url: unsplash("photo-1758995115543-983c55f98a33"), alt: "Gold projection pendant" },
+    ],
     storeIndex: 1,
     isFeatured: true,
     position: 0,
@@ -322,7 +379,10 @@ const products: ProductData[] = [
       { sku: "AU-HOOP-35MM", name: "35mm - Gold", costPrice: 3.8, retailPrice: 18.99, compareAtPrice: 24.99, stock: 250, weight: 0.03 },
       { sku: "AU-HOOP-25SLV", name: "25mm - Silver", costPrice: 3.5, retailPrice: 16.99, compareAtPrice: 22.99, stock: 300, weight: 0.02 },
     ],
-    imageAlt: "18K Gold-Plated Chunky Hoop Earrings",
+    images: [
+      { url: unsplash("photo-1763628212781-7d52844cf358"), alt: "Gold Chunky Hoop Earrings" },
+      { url: unsplash("photo-1708389828544-b394501c5700"), alt: "18K hoop earrings pair" },
+    ],
     storeIndex: 1,
     isFeatured: true,
     position: 1,
@@ -340,7 +400,10 @@ const products: ProductData[] = [
       { sku: "AU-BFLR-SILVER", name: "Silver", costPrice: 3.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 400, weight: 0.02 },
       { sku: "AU-BFLR-ROSE", name: "Rose Gold", costPrice: 3.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 400, weight: 0.02 },
     ],
-    imageAlt: "Dainty Birth Flower Pendant Necklace",
+    images: [
+      { url: unsplash("photo-1771515411694-57fb626159d1"), alt: "Birth Flower Pendant Necklace" },
+      { url: unsplash("photo-1767391255584-763f98ced9d0"), alt: "Dainty gold flower pendant" },
+    ],
     storeIndex: 1,
     isFeatured: true,
     position: 2,
@@ -358,7 +421,10 @@ const products: ProductData[] = [
       { sku: "AU-SGNT-7G", name: "Size 7 - Gold", costPrice: 2.5, retailPrice: 12.99, compareAtPrice: 18.99, stock: 200, weight: 0.01 },
       { sku: "AU-SGNT-8G", name: "Size 8 - Gold", costPrice: 2.5, retailPrice: 12.99, compareAtPrice: 18.99, stock: 200, weight: 0.01 },
     ],
-    imageAlt: "Vintage Gold Signet Pinky Ring",
+    images: [
+      { url: unsplash("photo-1728381031272-ba3f537feadd"), alt: "Vintage Gold Signet Ring" },
+      { url: unsplash("photo-1677578329568-0fa5aafd022e"), alt: "Gold pinky ring close-up" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 3,
@@ -375,7 +441,10 @@ const products: ProductData[] = [
       { sku: "AU-LAYR-GOLD", name: "Gold", costPrice: 5.0, retailPrice: 24.99, compareAtPrice: 34.99, stock: 180, weight: 0.04 },
       { sku: "AU-LAYR-SILVER", name: "Silver", costPrice: 5.0, retailPrice: 24.99, compareAtPrice: 34.99, stock: 180, weight: 0.04 },
     ],
-    imageAlt: "3-Layer Gold Chain Necklace Set",
+    images: [
+      { url: unsplash("photo-1659682695085-6b66aa8bfef2"), alt: "3-Layer Gold Chain Necklace Set" },
+      { url: unsplash("photo-1758995115560-59c10d6cc28f"), alt: "Layered gold chains" },
+    ],
     storeIndex: 1,
     isFeatured: true,
     position: 4,
@@ -392,7 +461,10 @@ const products: ProductData[] = [
       { sku: "AU-PCLW-CREAM", name: "Cream", costPrice: 2.2, retailPrice: 11.99, compareAtPrice: 16.99, stock: 350, weight: 0.04 },
       { sku: "AU-PCLW-BLACK", name: "Black Pearl", costPrice: 2.2, retailPrice: 11.99, compareAtPrice: 16.99, stock: 350, weight: 0.04 },
     ],
-    imageAlt: "Oversized Pearl Claw Clip",
+    images: [
+      { url: unsplash("photo-1715781055906-79a70879eeea"), alt: "Oversized Pearl Claw Clip" },
+      { url: unsplash("photo-1762337379880-399126a1d27c"), alt: "Pearl hair clip styling" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 5,
@@ -409,7 +481,10 @@ const products: ProductData[] = [
       { sku: "AU-TENB-GOLD", name: "Gold", costPrice: 6.0, retailPrice: 26.99, compareAtPrice: 39.99, stock: 150, weight: 0.03 },
       { sku: "AU-TENB-SILVER", name: "Silver", costPrice: 6.0, retailPrice: 26.99, compareAtPrice: 39.99, stock: 150, weight: 0.03 },
     ],
-    imageAlt: "CZ Diamond Tennis Bracelet Waterproof",
+    images: [
+      { url: unsplash("photo-1663243818736-2b7148eeb2f5"), alt: "CZ Diamond Tennis Bracelet" },
+      { url: unsplash("photo-1705873222806-ba76ecb02430"), alt: "Waterproof tennis bracelet" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 6,
@@ -426,7 +501,10 @@ const products: ProductData[] = [
       { sku: "AU-HUGG-GOLD", name: "Gold Set", costPrice: 4.5, retailPrice: 19.99, compareAtPrice: 28.99, stock: 200, weight: 0.02 },
       { sku: "AU-HUGG-SILVER", name: "Silver Set", costPrice: 4.5, retailPrice: 19.99, compareAtPrice: 28.99, stock: 200, weight: 0.02 },
     ],
-    imageAlt: "Mini Huggie Earring Set 4 Pairs",
+    images: [
+      { url: unsplash("photo-1727791762060-978deff14028"), alt: "Mini Huggie Earring Set" },
+      { url: unsplash("photo-1708389827899-990e74c0cc6c"), alt: "Gold huggie hoops set" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 7,
@@ -444,7 +522,10 @@ const products: ProductData[] = [
       { sku: "AU-CRST-7G", name: "Size 7 - Gold", costPrice: 3.2, retailPrice: 14.99, compareAtPrice: 21.99, stock: 200, weight: 0.02 },
       { sku: "AU-CRST-8G", name: "Size 8 - Gold", costPrice: 3.2, retailPrice: 14.99, compareAtPrice: 21.99, stock: 200, weight: 0.02 },
     ],
-    imageAlt: "18K Gold Croissant Dome Ring",
+    images: [
+      { url: unsplash("photo-1758995116383-f51775896add"), alt: "18K Gold Croissant Dome Ring" },
+      { url: unsplash("photo-1679019937172-0b2ef456a29d"), alt: "Gold dome ring on hand" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 8,
@@ -461,7 +542,10 @@ const products: ProductData[] = [
       { sku: "AU-BFLY-GOLD", name: "Gold", costPrice: 2.0, retailPrice: 9.99, compareAtPrice: 14.99, stock: 400, weight: 0.01 },
       { sku: "AU-BFLY-SILVER", name: "Silver", costPrice: 2.0, retailPrice: 9.99, compareAtPrice: 14.99, stock: 400, weight: 0.01 },
     ],
-    imageAlt: "Dainty Butterfly Charm Anklet",
+    images: [
+      { url: unsplash("photo-1705326452395-1d35e6add570"), alt: "Dainty Butterfly Charm Anklet" },
+      { url: unsplash("photo-1758297679736-2e6ff92d2021"), alt: "Gold butterfly anklet" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 9,
@@ -478,7 +562,10 @@ const products: ProductData[] = [
       { sku: "AU-BUBL-GOLD", name: "Gold", costPrice: 3.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 300, weight: 0.02 },
       { sku: "AU-BUBL-SILVER", name: "Silver", costPrice: 3.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 300, weight: 0.02 },
     ],
-    imageAlt: "Bubble Letter Initial Necklace",
+    images: [
+      { url: unsplash("photo-1671663906664-9586041c3aa1"), alt: "Bubble Letter Initial Necklace" },
+      { url: unsplash("photo-1733761013921-89d19f4a2194"), alt: "Gold bubble letter pendant" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 10,
@@ -495,7 +582,10 @@ const products: ProductData[] = [
       { sku: "AU-SLKS-NEUT", name: "Neutral Tones", costPrice: 3.8, retailPrice: 18.99, compareAtPrice: 26.99, stock: 250, weight: 0.05 },
       { sku: "AU-SLKS-JEWL", name: "Jewel Tones", costPrice: 3.8, retailPrice: 18.99, compareAtPrice: 26.99, stock: 250, weight: 0.05 },
     ],
-    imageAlt: "100% Mulberry Silk Scrunchie Set 6 Pack",
+    images: [
+      { url: unsplash("photo-1701559459709-423baf04e60f"), alt: "Silk Scrunchie Set 6 Pack" },
+      { url: unsplash("photo-1762114469204-0aa2cbfa609d"), alt: "Mulberry silk scrunchies" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 11,
@@ -513,7 +603,10 @@ const products: ProductData[] = [
       { sku: "AU-EVIL-SILVER", name: "Silver", costPrice: 3.0, retailPrice: 14.99, compareAtPrice: 19.99, stock: 250, weight: 0.02 },
       { sku: "AU-EVIL-ROSE", name: "Rose Gold", costPrice: 3.0, retailPrice: 14.99, compareAtPrice: 19.99, stock: 250, weight: 0.02 },
     ],
-    imageAlt: "Evil Eye Protection Charm Bracelet",
+    images: [
+      { url: unsplash("photo-1615920887486-dc0c3a035405"), alt: "Evil Eye Charm Bracelet" },
+      { url: unsplash("photo-1626122738142-bbd66f671eca"), alt: "Evil eye bracelet close-up" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 12,
@@ -530,7 +623,10 @@ const products: ProductData[] = [
       { sku: "AU-ECUF-GOLD", name: "Gold (5-piece)", costPrice: 2.8, retailPrice: 13.99, compareAtPrice: 19.99, stock: 300, weight: 0.02 },
       { sku: "AU-ECUF-SILVER", name: "Silver (5-piece)", costPrice: 2.8, retailPrice: 13.99, compareAtPrice: 19.99, stock: 300, weight: 0.02 },
     ],
-    imageAlt: "Gold Ear Cuff Set No Piercing Required",
+    images: [
+      { url: unsplash("photo-1643387774154-4ec59518f9a5"), alt: "Gold Ear Cuff Set" },
+      { url: unsplash("photo-1614606140905-6a5e931e5c39"), alt: "Ear cuffs on ear" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 13,
@@ -548,7 +644,10 @@ const products: ProductData[] = [
       { sku: "AU-HERB-18G", name: '18" - Gold', costPrice: 5.0, retailPrice: 23.99, compareAtPrice: 32.99, stock: 180, weight: 0.04 },
       { sku: "AU-HERB-16S", name: '16" - Silver', costPrice: 4.5, retailPrice: 21.99, compareAtPrice: 29.99, stock: 180, weight: 0.03 },
     ],
-    imageAlt: "Flat Herringbone Chain Necklace",
+    images: [
+      { url: unsplash("photo-1725033796879-f8c3a3309c0c"), alt: "Flat Herringbone Chain Necklace" },
+      { url: unsplash("photo-1769909953707-31840816c5b3"), alt: "Gold herringbone chain" },
+    ],
     storeIndex: 1,
     isFeatured: false,
     position: 14,
@@ -568,7 +667,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "NW-RAIN-WHITE", name: "White", costPrice: 17.0, retailPrice: 54.99, compareAtPrice: 69.99, stock: 75, weight: 0.8 },
     ],
-    imageAlt: "Rain Cloud Aroma Diffuser",
+    images: [
+      { url: unsplash("photo-1607713109008-d00372938c2d"), alt: "Rain Cloud Aroma Diffuser" },
+      { url: unsplash("photo-1636714507452-48716cfa1818"), alt: "Cloud diffuser with mist" },
+    ],
     storeIndex: 2,
     isFeatured: true,
     position: 0,
@@ -585,7 +687,10 @@ const products: ProductData[] = [
       { sku: "NW-SNST-WARM", name: "Warm Sunset", costPrice: 7.5, retailPrice: 29.99, compareAtPrice: 39.99, stock: 120, weight: 0.35 },
       { sku: "NW-SNST-RAIN", name: "Rainbow", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.35 },
     ],
-    imageAlt: "Sunset Lamp Projector",
+    images: [
+      { url: unsplash("photo-1764530926841-4ffd875b97c2"), alt: "Sunset Lamp Projector glow" },
+      { url: unsplash("photo-1761083042094-988fd3a3ae69"), alt: "Golden hour sunset lamp" },
+    ],
     storeIndex: 2,
     isFeatured: true,
     position: 1,
@@ -603,7 +708,10 @@ const products: ProductData[] = [
       { sku: "NW-MUSH-OLIVE", name: "Olive Green", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 90, weight: 0.4 },
       { sku: "NW-MUSH-AMBER", name: "Amber", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 90, weight: 0.4 },
     ],
-    imageAlt: "Mushroom LED Table Lamp",
+    images: [
+      { url: unsplash("photo-1761083042130-3875fe970bd5"), alt: "Mushroom LED Table Lamp" },
+      { url: unsplash("photo-1761634731333-9cca08c77eae"), alt: "Retro mushroom lamp glow" },
+    ],
     storeIndex: 2,
     isFeatured: true,
     position: 2,
@@ -620,7 +728,10 @@ const products: ProductData[] = [
       { sku: "NW-CLSH-WHITE", name: "White", costPrice: 8.5, retailPrice: 29.99, compareAtPrice: 39.99, stock: 80, weight: 0.9 },
       { sku: "NW-CLSH-WOOD", name: "Natural Wood", costPrice: 9.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 60, weight: 0.95 },
     ],
-    imageAlt: "Floating Cloud Wall Shelf",
+    images: [
+      { url: unsplash("photo-1719941032639-fb6c2d163cb0"), alt: "Floating Cloud Wall Shelf" },
+      { url: unsplash("photo-1677362486085-05e9ae48d2bc"), alt: "Cloud shelf with decor" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 3,
@@ -638,7 +749,10 @@ const products: ProductData[] = [
       { sku: "NW-KNOT-SAGE", name: "Sage Green", costPrice: 8.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 100, weight: 0.6 },
       { sku: "NW-KNOT-BLUSH", name: "Blush Pink", costPrice: 8.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 100, weight: 0.6 },
     ],
-    imageAlt: "Nordic Knot Throw Pillow",
+    images: [
+      { url: unsplash("photo-1767193959809-1df4e34c69f9"), alt: "Nordic Knot Throw Pillow" },
+      { url: unsplash("photo-1670080589800-6416c8ce8a14"), alt: "Knotted pillow on sofa" },
+    ],
     storeIndex: 2,
     isFeatured: true,
     position: 4,
@@ -655,7 +769,10 @@ const products: ProductData[] = [
       { sku: "NW-RBOK-WHITE", name: "White", costPrice: 22.0, retailPrice: 64.99, compareAtPrice: 84.99, stock: 40, weight: 4.5 },
       { sku: "NW-RBOK-WOOD", name: "Natural Wood", costPrice: 22.0, retailPrice: 64.99, compareAtPrice: 84.99, stock: 40, weight: 4.5 },
     ],
-    imageAlt: "360-Degree Rotating Bookshelf Tower",
+    images: [
+      { url: unsplash("photo-1517562652858-8d863a9e0931"), alt: "Rotating Bookshelf Tower" },
+      { url: unsplash("photo-1648190627457-d2299e8a904b"), alt: "Bookshelf tower with books" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 5,
@@ -673,7 +790,10 @@ const products: ProductData[] = [
       { sku: "NW-CKNK-40-GREY", name: '40x60" - Grey', costPrice: 15.0, retailPrice: 49.99, compareAtPrice: 64.99, stock: 60, weight: 2.0 },
       { sku: "NW-CKNK-60-CREAM", name: '60x80" - Cream', costPrice: 22.0, retailPrice: 69.99, compareAtPrice: 89.99, stock: 35, weight: 3.2 },
     ],
-    imageAlt: "Hand-Knit Chunky Knit Throw Blanket",
+    images: [
+      { url: unsplash("photo-1674475760738-8c7af859f821"), alt: "Chunky Knit Throw Blanket" },
+      { url: unsplash("photo-1634208006016-07c6d95cfac8"), alt: "Oversized knit blanket" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 6,
@@ -689,7 +809,10 @@ const products: ProductData[] = [
     variants: [
       { sku: "NW-SOYC-3PK", name: "3-Pack Sampler", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 150, weight: 0.9 },
     ],
-    imageAlt: "Hand-Poured Soy Candle Set 3 Pack",
+    images: [
+      { url: unsplash("photo-1587147676188-5cc4b94fa62f"), alt: "Soy Candle Set 3 Pack" },
+      { url: unsplash("photo-1621939966598-64ff8f12349d"), alt: "Artisan soy candles" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 7,
@@ -706,7 +829,10 @@ const products: ProductData[] = [
       { sku: "NW-DORG-3PC", name: "3-Piece Set", costPrice: 5.5, retailPrice: 22.99, compareAtPrice: 29.99, stock: 120, weight: 0.45 },
       { sku: "NW-DORG-5PC", name: "5-Piece Set", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 80, weight: 0.7 },
     ],
-    imageAlt: "Clear Acrylic Desk Organizer Set",
+    images: [
+      { url: unsplash("photo-1640520813040-b0d23ec11ec6"), alt: "Acrylic Desk Organizer Set" },
+      { url: unsplash("photo-1715093973769-b3c0f9af8e3a"), alt: "Clear desk organizer" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 8,
@@ -724,7 +850,10 @@ const products: ProductData[] = [
       { sku: "NW-PAMP-WHITE", name: "White (30 stems)", costPrice: 5.0, retailPrice: 19.99, compareAtPrice: 27.99, stock: 140, weight: 0.15 },
       { sku: "NW-PAMP-BROWN", name: "Brown (30 stems)", costPrice: 5.0, retailPrice: 19.99, compareAtPrice: 27.99, stock: 140, weight: 0.15 },
     ],
-    imageAlt: "Dried Pampas Grass Bouquet",
+    images: [
+      { url: unsplash("photo-1637428289615-af608fb697ae"), alt: "Dried Pampas Grass Bouquet" },
+      { url: unsplash("photo-1747670609859-c0ee3e4afbad"), alt: "Fluffy pampas grass stems" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 9,
@@ -741,7 +870,10 @@ const products: ProductData[] = [
       { sku: "NW-STAR-BLK", name: "Black", costPrice: 11.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 80, weight: 0.45 },
       { sku: "NW-STAR-WHT", name: "White", costPrice: 11.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 80, weight: 0.45 },
     ],
-    imageAlt: "Galaxy Star Projector Night Light",
+    images: [
+      { url: unsplash("photo-1761083042195-9e0e85189e2e"), alt: "Galaxy Star Projector" },
+      { url: unsplash("photo-1768051313568-b35886b9a093"), alt: "Star projector galaxy effect" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 10,
@@ -759,7 +891,10 @@ const products: ProductData[] = [
       { sku: "NW-WAFL-BEIGE", name: "Oat Beige", costPrice: 10.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 80, weight: 0.8 },
       { sku: "NW-WAFL-SAGE", name: "Sage", costPrice: 10.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 80, weight: 0.8 },
     ],
-    imageAlt: "Japanese Waffle Weave Bath Towel Set",
+    images: [
+      { url: unsplash("photo-1760445799125-b7441f91cc07"), alt: "Waffle Weave Bath Towel Set" },
+      { url: unsplash("photo-1770053506723-c96a4379873b"), alt: "Japanese waffle towels folded" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 11,
@@ -776,7 +911,10 @@ const products: ProductData[] = [
       { sku: "NW-INCW-MOUNT", name: "Mountain Style", costPrice: 6.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 120, weight: 0.5 },
       { sku: "NW-INCW-LOTUS", name: "Lotus Style", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 100, weight: 0.55 },
     ],
-    imageAlt: "Ceramic Incense Waterfall Burner",
+    images: [
+      { url: unsplash("photo-1632146639278-c2203c404d89"), alt: "Ceramic Incense Waterfall Burner" },
+      { url: unsplash("photo-1580882268364-19e133712e20"), alt: "Backflow incense smoke" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 12,
@@ -794,7 +932,10 @@ const products: ProductData[] = [
       { sku: "NW-HOOK-BLACK", name: "Black (8 pack)", costPrice: 3.0, retailPrice: 12.99, compareAtPrice: 18.99, stock: 250, weight: 0.2 },
       { sku: "NW-HOOK-WOOD", name: "Wood Grain (8 pack)", costPrice: 3.5, retailPrice: 14.99, compareAtPrice: 19.99, stock: 200, weight: 0.22 },
     ],
-    imageAlt: "Minimalist Adhesive Wall Hook Set 8 Pack",
+    images: [
+      { url: unsplash("photo-1762606368623-81bb2d5f5778"), alt: "Minimalist Wall Hook Set" },
+      { url: unsplash("photo-1771817246645-360636939b40"), alt: "Nordic wall hooks installed" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 13,
@@ -811,7 +952,10 @@ const products: ProductData[] = [
       { sku: "NW-MACM-SM", name: 'Small (10")', costPrice: 10.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 70, weight: 0.7 },
       { sku: "NW-MACM-LG", name: 'Large (16")', costPrice: 15.0, retailPrice: 49.99, compareAtPrice: 64.99, stock: 45, weight: 1.2 },
     ],
-    imageAlt: "Boho Macrame Round Wall Mirror",
+    images: [
+      { url: unsplash("photo-1752581827072-e831c6234720"), alt: "Boho Macrame Wall Mirror" },
+      { url: unsplash("photo-1662903823294-ff3cfee674c4"), alt: "Macrame mirror on wall" },
+    ],
     storeIndex: 2,
     isFeatured: false,
     position: 14,
@@ -822,6 +966,16 @@ const products: ProductData[] = [
 
 async function main() {
   console.log("🌱 Seeding database...");
+
+  // ─── Clean up existing product data ────────────────────
+  console.log("  🗑  Clearing existing product data...");
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.customer.deleteMany();
+  await prisma.storeProduct.deleteMany();
+  await prisma.productImage.deleteMany();
+  await prisma.productVariant.deleteMany();
+  await prisma.product.deleteMany();
 
   // ─── Admin User ───────────────────────────────────────
   const admin = await prisma.adminUser.upsert({
@@ -938,7 +1092,6 @@ async function main() {
   const counts = [0, 0, 0];
 
   for (const p of products) {
-    const imageText = p.title.replace(/ /g, "+");
     await prisma.product.create({
       data: {
         title: p.title,
@@ -959,13 +1112,11 @@ async function main() {
           })),
         },
         images: {
-          create: [
-            {
-              url: `https://via.placeholder.com/800x800.png?text=${imageText}`,
-              alt: p.imageAlt,
-              position: 0,
-            },
-          ],
+          create: p.images.map((img, i) => ({
+            url: img.url,
+            alt: img.alt,
+            position: i,
+          })),
         },
         storeProducts: {
           create: [

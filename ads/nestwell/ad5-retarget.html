@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Back In Stock Retargeting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: #2a2218;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Warm ambient glow */
+  .glow1 {
+    position: absolute; width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,180,80,0.12) 0%, transparent 60%);
+    top: 200px; left: 50%; transform: translateX(-50%);
+  }
+  .glow2 {
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(45,80,22,0.1) 0%, transparent 60%);
+    bottom: 200px; right: 100px;
+  }
+  /* Product cards */
+  .product-row {
+    position: absolute; top: 480px; left: 70px; right: 70px;
+    display: flex; gap: 24px;
+  }
+  .product-card {
+    flex: 1;
+    background: rgba(245,240,234,0.06);
+    border: 1px solid rgba(139,115,85,0.2);
+    border-radius: 20px; padding: 36px 28px;
+    text-align: center;
+    position: relative;
+  }
+  .back-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: #2d5016; color: #f5f0ea;
+    font-size: 10px; font-weight: 700;
+    padding: 6px 14px; border-radius: 20px;
+    letter-spacing: 2px; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .pc-icon { font-size: 48px; margin-bottom: 16px; }
+  .pc-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: white;
+    margin-bottom: 8px;
+  }
+  .pc-price {
+    font-size: 20px; color: #c9a84c; font-weight: 600;
+  }
+  .pc-orig {
+    font-size: 14px; color: rgba(255,255,255,0.3);
+    text-decoration: line-through; margin-left: 8px;
+  }
+  /* Stock bar */
+  .stock-bar-container {
+    margin-top: 14px;
+  }
+  .stock-bar-bg {
+    width: 100%; height: 6px; border-radius: 3px;
+    background: rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+  .stock-bar-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, #2d5016, #4a8a2a);
+  }
+  .stock-text {
+    font-size: 11px; color: rgba(255,255,255,0.4);
+    margin-top: 6px; letter-spacing: 1px;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 85px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; letter-spacing: 5px;
+    color: rgba(245,240,234,0.5);
+  }
+  .urgency {
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: #c9a84c; font-size: 12px; font-weight: 600;
+    padding: 8px 18px; border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 60px; line-height: 1.1;
+    color: white; margin-top: 40px;
+  }
+  .headline em { color: #c9a84c; font-style: normal; }
+  .sub {
+    font-size: 18px; color: rgba(255,255,255,0.4); font-weight: 300;
+    line-height: 1.6; margin-top: 20px; max-width: 500px;
+  }
+  .spacer { flex: 1; }
+  /* Timer */
+  .timer-row {
+    display: flex; gap: 16px; margin-bottom: 40px;
+    align-items: center;
+  }
+  .timer-block {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(139,115,85,0.2);
+    border-radius: 10px; padding: 14px 20px;
+    text-align: center;
+  }
+  .timer-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; color: white;
+  }
+  .timer-label {
+    font-size: 10px; color: rgba(255,255,255,0.3);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .timer-sep {
+    font-size: 28px; color: rgba(255,255,255,0.2);
+    margin-top: -8px;
+  }
+  .timer-note {
+    margin-left: auto;
+    font-size: 14px; color: rgba(255,255,255,0.3);
+    font-style: italic; max-width: 200px; text-align: right;
+    line-height: 1.5;
+  }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-btn {
+    background: linear-gradient(135deg, #c9a84c, #a88a3a);
+    color: #1a1a1a;
+    font-size: 16px; font-weight: 700;
+    padding: 20px 48px; border-radius: 8px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .guarantee {
+    text-align: right;
+  }
+  .guarantee-text {
+    font-size: 13px; color: rgba(255,255,255,0.3);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="product-row">
+    <div class="product-card">
+      <div class="back-badge">Back In Stock</div>
+      <div class="pc-icon">&#x2601;&#xFE0F;</div>
+      <div class="pc-name">Rain Cloud Diffuser</div>
+      <div class="pc-price">$32.99</div>
+      <div class="stock-bar-container">
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:35%"></div></div>
+        <div class="stock-text">35% claimed</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="back-badge">Back In Stock</div>
+      <div class="pc-icon">&#x1F9F6;</div>
+      <div class="pc-name">Chunky Knit Throw</div>
+      <div class="pc-price">$39.99</div>
+      <div class="stock-bar-container">
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:58%"></div></div>
+        <div class="stock-text">58% claimed</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="back-badge">Back In Stock</div>
+      <div class="pc-icon">&#x1F30C;</div>
+      <div class="pc-name">Star Projector</div>
+      <div class="pc-price">$26.99</div>
+      <div class="stock-bar-container">
+        <div class="stock-bar-bg"><div class="stock-bar-fill" style="width:72%"></div></div>
+        <div class="stock-text">72% claimed</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">NESTWELL</div>
+      <div class="urgency">Limited Stock</div>
+    </div>
+    <h1 class="headline">Your Cozy<br>Essentials<br>Are <em>Back</em></h1>
+    <p class="sub">Last restock sold out in 72 hours. Don't miss your chance.</p>
+    <div class="spacer"></div>
+    <div class="timer-row">
+      <div class="timer-block">
+        <div class="timer-num">02</div>
+        <div class="timer-label">Days</div>
+      </div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block">
+        <div class="timer-num">14</div>
+        <div class="timer-label">Hours</div>
+      </div>
+      <div class="timer-sep">:</div>
+      <div class="timer-block">
+        <div class="timer-num">37</div>
+        <div class="timer-label">Mins</div>
+      </div>
+      <div class="timer-note">Estimated time before sellout</div>
+    </div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Before It's Gone</div>
+      <div class="guarantee">
+        <div class="guarantee-text">Free shipping on $50+<br>30-day easy returns</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>GLOWHAVEN — New Arrival</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(170deg, #fff5f7 0%, #fce4ec 50%, #f8b4c8 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+  }
+  .post::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(233, 30, 140, 0.05);
+  }
+  .brand-tag {
+    position: absolute;
+    top: 60px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #e91e8c;
+  }
+  .new-badge {
+    background: #e91e8c;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    border-radius: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 40px rgba(233, 30, 140, 0.3);
+  }
+  .just-dropped {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #4a3040;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+  .product-visual {
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    box-shadow: 0 25px 80px rgba(233, 30, 140, 0.15);
+    position: relative;
+    border: 3px solid rgba(233, 30, 140, 0.1);
+  }
+  .product-visual::after {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    border: 1px dashed rgba(233, 30, 140, 0.2);
+  }
+  .product-visual .icon {
+    font-size: 100px;
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .product-name em { color: #e91e8c; font-style: italic; }
+  .product-desc {
+    font-size: 22px;
+    font-weight: 300;
+    color: #4a3040;
+    text-align: center;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-bottom: 50px;
+  }
+  .cta {
+    background: #e91e8c;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 22px 60px;
+    border-radius: 50px;
+    box-shadow: 0 12px 40px rgba(233, 30, 140, 0.3);
+  }
+  /* Decorative stars */
+  .star {
+    position: absolute;
+    color: rgba(233, 30, 140, 0.2);
+    font-size: 24px;
+  }
+  .star-1 { top: 180px; left: 120px; font-size: 30px; }
+  .star-2 { top: 250px; right: 100px; }
+  .star-3 { bottom: 220px; left: 100px; }
+  .star-4 { bottom: 300px; right: 130px; font-size: 18px; }
+  .deco-line-l {
+    position: absolute;
+    left: 60px; top: 50%;
+    transform: translateY(-50%);
+    width: 2px; height: 200px;
+    background: linear-gradient(180deg, transparent, rgba(233,30,140,0.15), transparent);
+  }
+  .deco-line-r {
+    position: absolute;
+    right: 60px; top: 50%;
+    transform: translateY(-50%);
+    width: 2px; height: 200px;
+    background: linear-gradient(180deg, transparent, rgba(233,30,140,0.15), transparent);
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">GLOWHAVEN</div>
+  <div class="star star-1">&#x2726;</div>
+  <div class="star star-2">&#x2726;</div>
+  <div class="star star-3">&#x2726;</div>
+  <div class="star star-4">&#x2726;</div>
+  <div class="deco-line-l"></div>
+  <div class="deco-line-r"></div>
+
+  <div class="new-badge">&#x2728; NEW &#x2728;</div>
+
+  <div class="just-dropped">Just Dropped</div>
+
+  <div class="product-visual">
+    <div class="icon">&#x1F338;</div>
+  </div>
+
+  <div class="product-name">Cherry Blossom<br><em>Glow Serum</em></div>
+  <div class="product-desc">
+    Infused with sakura extract and niacinamide for a lit-from-within radiance. Your new spring essential.
+  </div>
+
+  <div class="cta">Be First to Shop</div>
+</div>
+</body>
+</html>

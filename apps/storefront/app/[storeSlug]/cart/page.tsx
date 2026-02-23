@@ -11,11 +11,14 @@ import { formatPrice } from "@/lib/utils";
 
 export default function CartPage() {
   const params = useParams<{ storeSlug: string }>();
+  const storeSlug = params?.storeSlug;
   const { items, removeItem, updateQuantity, subtotal, clearCart } = useCart();
 
   const shippingCost = subtotal >= 75 ? 0 : 5.99;
   const tax = subtotal * 0.08;
   const total = subtotal + shippingCost + tax;
+
+  if (!storeSlug) return null;
 
   if (items.length === 0) {
     return (
@@ -27,7 +30,7 @@ export default function CartPage() {
         <p className="text-muted-foreground mb-6">
           Looks like you haven&apos;t added anything yet.
         </p>
-        <Link href={`/${params.storeSlug}/products`}>
+        <Link href={`/${storeSlug}/products`}>
           <Button>Continue Shopping</Button>
         </Link>
       </div>
@@ -63,7 +66,7 @@ export default function CartPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <Link
-                  href={`/${params.storeSlug}/products/${item.productId}`}
+                  href={`/${storeSlug}/products/${item.productId}`}
                   className="font-medium hover:text-primary"
                 >
                   {item.productTitle}
@@ -99,7 +102,7 @@ export default function CartPage() {
             <Button variant="outline" size="sm" onClick={clearCart}>
               Clear Cart
             </Button>
-            <Link href={`/${params.storeSlug}/products`}>
+            <Link href={`/${storeSlug}/products`}>
               <Button variant="ghost" size="sm">
                 Continue Shopping
               </Button>
@@ -142,7 +145,7 @@ export default function CartPage() {
               <span>Total</span>
               <span>{formatPrice(total)}</span>
             </div>
-            <Link href={`/${params.storeSlug}/checkout`}>
+            <Link href={`/${storeSlug}/checkout`}>
               <Button className="w-full" size="lg">
                 Proceed to Checkout
               </Button>

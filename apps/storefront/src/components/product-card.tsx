@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PriceDisplay } from "./price-display";
-import type { StoreProductWithDetails } from "@/lib/types";
+import type { FeaturedStoreProduct } from "@/lib/types";
 
 export function ProductCard({
   storeProduct,
   storeSlug,
 }: {
-  storeProduct: StoreProductWithDetails;
+  storeProduct: FeaturedStoreProduct;
   storeSlug: string;
 }) {
   const { product } = storeProduct;

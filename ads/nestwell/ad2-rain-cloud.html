@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Rain Cloud Diffuser Best Seller</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(180deg, #e8e0d4 0%, #f5f0ea 40%, #f5f0ea 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Cloud illustration */
+  .cloud-group {
+    position: absolute; top: 360px; left: 50%; transform: translateX(-50%);
+  }
+  .cloud {
+    width: 320px; height: 140px; border-radius: 140px;
+    background: white;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(139,115,85,0.1);
+  }
+  .cloud::before {
+    content: ''; position: absolute;
+    width: 150px; height: 150px; border-radius: 50%;
+    background: white;
+    top: -70px; left: 50px;
+    box-shadow: 0 -4px 20px rgba(139,115,85,0.05);
+  }
+  .cloud::after {
+    content: ''; position: absolute;
+    width: 110px; height: 110px; border-radius: 50%;
+    background: white;
+    top: -50px; right: 50px;
+    box-shadow: 0 -4px 20px rgba(139,115,85,0.05);
+  }
+  /* Rain drops */
+  .rain-container {
+    position: absolute; top: 500px; left: 50%; transform: translateX(-50%);
+    width: 240px; height: 250px;
+  }
+  .drop {
+    position: absolute; width: 4px;
+    background: linear-gradient(180deg, rgba(139,115,85,0.3), rgba(139,115,85,0.05));
+    border-radius: 0 0 4px 4px;
+    animation: rain 1.5s ease-in infinite;
+  }
+  .drop:nth-child(1) { left: 20px; height: 30px; animation-delay: 0s; }
+  .drop:nth-child(2) { left: 50px; height: 40px; animation-delay: 0.3s; }
+  .drop:nth-child(3) { left: 80px; height: 25px; animation-delay: 0.6s; }
+  .drop:nth-child(4) { left: 110px; height: 35px; animation-delay: 0.2s; }
+  .drop:nth-child(5) { left: 140px; height: 28px; animation-delay: 0.8s; }
+  .drop:nth-child(6) { left: 170px; height: 32px; animation-delay: 0.4s; }
+  .drop:nth-child(7) { left: 200px; height: 38px; animation-delay: 0.7s; }
+  @keyframes rain {
+    0% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(200px); }
+  }
+  /* Water pool */
+  .pool {
+    position: absolute; bottom: 280px; left: 50%; transform: translateX(-50%);
+    width: 280px; height: 20px;
+    background: radial-gradient(ellipse, rgba(139,115,85,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 85px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; letter-spacing: 5px;
+    color: #8b7355;
+  }
+  .badge {
+    background: #2d5016; color: #f5f0ea;
+    font-size: 12px; font-weight: 600;
+    padding: 8px 18px; border-radius: 6px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 58px; line-height: 1.15;
+    color: #2a2218; margin-top: 32px;
+  }
+  .headline em { color: #2d5016; font-style: normal; }
+  .sub {
+    font-size: 18px; color: #8b7355; font-weight: 300;
+    line-height: 1.6; margin-top: 18px; max-width: 400px;
+  }
+  .spacer { flex: 1; }
+  /* Features */
+  .features {
+    display: flex; gap: 40px; margin-bottom: 46px;
+  }
+  .feature {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .feature-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #2d5016;
+  }
+  .feature-text {
+    font-size: 14px; color: #8b7355; font-weight: 400;
+  }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-btn {
+    background: #2d5016; color: #f5f0ea;
+    font-size: 16px; font-weight: 600;
+    padding: 20px 48px; border-radius: 8px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .satisfying {
+    text-align: right;
+  }
+  .satisfying-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: #8b7355; font-style: italic;
+  }
+  .viral {
+    font-size: 12px; color: #b8a080; margin-top: 4px;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="cloud-group">
+    <div class="cloud"></div>
+  </div>
+  <div class="rain-container">
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+  </div>
+  <div class="pool"></div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">NESTWELL</div>
+      <div class="badge">Best Seller</div>
+    </div>
+    <h1 class="headline">The Cloud<br>That <em>Rains</em><br>Essential Oils</h1>
+    <p class="sub">Watch tiny rain droplets fall while filling your room with calming scents.</p>
+    <div class="spacer"></div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div class="feature-text">Aromatherapy</div>
+      </div>
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div class="feature-text">USB Powered</div>
+      </div>
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div class="feature-text">Ultra Quiet</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Now</div>
+      <div class="satisfying">
+        <div class="satisfying-text">The most satisfying thing you'll see today</div>
+        <div class="viral">Viral on TikTok</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

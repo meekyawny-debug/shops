@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Birth Flower Gifting Ad</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(145deg, #faf8f0 0%, #f5f0e5 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Subtle frame */
+  .frame {
+    position: absolute; top: 30px; left: 30px; right: 30px; bottom: 30px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  /* Flower grid */
+  .flower-grid {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr);
+    gap: 16px; width: 720px;
+  }
+  .flower-cell {
+    width: 168px; height: 168px;
+    background: white;
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    border: 1px solid rgba(201,168,76,0.12);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .flower-emoji { font-size: 42px; margin-bottom: 8px; }
+  .flower-month {
+    font-size: 11px; font-weight: 500; color: #bba870;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .flower-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: #1a1a1a; font-weight: 600;
+    margin-top: 2px;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 85px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 6px;
+    color: #c9a84c;
+  }
+  .price-tag {
+    background: #1a1a1a; color: #faf8f0;
+    font-size: 14px; font-weight: 600;
+    padding: 10px 22px; border-radius: 4px;
+    letter-spacing: 1px;
+  }
+  .price-tag span { color: #c9a84c; }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 700; line-height: 1.1;
+    color: #1a1a1a; margin-bottom: 18px;
+  }
+  .headline em { color: #c9a84c; font-style: italic; }
+  .sub {
+    font-size: 17px; color: #8a7a60; font-weight: 300;
+    line-height: 1.6; margin-bottom: 30px;
+  }
+  .spacer { flex: 1; }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-btn {
+    background: #1a1a1a; color: #faf8f0;
+    font-size: 16px; font-weight: 600;
+    padding: 20px 48px; border-radius: 0;
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .gift-note {
+    text-align: right;
+  }
+  .gift-icon { font-size: 28px; margin-bottom: 6px; }
+  .gift-text {
+    font-size: 14px; color: #8a7a60; font-weight: 400;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="frame"></div>
+  <div class="flower-grid">
+    <div class="flower-cell"><div class="flower-emoji">&#x1F338;</div><div class="flower-month">Jan</div><div class="flower-name">Carnation</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33C;</div><div class="flower-month">Feb</div><div class="flower-name">Violet</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F337;</div><div class="flower-month">Mar</div><div class="flower-name">Daffodil</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33A;</div><div class="flower-month">Apr</div><div class="flower-name">Daisy</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33B;</div><div class="flower-month">May</div><div class="flower-name">Lily</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F339;</div><div class="flower-month">Jun</div><div class="flower-name">Rose</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33E;</div><div class="flower-month">Jul</div><div class="flower-name">Larkspur</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33A;</div><div class="flower-month">Aug</div><div class="flower-name">Poppy</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33C;</div><div class="flower-month">Sep</div><div class="flower-name">Aster</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F33B;</div><div class="flower-month">Oct</div><div class="flower-name">Marigold</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x1F338;</div><div class="flower-month">Nov</div><div class="flower-name">Chrysanthemum</div></div>
+    <div class="flower-cell"><div class="flower-emoji">&#x2744;&#xFE0F;</div><div class="flower-month">Dec</div><div class="flower-name">Poinsettia</div></div>
+  </div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">AURAE</div>
+      <div class="price-tag">Under <span>$25</span></div>
+    </div>
+    <h1 class="headline">She'll <em>Never</em><br>Forget This Gift</h1>
+    <p class="sub">Personalized birth flower pendant — delicate,<br>meaningful, and gift-ready.</p>
+    <div class="spacer"></div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Her Month</div>
+      <div class="gift-note">
+        <div class="gift-icon">&#x1F381;</div>
+        <div class="gift-text">Arrives in a<br>gift-ready box</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

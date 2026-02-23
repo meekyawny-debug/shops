@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { serverTrpc } from "@/lib/trpc-server";
 import { generateStoreThemeVars } from "@/lib/theme";
@@ -6,6 +7,7 @@ import { StoreProvider } from "@/lib/store-context";
 import { CartProvider } from "@/lib/cart-context";
 import { StoreHeader } from "@/components/store-header";
 import { StoreFooter } from "@/components/store-footer";
+import { MetaPixel } from "@/components/meta-pixel";
 
 export async function generateMetadata({
   params,
@@ -62,8 +64,11 @@ export default async function StoreLayout({
       className={headingFont.variable}
       style={cssVars as React.CSSProperties}
     >
-      <StoreProvider store={store as any}>
+      <StoreProvider store={store}>
         <CartProvider storeSlug={storeSlug}>
+          <Suspense fallback={null}>
+            <MetaPixel />
+          </Suspense>
           <StoreHeader />
           <main className="min-h-screen">{children}</main>
           <StoreFooter />

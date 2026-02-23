@@ -7,6 +7,7 @@ interface ProductImage {
   id: string;
   url: string;
   alt: string | null;
+  position: number;
 }
 
 export function ProductImages({ images }: { images: ProductImage[] }) {

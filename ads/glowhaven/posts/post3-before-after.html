@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>GLOWHAVEN — Before &amp; After</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(180deg, #fff5f7 0%, #fce4ec 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .brand-tag {
+    margin-top: 55px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #e91e8c;
+    margin-bottom: 25px;
+  }
+  .heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 54px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .heading em { color: #e91e8c; font-style: italic; }
+  .subtitle {
+    font-size: 19px;
+    font-weight: 300;
+    color: #4a3040;
+    margin-bottom: 45px;
+  }
+  .split {
+    display: flex;
+    gap: 30px;
+    padding: 0 70px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .side {
+    flex: 1;
+    border-radius: 28px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .side-before {
+    background: #f0dce1;
+    border: 2px solid rgba(233, 30, 140, 0.1);
+  }
+  .side-after {
+    background: white;
+    border: 2px solid rgba(233, 30, 140, 0.15);
+    box-shadow: 0 15px 50px rgba(233, 30, 140, 0.15);
+  }
+  .side-label {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #e91e8c;
+    margin-bottom: 20px;
+  }
+  .face-circle {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+  }
+  .side-before .face-circle {
+    background: linear-gradient(135deg, #e8c5c5, #d4a0a0);
+  }
+  .side-after .face-circle {
+    background: linear-gradient(135deg, #fce4ec, #f8b4c8);
+    box-shadow: 0 0 40px rgba(233, 30, 140, 0.2);
+  }
+  .side-after .face-circle::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(233, 30, 140, 0.3);
+  }
+  .side-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .side-desc {
+    font-size: 16px;
+    color: #4a3040;
+    font-weight: 300;
+  }
+  .vs-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #e91e8c;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(233, 30, 140, 0.4);
+  }
+  .radiance-section {
+    padding: 0 70px;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .radiance-label {
+    font-weight: 500;
+    font-size: 16px;
+    color: #4a3040;
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .meter {
+    width: 100%;
+    height: 20px;
+    background: #f0dce1;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .meter-fill {
+    height: 100%;
+    width: 85%;
+    background: linear-gradient(90deg, #f8b4c8, #e91e8c);
+    border-radius: 10px;
+    position: relative;
+  }
+  .meter-fill::after {
+    content: '85%';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+  .meter-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #4a3040;
+  }
+  .testimonial {
+    background: white;
+    border-radius: 24px;
+    padding: 35px 50px;
+    margin: 0 70px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(233, 30, 140, 0.08);
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: rgba(233, 30, 140, 0.2);
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  .testimonial-author {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e91e8c;
+  }
+  .deco-line {
+    position: absolute;
+    bottom: 45px;
+    width: 60px; height: 3px;
+    background: #e91e8c;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">GLOWHAVEN</div>
+  <div class="heading">Real Results, <em>Real Glow</em></div>
+  <div class="subtitle">The snail mucin transformation</div>
+
+  <div class="split" style="position: relative;">
+    <div class="side side-before">
+      <div class="side-label">Day 1</div>
+      <div class="face-circle">&#x1F615;</div>
+      <div class="side-day">Starting Out</div>
+      <div class="side-desc">Dull, dehydrated skin</div>
+    </div>
+    <div class="vs-badge">VS</div>
+    <div class="side side-after">
+      <div class="side-label">Week 4</div>
+      <div class="face-circle">&#x2728;</div>
+      <div class="side-day">Glowing Up</div>
+      <div class="side-desc">Radiant, glass skin</div>
+    </div>
+  </div>
+
+  <div class="radiance-section">
+    <div class="radiance-label">Radiance Meter</div>
+    <div class="meter"><div class="meter-fill"></div></div>
+    <div class="meter-labels">
+      <span>Dull</span>
+      <span>Glowing</span>
+      <span>Glass Skin</span>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <div class="testimonial-text">My skin has never looked this dewy.<br>I'm obsessed with the results!</div>
+    <div class="testimonial-author">-- Sarah K., Verified Buyer</div>
+  </div>
+
+  <div class="deco-line"></div>
+</div>
+</body>
+</html>

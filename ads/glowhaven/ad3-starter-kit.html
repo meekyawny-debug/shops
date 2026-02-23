@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>GLOWHAVEN — Glass Skin Starter Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: #fff5f7;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Top accent bar */
+  .top-bar {
+    height: 6px;
+    background: linear-gradient(90deg, #f8b4c8, #e91e8c, #f8b4c8);
+  }
+  /* Grid lines */
+  .grid-line {
+    position: absolute; background: rgba(233,30,140,0.06);
+  }
+  .grid-line.h1 { top: 338px; left: 0; right: 0; height: 1px; }
+  .grid-line.h2 { top: 675px; left: 0; right: 0; height: 1px; }
+  .grid-line.h3 { top: 1013px; left: 0; right: 0; height: 1px; }
+  .grid-line.v1 { left: 540px; top: 0; bottom: 0; width: 1px; }
+  .content {
+    position: relative; z-index: 2;
+    height: calc(100% - 6px); display: flex; flex-direction: column;
+    padding: 75px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 50px;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 600; letter-spacing: 4px;
+    color: #1a1a1a;
+  }
+  .tag {
+    background: #e91e8c; color: white;
+    font-size: 12px; font-weight: 700;
+    padding: 8px 18px; border-radius: 4px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px; font-weight: 700; line-height: 1.15;
+    color: #1a1a1a; margin-bottom: 16px;
+  }
+  .headline span { color: #e91e8c; }
+  .subtitle {
+    font-size: 18px; color: #7a5060; font-weight: 300;
+    margin-bottom: 60px;
+  }
+  /* Product cards */
+  .products {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; flex: 1;
+  }
+  .product-card {
+    background: white;
+    border-radius: 20px; padding: 30px;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(233,30,140,0.1);
+  }
+  .product-card::before {
+    content: attr(data-step);
+    position: absolute; top: 16px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 700;
+    color: rgba(233,30,140,0.08);
+    line-height: 1;
+  }
+  .product-icon {
+    width: 60px; height: 60px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; font-size: 28px;
+  }
+  .product-icon.purple { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+  .product-icon.yellow { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+  .product-icon.blue { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+  .product-icon.gold { background: linear-gradient(135deg, #fff8e1, #ffe082); }
+  .product-name {
+    font-weight: 600; font-size: 16px; color: #1a1a1a;
+    margin-bottom: 6px;
+  }
+  .product-desc {
+    font-size: 13px; color: #9a7080; font-weight: 300;
+    line-height: 1.5;
+  }
+  .product-step {
+    position: absolute; top: 20px; right: 20px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #e91e8c, #f8b4c8);
+    color: white; font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Bottom */
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 40px;
+  }
+  .cta-btn {
+    background: #e91e8c; color: white;
+    font-size: 16px; font-weight: 600;
+    padding: 18px 44px; border-radius: 50px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .price-block {
+    text-align: right;
+  }
+  .orig-price {
+    font-size: 16px; color: #ccc; text-decoration: line-through;
+  }
+  .sale-price {
+    font-size: 36px; font-weight: 700; color: #e91e8c;
+    font-family: 'Playfair Display', serif;
+  }
+  .save-tag {
+    font-size: 12px; color: #e91e8c; font-weight: 600;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="top-bar"></div>
+  <div class="grid-line h1"></div>
+  <div class="grid-line h2"></div>
+  <div class="grid-line h3"></div>
+  <div class="grid-line v1"></div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">GLOWHAVEN</div>
+      <div class="tag">Bundle & Save</div>
+    </div>
+    <h1 class="headline">The <span>Glass Skin</span><br>Starter Kit</h1>
+    <p class="subtitle">Everything you need. One click. Your routine starts here.</p>
+    <div class="products">
+      <div class="product-card" data-step="1">
+        <div class="product-step">1</div>
+        <div class="product-icon purple">&#x1F9EA;</div>
+        <div class="product-name">Snail Mucin Essence</div>
+        <div class="product-desc">96% snail mucin for deep hydration & repair</div>
+      </div>
+      <div class="product-card" data-step="2">
+        <div class="product-step">2</div>
+        <div class="product-icon yellow">&#x2728;</div>
+        <div class="product-name">Vitamin C Serum</div>
+        <div class="product-desc">20% brightening serum for glow & dark spots</div>
+      </div>
+      <div class="product-card" data-step="3">
+        <div class="product-step">3</div>
+        <div class="product-icon blue">&#x2744;&#xFE0F;</div>
+        <div class="product-name">Ice Roller Massager</div>
+        <div class="product-desc">De-puff & tighten pores in 5 minutes</div>
+      </div>
+      <div class="product-card" data-step="4">
+        <div class="product-step">4</div>
+        <div class="product-icon gold">&#x1F451;</div>
+        <div class="product-name">24K Gold Eye Patches</div>
+        <div class="product-desc">Reduce dark circles & fine lines instantly</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="cta-btn">Get The Kit</div>
+      <div class="price-block">
+        <div class="orig-price">$89.96</div>
+        <div class="sale-price">$64.99</div>
+        <div class="save-tag">SAVE 28%</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

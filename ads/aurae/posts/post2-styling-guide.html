@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Styling Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #faf6f0;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #1a1412;
+    padding: 65px 70px;
+    display: flex;
+    flex-direction: column;
+  }
+  .post::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #d4a574, #e8c49a, #d4a574);
+  }
+  .brand-tag {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 25px;
+  }
+  .heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #1a1412;
+    margin-bottom: 8px;
+  }
+  .heading em {
+    color: #d4a574;
+    font-style: italic;
+  }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(26, 20, 18, 0.5);
+    margin-bottom: 45px;
+  }
+  .looks {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .look-panel {
+    flex: 1;
+    background: white;
+    border-radius: 24px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(26, 20, 18, 0.06);
+    border: 1px solid rgba(212, 165, 116, 0.15);
+    position: relative;
+  }
+  .look-number {
+    position: absolute;
+    top: 20px; right: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: rgba(212, 165, 116, 0.15);
+    line-height: 1;
+  }
+  .look-visual {
+    width: 180px; height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  /* Neck/chain silhouette for each look */
+  .neck-shape {
+    width: 120px; height: 160px;
+    border: 2px solid rgba(212, 165, 116, 0.2);
+    border-top: none;
+    border-radius: 0 0 60px 60px;
+    position: relative;
+  }
+  /* Minimal: single thin chain */
+  .look-panel:nth-child(1) .chain-art {
+    position: absolute;
+    bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 60px;
+    border: 1.5px solid #d4a574;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+  }
+  /* Classic: two chains */
+  .look-panel:nth-child(2) .chain-art-1 {
+    position: absolute;
+    bottom: 50px; left: 50%;
+    transform: translateX(-50%);
+    width: 70px; height: 50px;
+    border: 1.5px solid #d4a574;
+    border-top: none;
+    border-radius: 0 0 35px 35px;
+  }
+  .look-panel:nth-child(2) .chain-art-2 {
+    position: absolute;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 70px;
+    border: 1.5px solid #c49464;
+    border-top: none;
+    border-radius: 0 0 45px 45px;
+  }
+  .look-panel:nth-child(2) .chain-pendant {
+    position: absolute;
+    bottom: 18px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 12px;
+    background: #d4a574;
+    border-radius: 50%;
+  }
+  /* Bold: three chains */
+  .look-panel:nth-child(3) .chain-art-a {
+    position: absolute;
+    bottom: 65px; left: 50%;
+    transform: translateX(-50%);
+    width: 55px; height: 40px;
+    border: 2px solid #d4a574;
+    border-top: none;
+    border-radius: 0 0 28px 28px;
+  }
+  .look-panel:nth-child(3) .chain-art-b {
+    position: absolute;
+    bottom: 38px; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 55px;
+    border: 2px solid #c49464;
+    border-top: none;
+    border-radius: 0 0 40px 40px;
+  }
+  .look-panel:nth-child(3) .chain-art-c {
+    position: absolute;
+    bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 75px;
+    border: 2.5px solid #b88654;
+    border-top: none;
+    border-radius: 0 0 50px 50px;
+  }
+  .look-panel:nth-child(3) .chain-pendant-b {
+    position: absolute;
+    bottom: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 16px;
+    background: linear-gradient(135deg, #d4a574, #e8c49a);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(212, 165, 116, 0.4);
+  }
+  .look-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1412;
+    margin-bottom: 10px;
+  }
+  .look-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(26, 20, 18, 0.55);
+    line-height: 1.5;
+  }
+  .look-tag {
+    margin-top: auto;
+    padding-top: 25px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4a574;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+  }
+  .footer-line {
+    width: 60px; height: 1px;
+    background: #d4a574;
+  }
+  .footer-text {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4a574;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">AURAE</div>
+  <div class="heading">3 Ways to Layer<br><em>Gold Chains</em></div>
+  <div class="subtitle">Master the art of layering</div>
+
+  <div class="looks">
+    <div class="look-panel">
+      <div class="look-number">01</div>
+      <div class="look-visual">
+        <div class="neck-shape">
+          <div class="chain-art"></div>
+        </div>
+      </div>
+      <div class="look-title">Minimal</div>
+      <div class="look-desc">A single delicate chain for effortless everyday elegance</div>
+      <div class="look-tag">Understated</div>
+    </div>
+
+    <div class="look-panel">
+      <div class="look-number">02</div>
+      <div class="look-visual">
+        <div class="neck-shape">
+          <div class="chain-art-1"></div>
+          <div class="chain-art-2"></div>
+          <div class="chain-pendant"></div>
+        </div>
+      </div>
+      <div class="look-title">Classic</div>
+      <div class="look-desc">Two complementary chains with a pendant focal point</div>
+      <div class="look-tag">Timeless</div>
+    </div>
+
+    <div class="look-panel">
+      <div class="look-number">03</div>
+      <div class="look-visual">
+        <div class="neck-shape">
+          <div class="chain-art-a"></div>
+          <div class="chain-art-b"></div>
+          <div class="chain-art-c"></div>
+          <div class="chain-pendant-b"></div>
+        </div>
+      </div>
+      <div class="look-title">Bold</div>
+      <div class="look-desc">Triple layer with mixed textures for maximum impact</div>
+      <div class="look-tag">Statement</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">Save this guide</div>
+    <div class="footer-line"></div>
+  </div>
+</div>
+</body>
+</html>

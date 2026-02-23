@@ -1,6 +1,29 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { router, publicProcedure } from "../trpc";
 import { prisma } from "@shops/db";
+import { sendCAPIPurchaseEvent } from "../lib/meta-capi";
+
+// Simple in-memory rate limiter per IP-like key (order creation)
+const orderRateMap = new Map<string, { count: number; resetAt: number }>();
+const ORDER_RATE_LIMIT = 5; // max orders per window
+const ORDER_RATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+function checkOrderRateLimit(key: string) {
+  const now = Date.now();
+  const entry = orderRateMap.get(key);
+  if (!entry || now > entry.resetAt) {
+    orderRateMap.set(key, { count: 1, resetAt: now + ORDER_RATE_WINDOW_MS });
+    return;
+  }
+  if (entry.count >= ORDER_RATE_LIMIT) {
+    throw new TRPCError({
+      code: "TOO_MANY_REQUESTS",
+      message: "Too many orders. Please try again later.",
+    });
+  }
+  entry.count++;
+}
 
 export const storefrontRouter = router({
   getStore: publicProcedure
@@ -219,6 +242,7 @@ export const storefrontRouter = router({
         shippingState: z.string().min(1),
         shippingZip: z.string().min(1),
         shippingCountry: z.string().default("US"),
+        fbEventId: z.string().optional(),
         items: z.array(
           z.object({
             variantId: z.string(),
@@ -228,9 +252,20 @@ export const storefrontRouter = router({
       })
     )
     .mutation(async ({ input }) => {
+      // Rate limit by email
+      checkOrderRateLimit(input.email.toLowerCase());
+
       const store = await prisma.store.findUniqueOrThrow({
         where: { slug: input.storeSlug },
       });
+
+      // Verify store is active
+      if (!store.isActive) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "This store is not currently accepting orders.",
+        });
+      }
 
       // Upsert customer
       const customer = await prisma.customer.upsert({
@@ -251,7 +286,7 @@ export const storefrontRouter = router({
         },
       });
 
-      // Fetch variants with prices
+      // Fetch variants with prices and validate stock
       const variants = await prisma.productVariant.findMany({
         where: {
           id: { in: input.items.map((i) => i.variantId) },
@@ -261,7 +296,21 @@ export const storefrontRouter = router({
       });
 
       if (variants.length !== input.items.length) {
-        throw new Error("One or more items are no longer available");
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "One or more items are no longer available.",
+        });
+      }
+
+      // Validate stock for each item
+      for (const item of input.items) {
+        const variant = variants.find((v) => v.id === item.variantId)!;
+        if (variant.stock < item.quantity) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: `Insufficient stock for "${variant.product.title}" (${variant.name}). Only ${variant.stock} left.`,
+          });
+        }
       }
 
       // Calculate totals
@@ -288,32 +337,93 @@ export const storefrontRouter = router({
       // Generate order number
       const orderNumber = `${store.slug.toUpperCase().slice(0, 3)}-${Date.now().toString(36).toUpperCase()}`;
 
-      const order = await prisma.order.create({
-        data: {
-          storeId: store.id,
-          customerId: customer.id,
-          orderNumber,
-          status: "PENDING",
-          subtotal,
-          shippingCost,
-          tax,
-          total,
-          shippingName: `${input.firstName} ${input.lastName}`,
-          shippingAddress1: input.shippingAddress1,
-          shippingAddress2: input.shippingAddress2,
-          shippingCity: input.shippingCity,
-          shippingState: input.shippingState,
-          shippingZip: input.shippingZip,
-          shippingCountry: input.shippingCountry,
-          items: {
-            create: orderItems,
+      // Create order and decrement stock in a transaction
+      const order = await prisma.$transaction(async (tx) => {
+        // Decrement stock for each variant
+        for (const item of input.items) {
+          const updated = await tx.productVariant.updateMany({
+            where: {
+              id: item.variantId,
+              stock: { gte: item.quantity },
+            },
+            data: {
+              stock: { decrement: item.quantity },
+            },
+          });
+
+          if (updated.count === 0) {
+            const variant = variants.find((v) => v.id === item.variantId)!;
+            throw new TRPCError({
+              code: "CONFLICT",
+              message: `"${variant.product.title}" (${variant.name}) just went out of stock. Please refresh and try again.`,
+            });
+          }
+        }
+
+        return tx.order.create({
+          data: {
+            storeId: store.id,
+            customerId: customer.id,
+            orderNumber,
+            status: "PENDING",
+            subtotal,
+            shippingCost,
+            tax,
+            total,
+            shippingName: `${input.firstName} ${input.lastName}`,
+            shippingAddress1: input.shippingAddress1,
+            shippingAddress2: input.shippingAddress2,
+            shippingCity: input.shippingCity,
+            shippingState: input.shippingState,
+            shippingZip: input.shippingZip,
+            shippingCountry: input.shippingCountry,
+            items: {
+              create: orderItems,
+            },
           },
-        },
-        include: {
-          items: true,
-          customer: true,
-        },
+          include: {
+            items: true,
+            customer: true,
+          },
+        });
       });
+
+      // Fire Meta CAPI Purchase event (fire-and-forget)
+      if (input.fbEventId) {
+        prisma.storeConfig
+          .findUnique({ where: { storeId: store.id } })
+          .then((config) => {
+            const pixelId = config?.fbPixelId;
+            const accessToken =
+              config?.fbCapiAccessToken ||
+              process.env.FB_CAPI_ACCESS_TOKEN;
+            if (pixelId && accessToken) {
+              sendCAPIPurchaseEvent({
+                pixelId,
+                accessToken,
+                eventId: input.fbEventId!,
+                email: input.email,
+                phone: input.phone,
+                firstName: input.firstName,
+                lastName: input.lastName,
+                city: input.shippingCity,
+                state: input.shippingState,
+                zip: input.shippingZip,
+                country: input.shippingCountry,
+                value: Number(order.total),
+                currency: "USD",
+                contentIds: input.items.map((i) => i.variantId),
+                numItems: input.items.reduce(
+                  (n, i) => n + i.quantity,
+                  0
+                ),
+              });
+            }
+          })
+          .catch((err) => {
+            console.error("[Meta CAPI] Failed to fetch store config:", err);
+          });
+      }
 
       return order;
     }),

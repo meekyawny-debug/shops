@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Story Ad</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1920px;
+    background: #1a1a1a;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Gold gradient overlay */
+  .gold-wash {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,0.05) 50%, rgba(201,168,76,0.12) 100%);
+  }
+  /* Jewelry showcase cards */
+  .showcase {
+    position: absolute; top: 460px; left: 0; right: 0;
+    display: flex; flex-direction: column; gap: 20px;
+    padding: 0 60px;
+  }
+  .item-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 16px; padding: 32px 36px;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .item-icon {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; flex-shrink: 0;
+  }
+  .item-info { flex: 1; }
+  .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; color: white;
+    margin-bottom: 4px;
+  }
+  .item-desc {
+    font-size: 14px; color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600; color: #c9a84c;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 100px 70px 80px;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600; letter-spacing: 8px;
+    color: #c9a84c; text-align: center;
+    margin-bottom: 60px;
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; font-weight: 700; line-height: 1.1;
+    color: white; text-align: center;
+  }
+  .headline em { color: #c9a84c; font-style: italic; }
+  .sub {
+    font-size: 18px; color: rgba(255,255,255,0.4); text-align: center;
+    margin-top: 16px; font-weight: 300; letter-spacing: 1px;
+  }
+  .spacer { flex: 1; }
+  .bottom { text-align: center; }
+  .cta-btn {
+    display: inline-block;
+    background: #c9a84c; color: #1a1a1a;
+    font-size: 18px; font-weight: 700;
+    padding: 22px 60px; border-radius: 0;
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .swipe {
+    font-size: 14px; color: rgba(201,168,76,0.5);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .swipe-arrow {
+    display: block; margin: 8px auto 0;
+    font-size: 20px; color: rgba(201,168,76,0.5);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="gold-wash"></div>
+  <div class="showcase">
+    <div class="item-card">
+      <div class="item-icon">&#x1F4AB;</div>
+      <div class="item-info">
+        <div class="item-name">Chunky Hoop Earrings</div>
+        <div class="item-desc">18K Gold-Plated &bull; Waterproof</div>
+      </div>
+      <div class="item-price">$18</div>
+    </div>
+    <div class="item-card">
+      <div class="item-icon">&#x1F48E;</div>
+      <div class="item-info">
+        <div class="item-name">CZ Tennis Bracelet</div>
+        <div class="item-desc">Waterproof &bull; Tarnish-Free</div>
+      </div>
+      <div class="item-price">$24</div>
+    </div>
+    <div class="item-card">
+      <div class="item-icon">&#x2728;</div>
+      <div class="item-info">
+        <div class="item-name">Croissant Dome Ring</div>
+        <div class="item-desc">18K Gold &bull; Chunky Statement</div>
+      </div>
+      <div class="item-price">$16</div>
+    </div>
+    <div class="item-card">
+      <div class="item-icon">&#x1F451;</div>
+      <div class="item-info">
+        <div class="item-name">Layered Chain Set</div>
+        <div class="item-desc">3-Layer &bull; Adjustable Length</div>
+      </div>
+      <div class="item-price">$22</div>
+    </div>
+    <div class="item-card">
+      <div class="item-icon">&#x1F48D;</div>
+      <div class="item-info">
+        <div class="item-name">Ear Cuff Set</div>
+        <div class="item-desc">No Piercing Required &bull; Gold</div>
+      </div>
+      <div class="item-price">$12</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="logo">AURAE</div>
+    <h1 class="headline">The Pieces<br>Everyone's<br><em>Wearing</em></h1>
+    <p class="sub">Trending styles &bull; Starting at $12</p>
+    <div class="spacer"></div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Trending</div>
+      <div class="swipe">Swipe Up</div>
+      <span class="swipe-arrow">&#x2303;</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ShoppingBag, Check } from "lucide-react";
 import { Button } from "@shops/ui";
 import { useCart } from "@/lib/cart-context";
+import { useStore } from "@/lib/store-context";
+import { trackAddToCart } from "@/lib/meta-pixel";
 import type { CartItem } from "@/lib/types";
 
 export function AddToCartButton({
@@ -14,10 +16,14 @@ export function AddToCartButton({
   disabled?: boolean;
 }) {
   const { addItem } = useCart();
+  const store = useStore();
   const [added, setAdded] = useState(false);
 
   const handleClick = () => {
     addItem(item);
+    if (store.config?.fbPixelId) {
+      trackAddToCart(item.productId, item.productTitle, item.price);
+    }
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — This or That</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #1a1412;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #faf6f0;
+    display: flex;
+    flex-direction: column;
+  }
+  .brand-tag {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #d4a574;
+    z-index: 2;
+  }
+  .header {
+    text-align: center;
+    padding: 120px 80px 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-tag {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 15px;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .header-title em { color: #d4a574; font-style: italic; }
+  .split-container {
+    flex: 1;
+    display: flex;
+    position: relative;
+  }
+  .split-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+  }
+  .split-left {
+    background: rgba(212, 165, 116, 0.04);
+  }
+  .split-right {
+    background: rgba(250, 246, 240, 0.03);
+  }
+  .divider-line {
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(212, 165, 116, 0.3), transparent);
+    z-index: 1;
+  }
+  .vs-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #c49464);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    box-shadow: 0 8px 30px rgba(212, 165, 116, 0.3);
+  }
+  .vs-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1412;
+  }
+  .earring-visual {
+    width: 200px; height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+    position: relative;
+  }
+  /* Hoop earring */
+  .hoop {
+    width: 100px; height: 120px;
+    border: 4px solid #d4a574;
+    border-radius: 50%;
+    position: relative;
+  }
+  .hoop::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 12px;
+    background: #d4a574;
+    border-radius: 50%;
+  }
+  .hoop-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.1), transparent);
+  }
+  /* Huggie earring */
+  .huggie {
+    width: 70px; height: 80px;
+    border: 5px solid #d4a574;
+    border-radius: 50%;
+    position: relative;
+    border-right-color: transparent;
+    transform: rotate(-30deg);
+  }
+  .huggie::before {
+    content: '';
+    position: absolute;
+    top: -2px; right: 8px;
+    width: 10px; height: 10px;
+    background: #d4a574;
+    border-radius: 50%;
+  }
+  .huggie::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; right: 8px;
+    width: 10px; height: 10px;
+    background: #d4a574;
+    border-radius: 50%;
+  }
+  .huggie-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.1), transparent);
+  }
+  .option-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .option-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(250, 246, 240, 0.5);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 350px;
+  }
+  .footer-section {
+    text-align: center;
+    padding: 35px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: #d4a574;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">AURAE</div>
+
+  <div class="header">
+    <div class="header-tag">This or That</div>
+    <div class="header-title">Hoops or <em>Huggies?</em></div>
+  </div>
+
+  <div class="split-container">
+    <div class="divider-line"></div>
+    <div class="vs-circle"><span class="vs-text">VS</span></div>
+
+    <div class="split-side split-left">
+      <div class="earring-visual">
+        <div class="hoop-glow"></div>
+        <div class="hoop"></div>
+      </div>
+      <div class="option-title">Hoops</div>
+      <div class="option-desc">Bold, statement-making circles that frame your face with gold</div>
+    </div>
+
+    <div class="split-side split-right">
+      <div class="earring-visual">
+        <div class="huggie-glow"></div>
+        <div class="huggie"></div>
+      </div>
+      <div class="option-title">Huggies</div>
+      <div class="option-desc">Sleek, close-fitting hoops for subtle everyday luxury</div>
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <div class="footer-text">Tell us in the comments below</div>
+  </div>
+</div>
+</body>
+</html>

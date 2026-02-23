@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Room Inspo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #faf8f5;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #2d3a2a;
+    padding: 60px 70px;
+    display: flex;
+    flex-direction: column;
+  }
+  .post::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: rgba(124, 154, 110, 0.05);
+  }
+  .brand-tag {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #7c9a6e;
+    margin-bottom: 25px;
+  }
+  .heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 60px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .heading-accent { color: #7c9a6e; }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.5);
+    margin-bottom: 45px;
+  }
+  .mood-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .mood-card {
+    border-radius: 28px;
+    padding: 40px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .mood-card:nth-child(1) {
+    background: linear-gradient(150deg, #fff8e1, #ffe0b2);
+  }
+  .mood-card:nth-child(2) {
+    background: linear-gradient(150deg, #e8dcc8, #d4c4a8);
+  }
+  .mood-card:nth-child(3) {
+    background: linear-gradient(150deg, #e8f5e9, #c8e6c9);
+  }
+  .mood-card:nth-child(4) {
+    background: linear-gradient(150deg, #f3e5f5, #e1bee7);
+  }
+  .mood-icon {
+    font-size: 70px;
+    margin-bottom: 25px;
+  }
+  .mood-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #2d3a2a;
+  }
+  .mood-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.6);
+    line-height: 1.5;
+  }
+  .mood-items {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .mood-item {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(45, 58, 42, 0.7);
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 35px;
+  }
+  .footer-tag {
+    font-size: 15px;
+    font-weight: 500;
+    color: #7c9a6e;
+    letter-spacing: 2px;
+  }
+  .footer-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(124, 154, 110, 0.2);
+    margin: 0 20px;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">NESTWELL</div>
+  <div class="heading">Cozy Corner<br><span class="heading-accent">Ideas</span></div>
+  <div class="subtitle">Four elements for the perfect nook</div>
+
+  <div class="mood-grid">
+    <div class="mood-card">
+      <div class="mood-icon">&#x1F56F;&#xFE0F;</div>
+      <div class="mood-title">Lighting</div>
+      <div class="mood-desc">Soft, warm glow to set the mood</div>
+      <div class="mood-items">
+        <span class="mood-item">Fairy Lights</span>
+        <span class="mood-item">Candles</span>
+        <span class="mood-item">Lamps</span>
+      </div>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">&#x1F9F6;</div>
+      <div class="mood-title">Textiles</div>
+      <div class="mood-desc">Layers of comfort and warmth</div>
+      <div class="mood-items">
+        <span class="mood-item">Throws</span>
+        <span class="mood-item">Pillows</span>
+        <span class="mood-item">Rugs</span>
+      </div>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">&#x1FAB4;</div>
+      <div class="mood-title">Plants</div>
+      <div class="mood-desc">Living touches of nature</div>
+      <div class="mood-items">
+        <span class="mood-item">Pothos</span>
+        <span class="mood-item">Ferns</span>
+        <span class="mood-item">Succulents</span>
+      </div>
+    </div>
+    <div class="mood-card">
+      <div class="mood-icon">&#x1F33A;</div>
+      <div class="mood-title">Scents</div>
+      <div class="mood-desc">Aromatherapy for the soul</div>
+      <div class="mood-items">
+        <span class="mood-item">Diffuser</span>
+        <span class="mood-item">Incense</span>
+        <span class="mood-item">Oils</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-tag">Save for later</span>
+    <span class="footer-line"></span>
+    <span class="footer-tag">@nestwell</span>
+  </div>
+</div>
+</body>
+</html>

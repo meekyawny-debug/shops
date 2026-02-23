@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>GLOWHAVEN — LED Mask Best Seller</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(180deg, #1a0a12 0%, #2d0a1e 40%, #1a0a12 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Neon glow effects */
+  .glow1 {
+    position: absolute; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(233,30,140,0.25) 0%, transparent 60%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+  .glow2 {
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(120,80,255,0.15) 0%, transparent 60%);
+    top: 20%; right: 10%;
+  }
+  .glow3 {
+    position: absolute; width: 250px; height: 250px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,150,255,0.12) 0%, transparent 60%);
+    bottom: 15%; left: 15%;
+  }
+  /* Mask shape silhouette */
+  .mask-shape {
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -55%);
+    width: 340px; height: 420px; border-radius: 50% 50% 45% 45%;
+    border: 3px solid rgba(233,30,140,0.4);
+    box-shadow: 0 0 60px rgba(233,30,140,0.2), inset 0 0 60px rgba(233,30,140,0.1);
+  }
+  .mask-eyes {
+    position: absolute; top: 35%; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 60px;
+  }
+  .mask-eye {
+    width: 70px; height: 35px; border-radius: 50%;
+    border: 2px solid rgba(233,30,140,0.5);
+    box-shadow: 0 0 20px rgba(233,30,140,0.3);
+  }
+  .mask-mouth {
+    position: absolute; bottom: 28%; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 30px;
+    border-bottom: 2px solid rgba(233,30,140,0.4);
+    border-radius: 0 0 50% 50%;
+    box-shadow: 0 5px 15px rgba(233,30,140,0.2);
+  }
+  /* LED dots */
+  .led-grid {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%);
+    width: 280px; height: 350px;
+    display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 22px;
+  }
+  .led-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .led-dot.red { background: #ff4466; box-shadow: 0 0 8px #ff4466; }
+  .led-dot.blue { background: #4488ff; box-shadow: 0 0 8px #4488ff; }
+  .led-dot.pink { background: #e91e8c; box-shadow: 0 0 8px #e91e8c; }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .led-dot:nth-child(odd) { animation-delay: 0.5s; }
+  .led-dot:nth-child(3n) { animation-delay: 1s; }
+  /* Content */
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 85px 70px;
+  }
+  .badge {
+    align-self: flex-start;
+    background: rgba(233,30,140,0.2); border: 1px solid rgba(233,30,140,0.4);
+    color: #f8b4c8; font-size: 13px; font-weight: 600;
+    padding: 8px 20px; border-radius: 30px;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 68px; font-weight: 700; line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+  .headline span { color: #e91e8c; }
+  .sub {
+    font-size: 20px; color: rgba(255,255,255,0.6); font-weight: 300;
+    line-height: 1.6; max-width: 420px;
+  }
+  .spacer { flex: 1; }
+  /* Features */
+  .features {
+    display: flex; gap: 30px; margin-bottom: 50px;
+  }
+  .feature {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 400;
+  }
+  .feature-icon {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .feature-icon.red { background: rgba(255,68,102,0.2); border: 1px solid rgba(255,68,102,0.4); }
+  .feature-icon.blue { background: rgba(68,136,255,0.2); border: 1px solid rgba(68,136,255,0.4); }
+  .feature-icon.green { background: rgba(68,255,136,0.2); border: 1px solid rgba(68,255,136,0.4); }
+  .bottom {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cta-btn {
+    background: linear-gradient(135deg, #e91e8c, #c2185b);
+    color: white; font-size: 17px; font-weight: 600;
+    padding: 20px 48px; border-radius: 50px;
+    letter-spacing: 2px; text-transform: uppercase;
+    box-shadow: 0 8px 32px rgba(233,30,140,0.4);
+  }
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: rgba(255,255,255,0.3);
+    letter-spacing: 4px;
+  }
+  .sold {
+    font-size: 14px; color: #e91e8c; font-weight: 500;
+    letter-spacing: 1px; margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+  <div class="glow3"></div>
+  <div class="mask-shape">
+    <div class="mask-eyes">
+      <div class="mask-eye"></div>
+      <div class="mask-eye"></div>
+    </div>
+    <div class="mask-mouth"></div>
+  </div>
+  <div class="led-grid">
+    <div class="led-dot red"></div><div class="led-dot blue"></div><div class="led-dot pink"></div>
+    <div class="led-dot blue"></div><div class="led-dot red"></div><div class="led-dot pink"></div>
+    <div class="led-dot pink"></div><div class="led-dot red"></div><div class="led-dot blue"></div>
+    <div class="led-dot red"></div><div class="led-dot pink"></div><div class="led-dot blue"></div>
+    <div class="led-dot blue"></div><div class="led-dot pink"></div><div class="led-dot red"></div>
+    <div class="led-dot pink"></div><div class="led-dot blue"></div><div class="led-dot red"></div>
+    <div class="led-dot red"></div><div class="led-dot red"></div><div class="led-dot blue"></div>
+    <div class="led-dot pink"></div><div class="led-dot blue"></div><div class="led-dot pink"></div>
+    <div class="led-dot blue"></div><div class="led-dot red"></div><div class="led-dot pink"></div>
+    <div class="led-dot red"></div><div class="led-dot pink"></div><div class="led-dot blue"></div>
+  </div>
+  <div class="content">
+    <div class="badge">#1 Best Seller</div>
+    <h1 class="headline"><span>10 Minutes</span><br>to Pro-Level Skin</h1>
+    <p class="sub">Professional LED light therapy at home. One mask, every skin concern.</p>
+    <div class="spacer"></div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon red">R</div>
+        <div>Red Light<br><small style="opacity:0.5">Anti-Aging</small></div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon blue">B</div>
+        <div>Blue Light<br><small style="opacity:0.5">Acne & Breakouts</small></div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon green">G</div>
+        <div>Green Light<br><small style="opacity:0.5">Pigmentation</small></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Now</div>
+      <div style="text-align:right">
+        <div class="brand">GLOWHAVEN</div>
+        <div class="sold">5,000+ happy customers</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

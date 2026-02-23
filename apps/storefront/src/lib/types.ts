@@ -1,73 +1,13 @@
-import type { Decimal } from "@prisma/client/runtime/library";
+import type { inferRouterOutputs } from "@trpc/server";
+import type { AppRouter } from "@shops/api";
 
-export interface StoreConfig {
-  id: string;
-  storeId: string;
-  logoUrl: string | null;
-  faviconUrl: string | null;
-  primaryColor: string;
-  secondaryColor: string;
-  accentColor: string;
-  fontHeading: string;
-  fontBody: string;
-  metaTitle: string | null;
-  metaDescription: string | null;
-  socialInstagram: string | null;
-  socialTiktok: string | null;
-  socialFacebook: string | null;
-  gaTrackingId: string | null;
-  fbPixelId: string | null;
-  customCss: string | null;
-}
+type RouterOutput = inferRouterOutputs<AppRouter>;
 
-export interface StoreWithConfig {
-  id: string;
-  name: string;
-  slug: string;
-  domain: string | null;
-  isActive: boolean;
-  config: StoreConfig | null;
-}
-
-export interface ProductImage {
-  id: string;
-  url: string;
-  alt: string | null;
-  position: number;
-}
-
-export interface ProductVariant {
-  id: string;
-  sku: string;
-  name: string;
-  options: unknown;
-  costPrice: Decimal;
-  retailPrice: Decimal;
-  compareAtPrice: Decimal | null;
-  stock: number;
-  isActive: boolean;
-}
-
-export interface Product {
-  id: string;
-  title: string;
-  description: string;
-  category: string | null;
-  tags: string[];
-  variants: ProductVariant[];
-  images: ProductImage[];
-}
-
-export interface StoreProductWithDetails {
-  id: string;
-  storeId: string;
-  productId: string;
-  priceOverride: Decimal | null;
-  isActive: boolean;
-  isFeatured: boolean;
-  position: number;
-  product: Product;
-}
+// Inferred types from the tRPC router — always in sync with the API
+export type StoreWithConfig = RouterOutput["storefront"]["getStore"];
+export type StoreProductWithDetails = RouterOutput["storefront"]["getProduct"];
+export type FeaturedStoreProduct = RouterOutput["storefront"]["getFeaturedProducts"][number];
+export type ProductsResponse = RouterOutput["storefront"]["getProducts"];
 
 export interface CartItem {
   variantId: string;

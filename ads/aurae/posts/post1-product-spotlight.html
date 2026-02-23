@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Product Spotlight</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #1a1412;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #faf6f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+  }
+  /* Luxury gold gradient overlay */
+  .post::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 400px;
+    background: linear-gradient(180deg, rgba(212, 165, 116, 0.08) 0%, transparent 100%);
+  }
+  .post::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 300px;
+    background: linear-gradient(0deg, rgba(212, 165, 116, 0.06) 0%, transparent 100%);
+  }
+  .brand-tag {
+    position: absolute;
+    top: 60px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #d4a574;
+  }
+  .spotlight-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .product-visual {
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #2a2018, #1a1412);
+    border: 2px solid rgba(212, 165, 116, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 80px rgba(212, 165, 116, 0.1), inset 0 0 60px rgba(212, 165, 116, 0.05);
+  }
+  .product-visual::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 116, 0.1);
+  }
+  .product-visual::after {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 116, 0.05);
+  }
+  .necklace-art {
+    position: relative;
+    width: 160px; height: 180px;
+  }
+  .chain {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 100px;
+    border: 2px solid #d4a574;
+    border-top: none;
+    border-radius: 0 0 60px 60px;
+  }
+  .pendant {
+    position: absolute;
+    bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #c49464, #e8c49a);
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.4);
+  }
+  .pendant::after {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 62px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    color: #faf6f0;
+  }
+  .product-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    font-style: italic;
+    color: #d4a574;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .product-feature {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(250, 246, 240, 0.6);
+    text-align: center;
+    margin-bottom: 45px;
+    position: relative;
+    z-index: 1;
+  }
+  .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: #d4a574;
+    margin-bottom: 45px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta {
+    border: 2px solid #d4a574;
+    color: #d4a574;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 20px 60px;
+    position: relative;
+    z-index: 1;
+  }
+  .gold-line {
+    position: absolute;
+    bottom: 55px;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+  }
+  /* Decorative diamond shapes */
+  .diamond {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #d4a574;
+    transform: rotate(45deg);
+    opacity: 0.2;
+  }
+  .diamond-1 { top: 160px; left: 120px; }
+  .diamond-2 { top: 300px; right: 100px; opacity: 0.15; }
+  .diamond-3 { bottom: 200px; left: 160px; opacity: 0.1; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">AURAE</div>
+  <div class="diamond diamond-1"></div>
+  <div class="diamond diamond-2"></div>
+  <div class="diamond diamond-3"></div>
+
+  <div class="spotlight-label">Product Spotlight</div>
+
+  <div class="product-visual">
+    <div class="necklace-art">
+      <div class="chain"></div>
+      <div class="pendant"></div>
+    </div>
+  </div>
+
+  <div class="product-name">Celestial Projection<br>Necklace</div>
+  <div class="product-tagline">Projects 100 Languages of Love</div>
+  <div class="product-feature">A hidden message only visible through the pendant lens</div>
+
+  <div class="price">$19.99</div>
+  <div class="cta">Shop Now</div>
+
+  <div class="gold-line"></div>
+</div>
+</body>
+</html>

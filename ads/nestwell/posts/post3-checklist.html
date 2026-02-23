@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Cozy Season Checklist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: linear-gradient(170deg, #faf8f5 0%, #f0ece5 50%, #e8dcc8 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #2d3a2a;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  .post::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    background: rgba(124, 154, 110, 0.05);
+  }
+  .brand-tag {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #7c9a6e;
+    margin-bottom: 25px;
+  }
+  .tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #7c9a6e;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .heading-accent { color: #7c9a6e; }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.5);
+    margin-bottom: 45px;
+  }
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .check-item {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 35px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 6px 24px rgba(45, 58, 42, 0.05);
+    border: 1px solid rgba(124, 154, 110, 0.08);
+  }
+  .checkbox {
+    width: 42px; height: 42px;
+    min-width: 42px;
+    border-radius: 12px;
+    background: #7c9a6e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .check-item.unchecked .checkbox {
+    background: transparent;
+    border: 2px solid rgba(124, 154, 110, 0.3);
+  }
+  .check-content {
+    flex: 1;
+  }
+  .check-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    margin-bottom: 3px;
+  }
+  .check-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(45, 58, 42, 0.5);
+  }
+  .check-item.unchecked .check-name {
+    color: rgba(45, 58, 42, 0.5);
+  }
+  .check-price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #7c9a6e;
+  }
+  .check-emoji {
+    font-size: 32px;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+  }
+  .footer-cta {
+    background: #7c9a6e;
+    color: white;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(124, 154, 110, 0.2);
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">NESTWELL</div>
+  <div class="tag-badge">&#x1F342; SEASONAL</div>
+  <div class="heading">Cozy Season<br><span class="heading-accent">Essentials</span></div>
+  <div class="subtitle">Your checklist for the perfect cozy home</div>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="checkbox">&#x2713;</div>
+      <div class="check-emoji">&#x2601;&#xFE0F;</div>
+      <div class="check-content">
+        <div class="check-name">Cloud Diffuser</div>
+        <div class="check-desc">Aromatherapy meets ambient light</div>
+      </div>
+      <div class="check-price">$29.99</div>
+    </div>
+    <div class="check-item">
+      <div class="checkbox">&#x2713;</div>
+      <div class="check-emoji">&#x1F4A1;</div>
+      <div class="check-content">
+        <div class="check-name">Ambient Lamp</div>
+        <div class="check-desc">Warm glow for any room</div>
+      </div>
+      <div class="check-price">$24.99</div>
+    </div>
+    <div class="check-item">
+      <div class="checkbox">&#x2713;</div>
+      <div class="check-emoji">&#x1F9E3;</div>
+      <div class="check-content">
+        <div class="check-name">Throw Blanket</div>
+        <div class="check-desc">Ultra-soft knit for the sofa</div>
+      </div>
+      <div class="check-price">$34.99</div>
+    </div>
+    <div class="check-item">
+      <div class="checkbox">&#x2713;</div>
+      <div class="check-emoji">&#x1F56F;&#xFE0F;</div>
+      <div class="check-content">
+        <div class="check-name">Soy Candle Set</div>
+        <div class="check-desc">Hand-poured, natural scents</div>
+      </div>
+      <div class="check-price">$18.99</div>
+    </div>
+    <div class="check-item unchecked">
+      <div class="checkbox"></div>
+      <div class="check-emoji">&#x1FAB4;</div>
+      <div class="check-content">
+        <div class="check-name">Mini Planter Set</div>
+        <div class="check-desc">Bring life to your space</div>
+      </div>
+      <div class="check-price">$15.99</div>
+    </div>
+    <div class="check-item unchecked">
+      <div class="checkbox"></div>
+      <div class="check-emoji">&#x1F3B6;</div>
+      <div class="check-content">
+        <div class="check-name">Sound Machine</div>
+        <div class="check-desc">Rain sounds for relaxation</div>
+      </div>
+      <div class="check-price">$22.99</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-cta">Complete Your List</div>
+  </div>
+</div>
+</body>
+</html>

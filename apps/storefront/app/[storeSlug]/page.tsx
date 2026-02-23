@@ -6,17 +6,19 @@ import { ProductCard } from "@/components/product-card";
 import { HeroSection } from "@/components/hero-section";
 import { CategoryCards } from "@/components/category-cards";
 import { NewsletterSignup } from "@/components/newsletter-signup";
-import { Truck, Shield, RotateCcw } from "lucide-react";
+import { Truck, Shield, RotateCcw, AlertCircle } from "lucide-react";
 
 export default function StoreHomePage() {
   const params = useParams<{ storeSlug: string }>();
-  const storeSlug = params.storeSlug;
+  const storeSlug = params?.storeSlug;
 
-  const { data: featured, isLoading } =
-    trpc.storefront.getFeaturedProducts.useQuery({
-      storeSlug,
-      limit: 8,
-    });
+  const { data: featured, isLoading, error } =
+    trpc.storefront.getFeaturedProducts.useQuery(
+      { storeSlug: storeSlug!, limit: 8 },
+      { enabled: !!storeSlug }
+    );
+
+  if (!storeSlug) return null;
 
   return (
     <div>
@@ -28,7 +30,12 @@ export default function StoreHomePage() {
           <h2 className="font-heading text-2xl md:text-3xl font-bold text-center mb-8">
             Featured Products
           </h2>
-          {isLoading ? (
+          {error ? (
+            <div className="flex flex-col items-center gap-2 py-8 text-muted-foreground">
+              <AlertCircle className="h-8 w-8" />
+              <p>Unable to load products. Please try again later.</p>
+            </div>
+          ) : isLoading ? (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {Array.from({ length: 4 }).map((_, i) => (
                 <div key={i} className="space-y-3 animate-pulse">
@@ -43,7 +50,7 @@ export default function StoreHomePage() {
               {featured.map((sp) => (
                 <ProductCard
                   key={sp.id}
-                  storeProduct={sp as any}
+                  storeProduct={sp}
                   storeSlug={storeSlug}
                 />
               ))}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — New Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #1a1412;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #faf6f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+  }
+  /* Subtle radial gradient accents */
+  .post::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 60%);
+  }
+  .post::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.05) 0%, transparent 60%);
+  }
+  .brand-tag {
+    position: absolute;
+    top: 60px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #d4a574;
+  }
+  .new-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .new-label::before, .new-label::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: #d4a574;
+    vertical-align: middle;
+    margin: 0 15px;
+  }
+  /* Star/celestial art */
+  .celestial-art {
+    position: relative;
+    width: 340px; height: 340px;
+    margin-bottom: 55px;
+    z-index: 1;
+  }
+  .star-main {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0; height: 0;
+  }
+  .star-main::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -4px;
+    width: 8px; height: 120px;
+    background: linear-gradient(180deg, #d4a574, #e8c49a, #d4a574);
+    border-radius: 4px;
+  }
+  .star-main::after {
+    content: '';
+    position: absolute;
+    top: -4px; left: -60px;
+    width: 120px; height: 8px;
+    background: linear-gradient(90deg, #d4a574, #e8c49a, #d4a574);
+    border-radius: 4px;
+  }
+  .star-diag-1 {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 80px; height: 4px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    border-radius: 2px;
+  }
+  .star-diag-2 {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 80px; height: 4px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    border-radius: 2px;
+  }
+  .star-ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 116, 0.15);
+  }
+  .star-ring-2 {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 116, 0.08);
+  }
+  .star-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #e8c49a);
+    box-shadow: 0 0 40px rgba(212, 165, 116, 0.5), 0 0 80px rgba(212, 165, 116, 0.2);
+  }
+  .collection-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 70px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+  }
+  .collection-name em { color: #d4a574; font-style: italic; }
+  .collection-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250, 246, 240, 0.5);
+    text-align: center;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta {
+    border: 2px solid #d4a574;
+    color: #d4a574;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 22px 65px;
+    position: relative;
+    z-index: 1;
+  }
+  /* Small floating diamonds */
+  .float-diamond {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: #d4a574;
+    transform: rotate(45deg);
+  }
+  .fd-1 { top: 200px; left: 150px; opacity: 0.3; }
+  .fd-2 { top: 350px; right: 120px; opacity: 0.2; }
+  .fd-3 { bottom: 300px; left: 200px; opacity: 0.15; }
+  .fd-4 { bottom: 200px; right: 180px; opacity: 0.25; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">AURAE</div>
+  <div class="float-diamond fd-1"></div>
+  <div class="float-diamond fd-2"></div>
+  <div class="float-diamond fd-3"></div>
+  <div class="float-diamond fd-4"></div>
+
+  <div class="new-label">New Collection Drop</div>
+
+  <div class="celestial-art">
+    <div class="star-ring-2"></div>
+    <div class="star-ring"></div>
+    <div class="star-main"></div>
+    <div class="star-diag-1"></div>
+    <div class="star-diag-2"></div>
+    <div class="star-center"></div>
+  </div>
+
+  <div class="collection-name">The <em>Ethereal</em><br>Collection</div>
+  <div class="collection-sub">Where light meets luxury</div>
+
+  <div class="cta">Shop Now</div>
+</div>
+</body>
+</html>

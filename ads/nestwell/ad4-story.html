@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — Story Ad</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1920px;
+    background: linear-gradient(180deg, #f5f0ea 0%, #ede5d8 30%, #d8ccb8 60%, #8b7355 100%);
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Organic blobs */
+  .blob1 {
+    position: absolute; width: 500px; height: 500px;
+    border-radius: 60% 40% 55% 45%;
+    background: radial-gradient(circle, rgba(45,80,22,0.08) 0%, transparent 60%);
+    top: 300px; right: -100px;
+    transform: rotate(-20deg);
+  }
+  .blob2 {
+    position: absolute; width: 400px; height: 400px;
+    border-radius: 45% 55% 40% 60%;
+    background: radial-gradient(circle, rgba(255,180,80,0.1) 0%, transparent 60%);
+    top: 800px; left: -80px;
+    transform: rotate(15deg);
+  }
+  /* Product showcase */
+  .product-showcase {
+    position: absolute; top: 520px; left: 60px; right: 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .showcase-item {
+    background: rgba(255,255,255,0.6);
+    border-radius: 20px; padding: 30px 24px;
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+    border: 1px solid rgba(139,115,85,0.1);
+    backdrop-filter: blur(10px);
+  }
+  .showcase-item.tall {
+    grid-row: span 2;
+    justify-content: center;
+  }
+  .si-icon {
+    font-size: 44px; margin-bottom: 14px;
+  }
+  .si-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px; color: #2a2218;
+    margin-bottom: 6px;
+  }
+  .si-desc {
+    font-size: 12px; color: #8b7355; font-weight: 300;
+  }
+  .si-price {
+    font-size: 16px; color: #2d5016; font-weight: 600;
+    margin-top: 10px;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 100px 70px 80px;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px; letter-spacing: 6px;
+    color: #8b7355; text-align: center;
+    margin-bottom: 50px;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 68px; line-height: 1.1;
+    color: #2a2218; text-align: center;
+  }
+  .headline em { color: #2d5016; font-style: normal; }
+  .sub {
+    font-size: 18px; color: #8b7355; text-align: center;
+    margin-top: 16px; font-weight: 300;
+  }
+  .spacer { flex: 1; }
+  .bottom { text-align: center; }
+  .cta-btn {
+    display: inline-block;
+    background: #2d5016; color: #f5f0ea;
+    font-size: 18px; font-weight: 600;
+    padding: 22px 60px; border-radius: 8px;
+    letter-spacing: 2px; text-transform: uppercase;
+    box-shadow: 0 12px 40px rgba(45,80,22,0.3);
+    margin-bottom: 24px;
+  }
+  .swipe {
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+  .swipe-arrow {
+    display: block; margin: 8px auto 0;
+    font-size: 20px; color: rgba(255,255,255,0.7);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="product-showcase">
+    <div class="showcase-item tall">
+      <div class="si-icon">&#x2601;&#xFE0F;</div>
+      <div class="si-name">Rain Cloud Diffuser</div>
+      <div class="si-desc">Aromatherapy meets art</div>
+      <div class="si-price">$32.99</div>
+    </div>
+    <div class="showcase-item">
+      <div class="si-icon">&#x1F305;</div>
+      <div class="si-name">Sunset Lamp</div>
+      <div class="si-desc">Golden hour, anytime</div>
+      <div class="si-price">$24.99</div>
+    </div>
+    <div class="showcase-item">
+      <div class="si-icon">&#x1F344;</div>
+      <div class="si-name">Mushroom Lamp</div>
+      <div class="si-desc">Warm ambient glow</div>
+      <div class="si-price">$28.99</div>
+    </div>
+    <div class="showcase-item">
+      <div class="si-icon">&#x1F9F6;</div>
+      <div class="si-name">Chunky Throw</div>
+      <div class="si-desc">Hand-knit comfort</div>
+      <div class="si-price">$39.99</div>
+    </div>
+    <div class="showcase-item">
+      <div class="si-icon">&#x1F56F;&#xFE0F;</div>
+      <div class="si-name">Candle Set</div>
+      <div class="si-desc">Soy wax, 3 scents</div>
+      <div class="si-price">$22.99</div>
+    </div>
+    <div class="showcase-item">
+      <div class="si-icon">&#x1F30C;</div>
+      <div class="si-name">Star Projector</div>
+      <div class="si-desc">Galaxy ceiling vibes</div>
+      <div class="si-price">$26.99</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="logo">NESTWELL</div>
+    <h1 class="headline">That <em>Cozy</em><br>Girl<br>Aesthetic</h1>
+    <p class="sub">Curated decor starting at $18</p>
+    <div class="spacer"></div>
+    <div class="bottom">
+      <div class="cta-btn">Shop Now</div>
+      <div class="swipe">Swipe Up</div>
+      <span class="swipe-arrow">&#x2303;</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

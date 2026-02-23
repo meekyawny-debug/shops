@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>AURAE — Flash Sale</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .post {
+    width: 1080px; height: 1350px;
+    background: #1a1412;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #faf6f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+  }
+  /* Luxurious gold ambient glow */
+  .post::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px; height: 900px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 60%);
+  }
+  .brand-tag {
+    position: absolute;
+    top: 60px;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    color: #d4a574;
+  }
+  /* Ornate border frame */
+  .frame {
+    position: absolute;
+    top: 35px; left: 35px; right: 35px; bottom: 35px;
+    border: 1px solid rgba(212, 165, 116, 0.2);
+  }
+  .frame-inner {
+    position: absolute;
+    top: 50px; left: 50px; right: 50px; bottom: 50px;
+    border: 1px solid rgba(212, 165, 116, 0.08);
+  }
+  .flash-label {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #d4a574;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+  }
+  .hours-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 90px;
+    font-weight: 700;
+    color: #d4a574;
+    line-height: 1;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 60px rgba(212, 165, 116, 0.3);
+  }
+  .flash-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250, 246, 240, 0.5);
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 1;
+  }
+  .gold-divider {
+    width: 120px; height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a574, transparent);
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 1;
+  }
+  .offer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .offer-text em { color: #d4a574; font-style: italic; }
+  .offer-desc {
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(250, 246, 240, 0.5);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+  }
+  .code-section {
+    text-align: center;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 1;
+  }
+  .code-label {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(250, 246, 240, 0.4);
+    margin-bottom: 14px;
+  }
+  .code {
+    display: inline-block;
+    border: 2px solid #d4a574;
+    color: #d4a574;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    padding: 16px 50px;
+  }
+  .cta {
+    background: linear-gradient(135deg, #d4a574, #c49464);
+    color: #1a1412;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    padding: 22px 65px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 40px rgba(212, 165, 116, 0.2);
+  }
+  /* Corner diamond decorations */
+  .corner-diamond {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: #d4a574;
+    transform: rotate(45deg);
+    z-index: 2;
+  }
+  .cd-tl { top: 29px; left: 29px; }
+  .cd-tr { top: 29px; right: 29px; }
+  .cd-bl { bottom: 29px; left: 29px; }
+  .cd-br { bottom: 29px; right: 29px; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="brand-tag">AURAE</div>
+  <div class="frame"></div>
+  <div class="frame-inner"></div>
+  <div class="corner-diamond cd-tl"></div>
+  <div class="corner-diamond cd-tr"></div>
+  <div class="corner-diamond cd-bl"></div>
+  <div class="corner-diamond cd-br"></div>
+
+  <div class="flash-label">Flash Sale</div>
+  <div class="hours-text">24 HOURS</div>
+  <div class="flash-sub">Only</div>
+
+  <div class="gold-divider"></div>
+
+  <div class="offer-text">Buy 2, Get 1<br><em>Free</em></div>
+  <div class="offer-desc">Mix and match across all collections</div>
+
+  <div class="code-section">
+    <div class="code-label">Use code at checkout</div>
+    <div class="code">AURAE3</div>
+  </div>
+
+  <div class="cta">Shop the Sale</div>
+</div>
+</body>
+</html>

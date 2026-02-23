@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NESTWELL — $150 Room Glow-Up</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .ad {
+    width: 1080px; height: 1350px;
+    background: #f5f0ea;
+    position: relative; overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  /* Split: before/after */
+  .split-line {
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 4px; background: #2d5016; z-index: 3;
+  }
+  .split-label {
+    position: absolute; top: 50%; z-index: 4;
+    background: #2d5016; color: #f5f0ea;
+    font-size: 12px; font-weight: 700;
+    padding: 8px 16px; border-radius: 20px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .split-label.before { right: calc(50% + 20px); transform: translateY(-50%); }
+  .split-label.after { left: calc(50% + 20px); transform: translateY(-50%); }
+  /* Before side (left) */
+  .before-side {
+    position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+    background: linear-gradient(180deg, #d8d0c4, #c8bfb0);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .boring-room {
+    width: 80%; height: 60%;
+    border: 2px dashed rgba(139,115,85,0.2);
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #a09080;
+  }
+  .boring-icon { font-size: 60px; margin-bottom: 16px; opacity: 0.4; }
+  .boring-text { font-size: 16px; font-weight: 400; opacity: 0.5; }
+  /* After side (right) */
+  .after-side {
+    position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+    background: linear-gradient(180deg, #f5f0ea, #ede5d8);
+    overflow: hidden;
+  }
+  /* Warm glow on after side */
+  .warm-glow {
+    position: absolute; top: 30%; left: 20%;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,180,80,0.15) 0%, transparent 60%);
+  }
+  /* Product showcase on after side */
+  .products-after {
+    position: absolute; top: 230px; left: 40px; right: 40px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .after-item {
+    background: rgba(255,255,255,0.7);
+    border-radius: 12px; padding: 18px 22px;
+    display: flex; align-items: center; gap: 16px;
+    border: 1px solid rgba(139,115,85,0.1);
+  }
+  .after-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+  .ai-warm { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+  .ai-green { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); }
+  .ai-brown { background: linear-gradient(135deg, #efebe9, #d7ccc8); }
+  .ai-cream { background: linear-gradient(135deg, #fffde7, #fff9c4); }
+  .ai-pink { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+  .after-item-name {
+    font-size: 13px; font-weight: 600; color: #2a2218;
+  }
+  .after-item-price {
+    font-size: 12px; color: #8b7355; margin-top: 2px;
+  }
+  /* Content overlay */
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    padding: 75px 70px;
+  }
+  .top-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; letter-spacing: 5px;
+    color: #8b7355;
+  }
+  .price-badge {
+    background: #2d5016; color: #f5f0ea;
+    font-size: 14px; font-weight: 700;
+    padding: 10px 22px; border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .price-badge span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+  }
+  .bottom-content {
+    margin-top: auto;
+    text-align: center;
+  }
+  .headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px; line-height: 1.15;
+    color: #2a2218;
+    margin-bottom: 18px;
+  }
+  .headline em { color: #2d5016; font-style: normal; }
+  .sub {
+    font-size: 17px; color: #8b7355; font-weight: 300;
+    margin-bottom: 36px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #2d5016; color: #f5f0ea;
+    font-size: 16px; font-weight: 600;
+    padding: 20px 48px; border-radius: 8px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="before-side">
+    <div class="boring-room">
+      <div class="boring-icon">&#x1F6CB;&#xFE0F;</div>
+      <div class="boring-text">Before</div>
+    </div>
+  </div>
+  <div class="after-side">
+    <div class="warm-glow"></div>
+    <div class="products-after">
+      <div class="after-item">
+        <div class="after-icon ai-warm">&#x1F305;</div>
+        <div><div class="after-item-name">Sunset Lamp Projector</div><div class="after-item-price">$24.99</div></div>
+      </div>
+      <div class="after-item">
+        <div class="after-icon ai-green">&#x1F344;</div>
+        <div><div class="after-item-name">Mushroom Table Lamp</div><div class="after-item-price">$28.99</div></div>
+      </div>
+      <div class="after-item">
+        <div class="after-icon ai-brown">&#x1F9F6;</div>
+        <div><div class="after-item-name">Chunky Knit Throw</div><div class="after-item-price">$39.99</div></div>
+      </div>
+      <div class="after-item">
+        <div class="after-icon ai-cream">&#x1F56F;&#xFE0F;</div>
+        <div><div class="after-item-name">Soy Candle Set (3)</div><div class="after-item-price">$22.99</div></div>
+      </div>
+      <div class="after-item">
+        <div class="after-icon ai-pink">&#x1F33E;</div>
+        <div><div class="after-item-name">Pampas Grass Bouquet</div><div class="after-item-price">$18.99</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="split-line"></div>
+  <div class="split-label before">Before</div>
+  <div class="split-label after">After</div>
+  <div class="content">
+    <div class="top-row">
+      <div class="logo">NESTWELL</div>
+      <div class="price-badge">Under <span>$150</span></div>
+    </div>
+    <div class="bottom-content">
+      <h1 class="headline">Your Room,<br>But Make It <em>Aesthetic</em></h1>
+      <p class="sub">Everything you need for a cozy glow-up</p>
+      <div class="cta-btn">Shop The Glow-Up</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

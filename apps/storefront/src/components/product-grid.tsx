@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Search } from "lucide-react";
+import { Search, AlertCircle } from "lucide-react";
 import { Input, Select, SelectTrigger, SelectValue, SelectContent, SelectItem, Button } from "@shops/ui";
 import { ProductCard } from "./product-card";
 import { trpc } from "@/lib/trpc";
@@ -16,7 +16,7 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
     storeSlug,
   });
 
-  const { data, isLoading } = trpc.storefront.getProducts.useQuery({
+  const { data, isLoading, error } = trpc.storefront.getProducts.useQuery({
     storeSlug,
     search: search || undefined,
     category: category !== "all" ? category : undefined,
@@ -79,7 +79,12 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
       </div>
 
       {/* Grid */}
-      {isLoading ? (
+      {error ? (
+        <div className="flex flex-col items-center gap-2 py-12 text-muted-foreground">
+          <AlertCircle className="h-8 w-8" />
+          <p>Unable to load products. Please try again later.</p>
+        </div>
+      ) : isLoading ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="space-y-3 animate-pulse">
@@ -98,7 +103,7 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
           {data?.products.map((sp) => (
             <ProductCard
               key={sp.id}
-              storeProduct={sp as any}
+              storeProduct={sp}
               storeSlug={storeSlug}
             />
           ))}

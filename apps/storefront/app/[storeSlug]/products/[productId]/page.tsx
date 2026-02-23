@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, AlertCircle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { ProductImages } from "@/components/product-images";
 import { VariantSelector } from "@/components/variant-selector";
@@ -11,27 +11,45 @@ import { QuantitySelector } from "@/components/quantity-selector";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { PriceDisplay } from "@/components/price-display";
 import { ProductCard } from "@/components/product-card";
+import { useStore } from "@/lib/store-context";
+import { trackViewContent } from "@/lib/meta-pixel";
 
 export default function ProductDetailPage() {
   const params = useParams<{ storeSlug: string; productId: string }>();
-  const { storeSlug, productId } = params;
+  const storeSlug = params?.storeSlug;
+  const productId = params?.productId;
 
-  const { data: storeProduct, isLoading } =
-    trpc.storefront.getProduct.useQuery({
-      storeSlug,
-      productId,
-    });
+  const { data: storeProduct, isLoading, error } =
+    trpc.storefront.getProduct.useQuery(
+      { storeSlug: storeSlug!, productId: productId! },
+      { enabled: !!storeSlug && !!productId }
+    );
 
-  const { data: related } = trpc.storefront.getRelatedProducts.useQuery({
-    storeSlug,
-    productId,
-    limit: 4,
-  });
+  const { data: related } = trpc.storefront.getRelatedProducts.useQuery(
+    { storeSlug: storeSlug!, productId: productId!, limit: 4 },
+    { enabled: !!storeSlug && !!productId }
+  );
+
+  const store = useStore();
 
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(
     null
   );
   const [quantity, setQuantity] = useState(1);
+
+  // Fire Meta Pixel ViewContent event (must be before conditional returns per Rules of Hooks)
+  useEffect(() => {
+    if (!store.config?.fbPixelId || !storeProduct) return;
+    const product = storeProduct.product;
+    const selectedVar =
+      product.variants.find((v) => v.id === selectedVariantId) ||
+      product.variants[0];
+    if (!selectedVar) return;
+    const p = Number(storeProduct.priceOverride ?? selectedVar.retailPrice);
+    trackViewContent(product.id, product.title, product.category ?? null, p);
+  }, [storeProduct?.product.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!storeSlug || !productId) return null;
 
   if (isLoading) {
     return (
@@ -45,6 +63,24 @@ export default function ProductDetailPage() {
             <div className="h-12 bg-muted rounded w-1/2" />
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <AlertCircle className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+        <p className="text-muted-foreground">
+          Unable to load this product. It may have been removed or is temporarily unavailable.
+        </p>
+        <Link
+          href={`/${storeSlug}/products`}
+          className="inline-flex items-center mt-4 text-sm text-primary hover:underline"
+        >
+          <ChevronLeft className="h-4 w-4 mr-1" />
+          Back to Products
+        </Link>
       </div>
     );
   }
@@ -90,7 +126,7 @@ export default function ProductDetailPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Images */}
-        <ProductImages images={product.images as any} />
+        <ProductImages images={product.images} />
 
         {/* Details */}
         <div className="space-y-6">
@@ -162,7 +198,7 @@ export default function ProductDetailPage() {
             {related.map((sp) => (
               <ProductCard
                 key={sp.id}
-                storeProduct={sp as any}
+                storeProduct={sp}
                 storeSlug={storeSlug}
               />
             ))}
