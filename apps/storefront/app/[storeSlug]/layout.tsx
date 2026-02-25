@@ -11,6 +11,7 @@ import { AnnouncementBar } from "@/components/announcement-bar";
 import { MetaPixel } from "@/components/meta-pixel";
 import { AuthSessionProvider } from "@/components/session-provider";
 import { AuthModal } from "@/components/auth-modal";
+import { RecentPurchaseToastWrapper } from "@/components/recent-purchase-toast-wrapper";
 
 export async function generateMetadata({
   params,
@@ -78,6 +79,7 @@ export default async function StoreLayout({
             <main className="min-h-screen">{children}</main>
             <StoreFooter />
             <AuthModal />
+            <RecentPurchaseToastWrapper />
           </CartProvider>
         </StoreProvider>
       </AuthSessionProvider>

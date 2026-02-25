@@ -9,7 +9,6 @@ import { CategoryCards } from "@/components/category-cards";
 import { BrandStory } from "@/components/brand-story";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { SocialProof } from "@/components/social-proof";
-import { RecentPurchaseToast } from "@/components/recent-purchase-toast";
 import { Truck, Shield, RotateCcw, Star, AlertCircle } from "lucide-react";
 
 export default function StoreHomePage() {
@@ -158,12 +157,6 @@ export default function StoreHomePage() {
       <BrandStory />
 
       <NewsletterSignup />
-
-      {featured && featured.length > 0 && (
-        <RecentPurchaseToast
-          productTitles={featured.map((sp) => sp.product.title)}
-        />
-      )}
     </div>
   );
 }
