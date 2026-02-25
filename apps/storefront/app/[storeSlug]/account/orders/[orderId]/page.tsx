@@ -21,7 +21,7 @@ export default function OrderDetailPage() {
     { enabled: !!customerId }
   );
 
-  const order = ordersData?.orders.find((o: { id: string }) => o.id === orderId);
+  const order = ordersData?.orders.find((o) => o.id === orderId);
 
   if (status === "loading") {
     return (
