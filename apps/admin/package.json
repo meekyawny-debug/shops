@@ -21,6 +21,7 @@
     "superjson": "^2",
     "zod": "^3",
     "lucide-react": "^0.475",
+    "recharts": "^2",
     "@shops/api": "workspace:*",
     "@shops/db": "workspace:*",
     "@shops/types": "workspace:*",

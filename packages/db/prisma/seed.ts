@@ -1037,7 +1037,7 @@ const products: ProductData[] = [
   },
 
   // ═══════════════════════════════════════════════════════════
-  // NESTWELL — Home Decor / Cozy Living (19 products)
+  // NESTWELL — Home Decor / Cozy Living (24 products)
   // ═══════════════════════════════════════════════════════════
   {
     title: "Rain Cloud Aroma Diffuser",
@@ -1431,6 +1431,114 @@ const products: ProductData[] = [
     isFeatured: false,
     position: 18,
   },
+  {
+    title: "Vintage Candle Warmer Lamp",
+    description:
+      "The viral 'vanilla girl' candle warmer lamp that melts your favorite jar candles without a flame. Dimmable halogen bulb casts a warm golden glow while releasing fragrance slowly and evenly. Safer than burning — no soot, no smoke, no fire risk. Fits standard jar candles up to 4 inches wide.",
+    supplierType: SupplierType.CJ_DROPSHIPPING,
+    supplierUrl: "https://cjdropshipping.com/product/vintage-candle-warmer-lamp-dimmable-halogen-p-1800000000000000001.html",
+    supplierProductId: "1800000000000000001",
+    baseCost: 10.0,
+    category: "Lighting",
+    tags: ["candle-warmer", "lamp", "vintage", "vanilla-girl", "flameless"],
+    variants: [
+      { sku: "NW-CWLP-BLACK", name: "Matte Black", costPrice: 10.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 100, weight: 1.2 },
+      { sku: "NW-CWLP-GOLD", name: "Brushed Gold", costPrice: 11.0, retailPrice: 42.99, compareAtPrice: 57.99, stock: 80, weight: 1.2 },
+      { sku: "NW-CWLP-MARBLE", name: "Marble White", costPrice: 10.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 90, weight: 1.2 },
+    ],
+    images: [
+      { url: pexels(6045094), alt: "Vintage candle warmer lamp with warm golden glow" },
+    ],
+    storeIndex: 2,
+    isFeatured: true,
+    position: 19,
+  },
+  {
+    title: "Flame Effect Aroma Diffuser",
+    description:
+      "Mesmerizing flickering flame simulation meets essential oil diffuser. Ultrasonic mist with realistic fire-like LED effect creates an instant spa atmosphere. 7 color modes, whisper-quiet operation, and auto shut-off. USB-powered — perfect for bedside, bathroom, or desk.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005006835217890.html",
+    supplierProductId: "1005006835217890",
+    baseCost: 9.0,
+    category: "Aromatherapy",
+    tags: ["diffuser", "flame-effect", "aroma", "essential-oil", "spa"],
+    variants: [
+      { sku: "NW-FLMD-BLACK", name: "Volcanic Black", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 47.99, stock: 120, weight: 0.45 },
+      { sku: "NW-FLMD-WHITE", name: "Cloud White", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 47.99, stock: 100, weight: 0.45 },
+    ],
+    images: [
+      { url: "https://s.alicdn.com/@sc04/kf/Hd5f3e2c0b5a94b9f8d1e7c3a6b2f4e8dG.jpg_960x960.jpg", alt: "Flame effect aroma diffuser with flickering light" },
+    ],
+    storeIndex: 2,
+    isFeatured: false,
+    position: 20,
+  },
+  {
+    title: "Terracotta Ceramic Vase Set (3 Piece)",
+    description:
+      "Curated set of three complementary ceramic vases in warm earthy tones. Each piece features a unique organic shape with a handcrafted-look matte glaze. Perfect for dried flowers, pampas grass, or as standalone sculptural decor. Sizes: 4\", 6\", and 8\" tall.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005006921345678.html",
+    supplierProductId: "1005006921345678",
+    baseCost: 7.0,
+    category: "Decor",
+    tags: ["vase-set", "terracotta", "ceramic", "earthy", "sculptural"],
+    variants: [
+      { sku: "NW-TRVS-TERRA", name: "Terracotta", costPrice: 7.0, retailPrice: 29.99, compareAtPrice: 42.99, stock: 100, weight: 1.1 },
+      { sku: "NW-TRVS-SAND", name: "Sand Beige", costPrice: 7.0, retailPrice: 29.99, compareAtPrice: 42.99, stock: 90, weight: 1.1 },
+      { sku: "NW-TRVS-OLIVE", name: "Olive Matte", costPrice: 7.5, retailPrice: 32.99, compareAtPrice: 44.99, stock: 80, weight: 1.1 },
+    ],
+    images: [
+      { url: pexels(2179214), alt: "Terracotta ceramic vase set with dried flowers" },
+    ],
+    storeIndex: 2,
+    isFeatured: true,
+    position: 21,
+  },
+  {
+    title: "Asymmetrical Wavy Wall Mirror",
+    description:
+      "Statement-making organic wavy mirror with an irregular cloud-like silhouette. Frameless design with polished edges for a clean, modern aesthetic. Shatterproof acrylic backing for safety. Includes keyhole hanging hardware. The Instagrammable accent piece every room needs.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007456789012.html",
+    supplierProductId: "1005007456789012",
+    baseCost: 8.0,
+    category: "Wall Decor",
+    tags: ["mirror", "wavy", "asymmetrical", "aesthetic", "wall-decor"],
+    variants: [
+      { sku: "NW-WAVM-SM", name: "Small 14\"x10\"", costPrice: 8.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 120, weight: 0.6 },
+      { sku: "NW-WAVM-LG", name: "Large 20\"x14\"", costPrice: 12.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 80, weight: 1.0 },
+    ],
+    images: [
+      { url: pexels(6585620), alt: "Asymmetrical wavy wall mirror in bedroom" },
+    ],
+    storeIndex: 2,
+    isFeatured: false,
+    position: 22,
+  },
+  {
+    title: "Washed Linen Throw Pillow Covers (Set of 2)",
+    description:
+      "Set of two pre-washed 100% linen pillow covers with a beautiful lived-in crinkle texture. Hidden zipper closure for a clean look. 18\"x18\" — fits standard throw pillow inserts. Effortlessly elevate any couch, bed, or reading nook with the texture of the year.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007345678901.html",
+    supplierProductId: "1005007345678901",
+    baseCost: 5.0,
+    category: "Textiles",
+    tags: ["pillow-cover", "linen", "washed", "texture", "boho"],
+    variants: [
+      { sku: "NW-LNPC-OAT", name: "Oatmeal", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 150, weight: 0.3 },
+      { sku: "NW-LNPC-SAGE", name: "Sage Green", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 130, weight: 0.3 },
+      { sku: "NW-LNPC-TERRA", name: "Terracotta", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 130, weight: 0.3 },
+    ],
+    images: [
+      { url: pexels(6489083), alt: "Washed linen throw pillows on cozy sofa" },
+    ],
+    storeIndex: 2,
+    isFeatured: false,
+    position: 23,
+  },
 ];
 
 // ─── Main Seed Function ───────────────────────────────────────
@@ -1440,6 +1548,8 @@ async function main() {
 
   // ─── Clean up existing product data ────────────────────
   console.log("  🗑  Clearing existing product data...");
+  await prisma.review.deleteMany();
+  await prisma.coupon.deleteMany();
   await prisma.orderItem.deleteMany();
   await prisma.order.deleteMany();
   await prisma.customer.deleteMany();
@@ -1609,6 +1719,123 @@ async function main() {
   for (let i = 0; i < 3; i++) {
     console.log(`  ✓ ${storeNames[i]}: ${counts[i]} products`);
   }
+
+  // ─── Reviews ───────────────────────────────────────────
+  console.log("\n📝 Seeding reviews...");
+
+  const reviewNames = [
+    "Sarah M.", "Jessica T.", "Emily R.", "Olivia K.", "Sophia L.",
+    "Mia C.", "Hannah P.", "Abigail W.", "Isabella J.", "Ava G.",
+    "Charlotte N.", "Amelia D.", "Ella B.", "Grace H.", "Lily F.",
+    "Chloe V.", "Luna S.", "Aria Z.", "Natalie E.", "Zoey Q.",
+  ];
+
+  const beautyReviewBodies: Record<number, string[]> = {
+    5: [
+      "Absolutely love this product! My skin has never looked better. Will definitely repurchase.",
+      "This is a game-changer for my skincare routine. Noticed results within the first week.",
+      "Holy grail product! I've tried so many others but nothing compares to this.",
+      "The quality is incredible for the price. My friends keep asking what my secret is!",
+      "Best purchase I've made in a while. My skin is glowing and so smooth now.",
+      "Exceeded all my expectations! The packaging is beautiful and the product works amazingly.",
+    ],
+    4: [
+      "Really good product overall. Takes a bit to see results but definitely worth it.",
+      "Love the texture and how it absorbs quickly. Only wish the bottle was a bit bigger.",
+      "Great addition to my routine. Skin feels softer and looks more radiant.",
+      "Very pleased with this purchase. The scent is subtle and pleasant too.",
+      "Works well for my skin type. Would recommend to friends looking for something gentle.",
+    ],
+    3: [
+      "Decent product but nothing extraordinary. It works but I expected more dramatic results.",
+      "Average experience. Works okay for the price point but I've tried better.",
+    ],
+  };
+
+  const beautyReviewTitles5 = [
+    "Obsessed!", "Best skincare find!", "Love love love", "My new favorite",
+    "Worth every penny", "Amazing results", "So impressed", "A must-have",
+  ];
+  const beautyReviewTitles4 = [
+    "Really good", "Solid product", "Happy with this", "Good quality",
+    "Nice addition", "Would repurchase",
+  ];
+  const beautyReviewTitles3 = ["It's okay", "Average", "Decent"];
+
+  // Fetch all products with their store assignments
+  const allStoreProducts = await prisma.storeProduct.findMany({
+    include: { product: true, store: true },
+  });
+
+  let reviewCount = 0;
+  for (const sp of allStoreProducts) {
+    // 3-8 reviews per product
+    const numReviews = 3 + Math.floor(Math.random() * 6);
+    for (let r = 0; r < numReviews; r++) {
+      // Weighted rating: ~60% 5-star, ~30% 4-star, ~10% 3-star
+      const roll = Math.random();
+      const rating = roll < 0.6 ? 5 : roll < 0.9 ? 4 : 3;
+
+      const bodies = beautyReviewBodies[rating]!;
+      const titles =
+        rating === 5
+          ? beautyReviewTitles5
+          : rating === 4
+            ? beautyReviewTitles4
+            : beautyReviewTitles3;
+
+      const authorName = reviewNames[Math.floor(Math.random() * reviewNames.length)];
+      const title = titles[Math.floor(Math.random() * titles.length)];
+      const body = bodies[Math.floor(Math.random() * bodies.length)];
+      const verified = Math.random() < 0.65;
+
+      // Random date in last 90 days
+      const daysAgo = Math.floor(Math.random() * 90);
+      const createdAt = new Date(Date.now() - daysAgo * 24 * 60 * 60 * 1000);
+
+      await prisma.review.create({
+        data: {
+          productId: sp.productId,
+          storeId: sp.storeId,
+          rating,
+          title,
+          body,
+          authorName,
+          authorEmail: `${authorName.toLowerCase().replace(/[^a-z]/g, "")}@example.com`,
+          verified,
+          createdAt,
+        },
+      });
+      reviewCount++;
+    }
+  }
+  console.log(`  ✓ ${reviewCount} reviews seeded`);
+
+  // ─── Coupons ──────────────────────────────────────────
+  console.log("\n🎟  Seeding coupons...");
+
+  const couponTemplates = [
+    { code: "WELCOME10", discountType: "PERCENTAGE" as const, value: 10, minOrderAmount: null, maxUses: null },
+    { code: "FREESHIP", discountType: "FREE_SHIPPING" as const, value: 0, minOrderAmount: null, maxUses: null },
+    { code: "SAVE5", discountType: "FIXED_AMOUNT" as const, value: 5, minOrderAmount: 30, maxUses: 100 },
+  ];
+
+  for (const store of stores) {
+    for (const tmpl of couponTemplates) {
+      await prisma.coupon.create({
+        data: {
+          storeId: store.id,
+          code: tmpl.code,
+          discountType: tmpl.discountType,
+          value: tmpl.value,
+          minOrderAmount: tmpl.minOrderAmount,
+          maxUses: tmpl.maxUses,
+          isActive: true,
+        },
+      });
+    }
+  }
+  console.log(`  ✓ ${couponTemplates.length * stores.length} coupons seeded (${couponTemplates.map((c) => c.code).join(", ")})`);
 
   console.log(`\n✅ Seed complete! ${products.length} products across 3 stores.`);
 }

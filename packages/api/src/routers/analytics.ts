@@ -126,4 +126,106 @@ export const analyticsRouter = router({
         };
       });
     }),
+
+  revenueOverTime: protectedProcedure
+    .input(
+      z
+        .object({
+          storeId: z.string().cuid().optional(),
+          days: z.number().min(1).max(365).default(30),
+        })
+        .optional()
+    )
+    .query(async ({ input }) => {
+      const days = input?.days ?? 30;
+      const since = new Date();
+      since.setDate(since.getDate() - days);
+
+      const storeFilter = input?.storeId ? { storeId: input.storeId } : {};
+
+      const orders = await prisma.order.findMany({
+        where: {
+          ...storeFilter,
+          status: { notIn: ["CANCELLED", "REFUNDED"] },
+          createdAt: { gte: since },
+        },
+        select: { total: true, createdAt: true },
+        orderBy: { createdAt: "asc" },
+      });
+
+      const byDate = new Map<string, { revenue: number; orders: number }>();
+
+      // Pre-fill all dates so chart has no gaps
+      for (let d = 0; d < days; d++) {
+        const date = new Date(since);
+        date.setDate(date.getDate() + d + 1);
+        const key = date.toISOString().slice(0, 10);
+        byDate.set(key, { revenue: 0, orders: 0 });
+      }
+
+      for (const order of orders) {
+        const key = order.createdAt.toISOString().slice(0, 10);
+        const entry = byDate.get(key) || { revenue: 0, orders: 0 };
+        entry.revenue += Number(order.total);
+        entry.orders += 1;
+        byDate.set(key, entry);
+      }
+
+      return Array.from(byDate.entries()).map(([date, data]) => ({
+        date,
+        revenue: Math.round(data.revenue * 100) / 100,
+        orders: data.orders,
+      }));
+    }),
+
+  ordersByStatus: protectedProcedure
+    .input(z.object({ storeId: z.string().cuid().optional() }).optional())
+    .query(async ({ input }) => {
+      const storeFilter = input?.storeId ? { storeId: input.storeId } : {};
+
+      const grouped = await prisma.order.groupBy({
+        by: ["status"],
+        where: storeFilter,
+        _count: { _all: true },
+      });
+
+      return grouped.map((g) => ({
+        status: g.status,
+        count: g._count._all,
+      }));
+    }),
+
+  lowStockProducts: protectedProcedure
+    .input(
+      z
+        .object({
+          threshold: z.number().default(10),
+          limit: z.number().default(20),
+        })
+        .optional()
+    )
+    .query(async ({ input }) => {
+      const threshold = input?.threshold ?? 10;
+      const limit = input?.limit ?? 20;
+
+      const variants = await prisma.productVariant.findMany({
+        where: { stock: { lt: threshold } },
+        include: {
+          product: {
+            include: { images: { take: 1 } },
+          },
+        },
+        orderBy: { stock: "asc" },
+        take: limit,
+      });
+
+      return variants.map((v) => ({
+        variantId: v.id,
+        productTitle: v.product.title,
+        variantName: v.name,
+        sku: v.sku,
+        stock: v.stock,
+        imageUrl: v.product.images[0]?.url || null,
+      }));
+    }),
 });

@@ -11,15 +11,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@trpc/server": "^11",
-    "superjson": "^2",
-    "zod": "^3",
     "@shops/db": "workspace:*",
+    "@shops/suppliers": "workspace:*",
     "@shops/types": "workspace:*",
-    "@shops/suppliers": "workspace:*"
+    "@trpc/server": "^11",
+    "stripe": "^20.3.1",
+    "superjson": "^2",
+    "zod": "^3"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@shops/typescript-config": "workspace:*"
+    "@shops/typescript-config": "workspace:*",
+    "typescript": "^5"
   }
 }

@@ -8,6 +8,8 @@ import { HeroSection } from "@/components/hero-section";
 import { CategoryCards } from "@/components/category-cards";
 import { BrandStory } from "@/components/brand-story";
 import { NewsletterSignup } from "@/components/newsletter-signup";
+import { SocialProof } from "@/components/social-proof";
+import { RecentPurchaseToast } from "@/components/recent-purchase-toast";
 import { Truck, Shield, RotateCcw, Star, AlertCircle } from "lucide-react";
 
 export default function StoreHomePage() {
@@ -20,11 +22,19 @@ export default function StoreHomePage() {
       { enabled: !!storeSlug }
     );
 
+  const featuredProductIds = featured?.map((sp) => sp.productId) ?? [];
+  const { data: ratings } = trpc.storefront.getProductsRatingsSummary.useQuery(
+    { storeSlug: storeSlug!, productIds: featuredProductIds },
+    { enabled: !!storeSlug && featuredProductIds.length > 0 }
+  );
+
   if (!storeSlug) return null;
 
   return (
     <div>
       <HeroSection />
+
+      <SocialProof />
 
       {/* Best Sellers */}
       <section id="products" className="py-6 md:py-16">
@@ -68,6 +78,8 @@ export default function StoreHomePage() {
                   key={sp.id}
                   storeProduct={sp}
                   storeSlug={storeSlug}
+                  averageRating={ratings?.[sp.productId]?.avgRating}
+                  reviewCount={ratings?.[sp.productId]?.reviewCount}
                 />
               ))}
             </div>
@@ -146,6 +158,12 @@ export default function StoreHomePage() {
       <BrandStory />
 
       <NewsletterSignup />
+
+      {featured && featured.length > 0 && (
+        <RecentPurchaseToast
+          productTitles={featured.map((sp) => sp.product.title)}
+        />
+      )}
     </div>
   );
 }

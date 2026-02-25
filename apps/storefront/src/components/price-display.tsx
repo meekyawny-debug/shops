@@ -1,7 +1,6 @@
 "use client";
 
 import { formatPrice } from "@/lib/utils";
-import { Badge } from "@shops/ui";
 
 export function PriceDisplay({
   price,
@@ -20,11 +19,11 @@ export function PriceDisplay({
   const sizeClasses = {
     sm: "text-sm",
     default: "text-base",
-    lg: "text-2xl font-bold",
+    lg: "text-3xl font-heading font-bold",
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 flex-wrap">
       <span className={sizeClasses[size]}>{formatPrice(price)}</span>
       {isOnSale && (
         <>
@@ -33,9 +32,9 @@ export function PriceDisplay({
           >
             {formatPrice(compareAtPrice)}
           </span>
-          <Badge variant="secondary" className="text-xs">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-accent/10 text-accent-foreground">
             -{discount}%
-          </Badge>
+          </span>
         </>
       )}
     </div>

@@ -1,51 +1,51 @@
 "use client";
 
-import { useState } from "react";
-import { ShoppingBag, Check } from "lucide-react";
+import { useRouter, useParams } from "next/navigation";
+import { Zap } from "lucide-react";
 import { Button } from "@shops/ui";
 import { useCart } from "@/lib/cart-context";
 import { useStore } from "@/lib/store-context";
 import { trackAddToCart } from "@/lib/meta-pixel";
 import type { CartItem } from "@/lib/types";
 
-export function AddToCartButton({
+export function BuyNowButton({
   item,
   disabled,
+  size = "lg",
+  className,
 }: {
   item: CartItem;
   disabled?: boolean;
+  size?: "default" | "sm" | "lg";
+  className?: string;
 }) {
-  const { addItem } = useCart();
+  const { addItemSilent } = useCart();
   const store = useStore();
-  const [added, setAdded] = useState(false);
+  const router = useRouter();
+  const params = useParams<{ storeSlug: string }>();
 
   const handleClick = () => {
-    addItem(item);
+    addItemSilent(item);
     if (store.config?.fbPixelId) {
       trackAddToCart(item.productId, item.productTitle, item.price);
     }
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
+    router.push(`/${params?.storeSlug}/checkout`);
   };
 
   return (
     <Button
-      size="lg"
-      className="w-full h-14 rounded-full font-semibold text-base active:scale-[0.98] transition-transform"
+      variant="outline"
+      size={size}
+      className={className ?? "w-full h-14 rounded-full font-semibold text-base active:scale-[0.98] transition-transform"}
       onClick={handleClick}
       disabled={disabled || item.stock <= 0}
     >
-      {added ? (
-        <>
-          <Check className="mr-2 h-5 w-5" />
-          Added!
-        </>
-      ) : item.stock <= 0 ? (
+      {item.stock <= 0 ? (
         "Out of Stock"
       ) : (
         <>
-          <ShoppingBag className="mr-2 h-5 w-5" />
-          Add to Cart
+          <Zap className="mr-2 h-5 w-5" />
+          Buy Now
         </>
       )}
     </Button>

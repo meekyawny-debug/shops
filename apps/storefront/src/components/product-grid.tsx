@@ -25,6 +25,12 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
     limit: 12,
   });
 
+  const productIds = data?.products.map((sp) => sp.productId) ?? [];
+  const { data: ratings } = trpc.storefront.getProductsRatingsSummary.useQuery(
+    { storeSlug, productIds },
+    { enabled: productIds.length > 0 }
+  );
+
   // Generate page numbers for pagination
   const getPageNumbers = (current: number, total: number) => {
     const pages: (number | "...")[] = [];
@@ -131,6 +137,8 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
               key={sp.id}
               storeProduct={sp}
               storeSlug={storeSlug}
+              averageRating={ratings?.[sp.productId]?.avgRating}
+              reviewCount={ratings?.[sp.productId]?.reviewCount}
             />
           ))}
         </div>

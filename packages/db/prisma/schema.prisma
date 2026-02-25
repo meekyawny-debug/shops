@@ -38,10 +38,13 @@ model Store {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  config        StoreConfig?
-  storeProducts StoreProduct[]
-  customers     Customer[]
-  orders        Order[]
+  config                StoreConfig?
+  storeProducts         StoreProduct[]
+  customers             Customer[]
+  orders                Order[]
+  reviews               Review[]
+  coupons               Coupon[]
+  newsletterSubscribers NewsletterSubscriber[]
 
   @@map("stores")
 }
@@ -98,6 +101,7 @@ model Product {
   variants      ProductVariant[]
   images        ProductImage[]
   storeProducts StoreProduct[]
+  reviews       Review[]
 
   @@index([supplierType, supplierProductId])
   @@map("products")
@@ -160,24 +164,95 @@ model StoreProduct {
   @@map("store_products")
 }
 
+// ─── Coupons ──────────────────────────────────────────────
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED_AMOUNT
+  FREE_SHIPPING
+}
+
+model Coupon {
+  id             String       @id @default(cuid())
+  storeId        String
+  store          Store        @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  code           String
+  discountType   DiscountType
+  value          Decimal      @db.Decimal(10, 2)
+  minOrderAmount Decimal?     @db.Decimal(10, 2)
+  maxUses        Int?
+  usedCount      Int          @default(0)
+  expiresAt      DateTime?
+  isActive       Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([storeId, code])
+  @@index([storeId])
+  @@map("coupons")
+}
+
+// ─── Reviews ──────────────────────────────────────────────
+
+model Review {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  storeId     String
+  store       Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  rating      Int      // 1-5
+  title       String
+  body        String   @db.Text
+  authorName  String
+  authorEmail String
+  verified    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@index([productId])
+  @@index([storeId])
+  @@map("reviews")
+}
+
 // ─── Customers ────────────────────────────────────────────
 
 model Customer {
-  id        String   @id @default(cuid())
-  storeId   String
-  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
-  email     String
-  firstName String?
-  lastName  String?
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(cuid())
+  storeId      String
+  store        Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  email        String
+  passwordHash String?
+  firstName    String?
+  lastName     String?
+  phone        String?
+  // Saved shipping address
+  shippingAddress1 String?
+  shippingAddress2 String?
+  shippingCity     String?
+  shippingState    String?
+  shippingZip      String?
+  shippingCountry  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   orders Order[]
 
   @@unique([storeId, email])
   @@index([storeId])
   @@map("customers")
+}
+
+// ─── Newsletter ───────────────────────────────────────────
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  storeId   String
+  store     Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  email     String
+  createdAt DateTime @default(now())
+
+  @@unique([storeId, email])
+  @@index([storeId])
+  @@map("newsletter_subscribers")
 }
 
 // ─── Orders ───────────────────────────────────────────────
@@ -216,6 +291,8 @@ model Order {
   supplierOrderId   String?
   trackingNumber    String?
   trackingUrl       String?
+  couponCode        String?
+  discountAmount    Decimal     @db.Decimal(10, 2) @default(0)
   notes             String?     @db.Text
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt

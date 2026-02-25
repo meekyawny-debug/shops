@@ -13,11 +13,11 @@ export function QuantitySelector({
   onChange: (qty: number) => void;
 }) {
   return (
-    <div className="flex items-center border rounded-md">
+    <div className="inline-flex items-center border rounded-full">
       <Button
         variant="ghost"
         size="icon"
-        className="h-9 w-9 rounded-r-none"
+        className="h-11 w-11 rounded-full"
         onClick={() => onChange(Math.max(1, quantity - 1))}
         disabled={quantity <= 1}
       >
@@ -27,7 +27,7 @@ export function QuantitySelector({
       <Button
         variant="ghost"
         size="icon"
-        className="h-9 w-9 rounded-l-none"
+        className="h-11 w-11 rounded-full"
         onClick={() => onChange(Math.min(maxStock, quantity + 1))}
         disabled={quantity >= maxStock}
       >

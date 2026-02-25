@@ -7,7 +7,10 @@ import { StoreProvider } from "@/lib/store-context";
 import { CartProvider } from "@/lib/cart-context";
 import { StoreHeader } from "@/components/store-header";
 import { StoreFooter } from "@/components/store-footer";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { MetaPixel } from "@/components/meta-pixel";
+import { AuthSessionProvider } from "@/components/session-provider";
+import { AuthModal } from "@/components/auth-modal";
 
 export async function generateMetadata({
   params,
@@ -64,16 +67,20 @@ export default async function StoreLayout({
       className={headingFont.variable}
       style={cssVars as React.CSSProperties}
     >
-      <StoreProvider store={store}>
-        <CartProvider storeSlug={storeSlug}>
-          <Suspense fallback={null}>
-            <MetaPixel />
-          </Suspense>
-          <StoreHeader />
-          <main className="min-h-screen">{children}</main>
-          <StoreFooter />
-        </CartProvider>
-      </StoreProvider>
+      <AuthSessionProvider>
+        <StoreProvider store={store}>
+          <CartProvider storeSlug={storeSlug}>
+            <Suspense fallback={null}>
+              <MetaPixel />
+            </Suspense>
+            <AnnouncementBar />
+            <StoreHeader />
+            <main className="min-h-screen">{children}</main>
+            <StoreFooter />
+            <AuthModal />
+          </CartProvider>
+        </StoreProvider>
+      </AuthSessionProvider>
     </div>
   );
 }

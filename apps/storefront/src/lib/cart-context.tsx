@@ -22,6 +22,7 @@ type CartAction =
   | { type: "CLEAR" }
   | { type: "TOGGLE_CART" }
   | { type: "SET_CART_OPEN"; isOpen: boolean }
+  | { type: "ADD_ITEM_SILENT"; item: CartItem }
   | { type: "LOAD"; items: CartItem[] };
 
 function cartReducer(state: CartState, action: CartAction): CartState {
@@ -48,6 +49,28 @@ function cartReducer(state: CartState, action: CartAction): CartState {
         };
       }
       return { ...state, isOpen: true, items: [...state.items, action.item] };
+    }
+    case "ADD_ITEM_SILENT": {
+      const existing = state.items.find(
+        (i) => i.variantId === action.item.variantId
+      );
+      if (existing) {
+        return {
+          ...state,
+          items: state.items.map((i) =>
+            i.variantId === action.item.variantId
+              ? {
+                  ...i,
+                  quantity: Math.min(
+                    i.quantity + action.item.quantity,
+                    i.stock
+                  ),
+                }
+              : i
+          ),
+        };
+      }
+      return { ...state, items: [...state.items, action.item] };
     }
     case "REMOVE_ITEM":
       return {
@@ -88,6 +111,7 @@ interface CartContextValue {
   itemCount: number;
   subtotal: number;
   addItem: (item: CartItem) => void;
+  addItemSilent: (item: CartItem) => void;
   removeItem: (variantId: string) => void;
   updateQuantity: (variantId: string, quantity: number) => void;
   clearCart: () => void;
@@ -131,6 +155,10 @@ export function CartProvider({
     dispatch({ type: "ADD_ITEM", item });
   }, []);
 
+  const addItemSilent = useCallback((item: CartItem) => {
+    dispatch({ type: "ADD_ITEM_SILENT", item });
+  }, []);
+
   const removeItem = useCallback((variantId: string) => {
     dispatch({ type: "REMOVE_ITEM", variantId });
   }, []);
@@ -168,6 +196,7 @@ export function CartProvider({
         itemCount,
         subtotal,
         addItem,
+        addItemSilent,
         removeItem,
         updateQuantity,
         clearCart,
