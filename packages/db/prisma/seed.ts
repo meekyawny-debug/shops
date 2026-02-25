@@ -66,8 +66,8 @@ const products: ProductData[] = [
       { url: pexels(7321723), alt: "Peeling Exfoliating Serum product" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 5,
+    isFeatured: false,
+    position: 15,
   },
   {
     title: "LED Light Therapy Face Mask",
@@ -86,8 +86,8 @@ const products: ProductData[] = [
       { url: "https://images.unsplash.com/photo-1720424643388-0a5f72948ea7?w=800&q=80", alt: "Woman wearing LED light therapy face mask at home" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 8,
+    isFeatured: true,
+    position: 7,
   },
   {
     title: "Ice Roller Face Massager",
@@ -108,7 +108,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 9,
+    position: 13,
   },
   {
     title: "Rose Quartz Gua Sha & Jade Roller Set",
@@ -130,7 +130,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 9,
+    position: 2,
   },
   {
     title: "Snail Mucin 96% Power Repairing Essence",
@@ -150,8 +150,8 @@ const products: ProductData[] = [
       { url: pexels(6847858), alt: "Snail Mucin skincare" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 4,
+    isFeatured: true,
+    position: 0,
   },
   {
     title: "20% Vitamin C Brightening Serum",
@@ -172,8 +172,8 @@ const products: ProductData[] = [
       { url: pexels(34939744), alt: "Vitamin C serum dropper" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 8,
+    isFeatured: false,
+    position: 10,
   },
   {
     title: "Professional Derma Pen Microneedling Device",
@@ -194,7 +194,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 10,
+    position: 21,
   },
   {
     title: "Peel-Off Hydro Jelly Face Mask Kit",
@@ -218,7 +218,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 7,
+    position: 11,
   },
   {
     title: "Electric Silicone Face Cleansing Brush",
@@ -239,7 +239,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 8,
+    position: 17,
   },
   {
     title: "2.5% Retinol Anti-Aging Night Cream",
@@ -260,7 +260,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 9,
+    position: 18,
   },
   {
     title: "Honey Lip Sleeping Mask",
@@ -281,7 +281,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 10,
+    position: 9,
   },
   {
     title: "24K Gold Collagen Under-Eye Patches",
@@ -302,7 +302,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 7,
+    position: 4,
   },
   {
     title: "Korean Exfoliating Body Scrub Glove",
@@ -322,8 +322,8 @@ const products: ProductData[] = [
       { url: pexels(10155377), alt: "Exfoliating Body Scrub Glove" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 6,
+    isFeatured: false,
+    position: 14,
   },
   {
     title: "Spa Headband & Wrist Washband Set",
@@ -345,7 +345,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 13,
+    position: 16,
   },
   {
     title: "Glass Skin Dewy SPF 50+ Sunscreen",
@@ -365,8 +365,8 @@ const products: ProductData[] = [
       { url: pexels(5202453), alt: "Dewy sunscreen tube" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 14,
+    isFeatured: true,
+    position: 3,
   },
   {
     title: "Nano Ionic Facial Steamer",
@@ -389,7 +389,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 15,
+    position: 20,
   },
   {
     title: "Silk Heatless Curling Ribbon Set",
@@ -411,7 +411,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 4,
+    position: 5,
   },
   {
     title: "22-Momme Mulberry Silk Beauty Pillowcase",
@@ -432,8 +432,8 @@ const products: ProductData[] = [
       { url: pexels(8465948), alt: "Smooth cream silk satin fabric" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 10,
+    isFeatured: false,
+    position: 19,
   },
   {
     title: "Ultrasonic Facial Skin Scrubber",
@@ -454,7 +454,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: false,
-    position: 18,
+    position: 22,
   },
   {
     title: "Hydra-Plump Crystal Lip Oil",
@@ -477,7 +477,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 1,
+    position: 6,
   },
   {
     title: "Dewy Lip & Cheek Tint",
@@ -501,7 +501,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 0,
+    position: 1,
   },
   {
     title: "Cream Blush Stick",
@@ -523,8 +523,8 @@ const products: ProductData[] = [
       { url: pexels(7510154), alt: "Blush application on cheek" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 3,
+    isFeatured: false,
+    position: 8,
   },
   {
     title: "Tinted Brow Styling Gel",
@@ -546,8 +546,8 @@ const products: ProductData[] = [
       { url: pexels(7588357), alt: "Close-up of groomed laminated brows" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 2,
+    isFeatured: false,
+    position: 12,
   },
 
   // ═══════════════════════════════════════════════════════════
@@ -703,8 +703,8 @@ const products: ProductData[] = [
       { url: pexels(12194325), alt: "CZ Diamond Tennis Bracelet" },
     ],
     storeIndex: 1,
-    isFeatured: false,
-    position: 6,
+    isFeatured: true,
+    position: 3,
   },
   {
     title: "Mini Huggie Earring Set (4 Pairs)",
@@ -724,8 +724,8 @@ const products: ProductData[] = [
       { url: pexels(15785528), alt: "Mini Huggie Earring Set" },
     ],
     storeIndex: 1,
-    isFeatured: false,
-    position: 7,
+    isFeatured: true,
+    position: 6,
   },
   {
     title: "18K Gold Croissant Dome Ring",
@@ -746,8 +746,8 @@ const products: ProductData[] = [
       { url: pexels(7453893), alt: "18K Gold Croissant Dome Ring" },
     ],
     storeIndex: 1,
-    isFeatured: false,
-    position: 8,
+    isFeatured: true,
+    position: 5,
   },
   {
     title: "Dainty Butterfly Charm Anklet",
@@ -831,8 +831,8 @@ const products: ProductData[] = [
       { url: pexels(16274920), alt: "Evil Eye Charm Bracelet" },
     ],
     storeIndex: 1,
-    isFeatured: false,
-    position: 12,
+    isFeatured: true,
+    position: 7,
   },
   {
     title: "18K Gold Twist Chunky Hoop Earrings",
@@ -1185,28 +1185,7 @@ const products: ProductData[] = [
       { url: pexels(3066868), alt: "Hand-Poured Soy Candle Set" },
     ],
     storeIndex: 2,
-    isFeatured: false,
-    position: 6,
-  },
-  {
-    title: "Clear Acrylic Desk Organizer Set",
-    description:
-      "Minimalist transparent acrylic organizer with pen holder, sticky note tray, and accessory compartment. Clean desk, clean mind. Stackable modular design.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005005441488313.html",
-    supplierProductId: "1005005441488313",
-    baseCost: 5.5,
-    category: "Organization",
-    tags: ["desk-organizer", "acrylic", "minimalist", "clear", "modular"],
-    variants: [
-      { sku: "NW-DORG-3PC", name: "3-Piece Set", costPrice: 5.5, retailPrice: 22.99, compareAtPrice: 29.99, stock: 120, weight: 0.45 },
-      { sku: "NW-DORG-5PC", name: "5-Piece Set", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 80, weight: 0.7 },
-    ],
-    images: [
-      { url: pexels(7718714), alt: "Clear acrylic desk organizer with compartments" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
+    isFeatured: true,
     position: 7,
   },
   {
@@ -1250,8 +1229,8 @@ const products: ProductData[] = [
       { url: pexels(18127557), alt: "Purple and blue galaxy lights projected in dark room" },
     ],
     storeIndex: 2,
-    isFeatured: false,
-    position: 9,
+    isFeatured: true,
+    position: 5,
   },
   {
     title: "Japanese Waffle Weave Bath Towel Set",
@@ -1295,8 +1274,8 @@ const products: ProductData[] = [
       { url: pexels(3822622), alt: "Candles and incense for meditation" },
     ],
     storeIndex: 2,
-    isFeatured: false,
-    position: 11,
+    isFeatured: true,
+    position: 6,
   },
   {
     title: "Minimalist Adhesive Wall Hook Set (8 Pack)",

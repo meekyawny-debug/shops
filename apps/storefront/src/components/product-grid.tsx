@@ -9,7 +9,7 @@ import { trpc } from "@/lib/trpc";
 export function ProductGrid({ storeSlug }: { storeSlug: string }) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string>("all");
-  const [sort, setSort] = useState<"newest" | "price-asc" | "price-desc" | "name">("newest");
+  const [sort, setSort] = useState<"newest" | "best-selling" | "price-asc" | "price-desc" | "name">("best-selling");
   const [page, setPage] = useState(1);
 
   const { data: categories } = trpc.storefront.getCategories.useQuery({
@@ -25,8 +25,25 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
     limit: 12,
   });
 
+  // Generate page numbers for pagination
+  const getPageNumbers = (current: number, total: number) => {
+    const pages: (number | "...")[] = [];
+    if (total <= 7) {
+      for (let i = 1; i <= total; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (current > 3) pages.push("...");
+      for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) {
+        pages.push(i);
+      }
+      if (current < total - 2) pages.push("...");
+      pages.push(total);
+    }
+    return pages;
+  };
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
@@ -71,12 +88,20 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="newest">Newest</SelectItem>
+            <SelectItem value="best-selling">Best Selling</SelectItem>
             <SelectItem value="price-asc">Price: Low to High</SelectItem>
             <SelectItem value="price-desc">Price: High to Low</SelectItem>
             <SelectItem value="name">Name</SelectItem>
           </SelectContent>
         </Select>
       </div>
+
+      {/* Product count */}
+      {data && (
+        <p className="text-sm text-muted-foreground">
+          Showing {data.products.length} of {data.total} products
+        </p>
+      )}
 
       {/* Grid */}
       {error ? (
@@ -85,10 +110,11 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
           <p>Unable to load products. Please try again later.</p>
         </div>
       ) : isLoading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="space-y-3 animate-pulse">
-              <div className="aspect-square bg-muted rounded-lg" />
+              <div className="aspect-[3/4] bg-muted rounded-xl" />
+              <div className="h-3 bg-muted rounded w-1/3" />
               <div className="h-4 bg-muted rounded w-3/4" />
               <div className="h-4 bg-muted rounded w-1/4" />
             </div>
@@ -99,7 +125,7 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
           No products found
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
           {data?.products.map((sp) => (
             <ProductCard
               key={sp.id}
@@ -112,20 +138,34 @@ export function ProductGrid({ storeSlug }: { storeSlug: string }) {
 
       {/* Pagination */}
       {data && data.totalPages > 1 && (
-        <div className="flex justify-center gap-2">
+        <div className="flex justify-center items-center gap-1">
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page <= 1}
           >
             Previous
           </Button>
-          <span className="flex items-center px-4 text-sm text-muted-foreground">
-            Page {data.page} of {data.totalPages}
-          </span>
+          {getPageNumbers(data.page, data.totalPages).map((p, i) =>
+            p === "..." ? (
+              <span key={`ellipsis-${i}`} className="px-2 text-sm text-muted-foreground">
+                ...
+              </span>
+            ) : (
+              <Button
+                key={p}
+                variant={page === p ? "default" : "ghost"}
+                size="sm"
+                className="w-9 h-9"
+                onClick={() => setPage(p)}
+              >
+                {p}
+              </Button>
+            )
+          )}
           <Button
-            variant="outline"
+            variant="ghost"
             size="sm"
             onClick={() => setPage((p) => Math.min(data.totalPages, p + 1))}
             disabled={page >= data.totalPages}
