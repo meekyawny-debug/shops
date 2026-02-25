@@ -46,7 +46,7 @@ function pexels(id: number): string {
 
 const products: ProductData[] = [
   // ═══════════════════════════════════════════════════════════
-  // GLOWHAVEN — Beauty / Skincare (20 products)
+  // GLOWHAVEN — Beauty / Skincare (23 products)
   // ═══════════════════════════════════════════════════════════
   {
     title: "Peeling Exfoliating Serum",
@@ -67,7 +67,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 0,
+    position: 5,
   },
   {
     title: "LED Light Therapy Face Mask",
@@ -86,8 +86,8 @@ const products: ProductData[] = [
       { url: "https://images.unsplash.com/photo-1720424643388-0a5f72948ea7?w=800&q=80", alt: "Woman wearing LED light therapy face mask at home" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 1,
+    isFeatured: false,
+    position: 8,
   },
   {
     title: "Ice Roller Face Massager",
@@ -107,8 +107,8 @@ const products: ProductData[] = [
       { url: pexels(5927933), alt: "Ice Roller Face Massager" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 2,
+    isFeatured: false,
+    position: 9,
   },
   {
     title: "Rose Quartz Gua Sha & Jade Roller Set",
@@ -130,7 +130,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 0,
     isFeatured: true,
-    position: 3,
+    position: 9,
   },
   {
     title: "Snail Mucin 96% Power Repairing Essence",
@@ -172,8 +172,8 @@ const products: ProductData[] = [
       { url: pexels(34939744), alt: "Vitamin C serum dropper" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 5,
+    isFeatured: true,
+    position: 8,
   },
   {
     title: "Professional Derma Pen Microneedling Device",
@@ -193,8 +193,8 @@ const products: ProductData[] = [
       { url: "https://images.unsplash.com/flagged/photo-1570698500117-0c1785821fe1?w=800&q=80", alt: "Derma Pen Microneedling Device" },
     ],
     storeIndex: 0,
-    isFeatured: true,
-    position: 6,
+    isFeatured: false,
+    position: 10,
   },
   {
     title: "Peel-Off Hydro Jelly Face Mask Kit",
@@ -212,7 +212,9 @@ const products: ProductData[] = [
       { sku: "GH-JELY-LAVEN", name: "Lavender", costPrice: 4.0, retailPrice: 16.99, compareAtPrice: 22.99, stock: 150, weight: 0.35 },
     ],
     images: [
-      { url: pexels(5069494), alt: "Hydro Jelly Face Mask Kit" },
+      { url: pexels(6621339), alt: "Jelly mask powder in mixing bowl with spatula and tools" },
+      { url: pexels(32565175), alt: "Face mask jar product in soft natural light" },
+      { url: pexels(5069494), alt: "Jelly mask facial treatment application" },
     ],
     storeIndex: 0,
     isFeatured: false,
@@ -299,8 +301,8 @@ const products: ProductData[] = [
       { url: pexels(6977651), alt: "Eye patches in jar" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 11,
+    isFeatured: true,
+    position: 7,
   },
   {
     title: "Korean Exfoliating Body Scrub Glove",
@@ -320,8 +322,8 @@ const products: ProductData[] = [
       { url: pexels(10155377), alt: "Exfoliating Body Scrub Glove" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 12,
+    isFeatured: true,
+    position: 6,
   },
   {
     title: "Spa Headband & Wrist Washband Set",
@@ -381,11 +383,12 @@ const products: ProductData[] = [
       { sku: "GH-STMR-PINK", name: "Pink", costPrice: 11.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 70, weight: 0.65 },
     ],
     images: [
+      { url: pexels(6915261), alt: "Nano ionic facial steamer device with mist" },
       { url: pexels(3738349), alt: "Woman receiving facial steamer treatment" },
       { url: pexels(6811364), alt: "Facial steam treatment with visible mist" },
     ],
     storeIndex: 0,
-    isFeatured: true,
+    isFeatured: false,
     position: 15,
   },
   {
@@ -407,8 +410,8 @@ const products: ProductData[] = [
       { url: "https://ae01.alicdn.com/kf/H49d9bf2d6b92412ea68b4b8983f33c3ev.jpg", alt: "Silk heatless curling ribbon rod set" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 16,
+    isFeatured: true,
+    position: 4,
   },
   {
     title: "22-Momme Mulberry Silk Beauty Pillowcase",
@@ -429,8 +432,8 @@ const products: ProductData[] = [
       { url: pexels(8465948), alt: "Smooth cream silk satin fabric" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 17,
+    isFeatured: true,
+    position: 10,
   },
   {
     title: "Ultrasonic Facial Skin Scrubber",
@@ -473,30 +476,102 @@ const products: ProductData[] = [
       { url: pexels(12829921), alt: "Lip oil application" },
     ],
     storeIndex: 0,
-    isFeatured: false,
-    position: 19,
+    isFeatured: true,
+    position: 1,
+  },
+  {
+    title: "Dewy Lip & Cheek Tint",
+    description:
+      "Multi-use lip and cheek tint with a dewy, buildable finish. The lightweight gel formula melts into skin for a natural flush that lasts all day. The viral clean girl aesthetic in a tube — perfect for the 'no-makeup makeup' look trending on TikTok and Instagram.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007291834562.html",
+    supplierProductId: "1005007291834562",
+    baseCost: 1.2,
+    category: "Lips",
+    tags: ["lip-tint", "cheek-tint", "clean-girl", "multi-use", "dewy"],
+    variants: [
+      { sku: "GH-LTNT-ROSE", name: "Rose", costPrice: 1.2, retailPrice: 11.99, compareAtPrice: 15.99, stock: 450, weight: 0.03 },
+      { sku: "GH-LTNT-PECH", name: "Peach", costPrice: 1.2, retailPrice: 11.99, compareAtPrice: 15.99, stock: 450, weight: 0.03 },
+      { sku: "GH-LTNT-BERY", name: "Berry", costPrice: 1.2, retailPrice: 11.99, compareAtPrice: 15.99, stock: 450, weight: 0.03 },
+      { sku: "GH-LTNT-CORL", name: "Coral", costPrice: 1.2, retailPrice: 11.99, compareAtPrice: 15.99, stock: 450, weight: 0.03 },
+    ],
+    images: [
+      { url: pexels(7290710), alt: "Dewy lip and cheek tint tubes" },
+      { url: pexels(4041392), alt: "Lip tint application" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 0,
+  },
+  {
+    title: "Cream Blush Stick",
+    description:
+      "Creamy, blendable blush stick that glides on for an instant healthy glow. Buildable, lightweight formula with a dewy satin finish. Doubles as a lip color for on-the-go touch-ups. The one-swipe blush hack going viral on beauty TikTok.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007291847293.html",
+    supplierProductId: "1005007291847293",
+    baseCost: 1.8,
+    category: "Makeup",
+    tags: ["blush", "cream-blush", "stick", "clean-girl", "dewy"],
+    variants: [
+      { sku: "GH-BLSH-PINK", name: "Soft Pink", costPrice: 1.8, retailPrice: 13.99, compareAtPrice: 18.99, stock: 400, weight: 0.04 },
+      { sku: "GH-BLSH-PECH", name: "Warm Peach", costPrice: 1.8, retailPrice: 13.99, compareAtPrice: 18.99, stock: 400, weight: 0.04 },
+      { sku: "GH-BLSH-MAUV", name: "Mauve", costPrice: 1.8, retailPrice: 13.99, compareAtPrice: 18.99, stock: 400, weight: 0.04 },
+    ],
+    images: [
+      { url: pexels(2587370), alt: "Cream blush stick product" },
+      { url: pexels(3018845), alt: "Cream blush application on cheek" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 3,
+  },
+  {
+    title: "Tinted Brow Styling Gel",
+    description:
+      "Tinted brow gel that shapes, sets, and fills brows in one swipe. Long-lasting, flake-free formula gives a laminated brow look without the salon visit. Micro-fibers add natural fullness while the flexible hold keeps brows feathered all day.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007291853671.html",
+    supplierProductId: "1005007291853671",
+    baseCost: 1.5,
+    category: "Brows",
+    tags: ["brow-gel", "brow-styling", "tinted", "clean-girl", "laminated-brows"],
+    variants: [
+      { sku: "GH-BROW-CLER", name: "Clear", costPrice: 1.5, retailPrice: 12.99, compareAtPrice: 16.99, stock: 400, weight: 0.03 },
+      { sku: "GH-BROW-LTBR", name: "Light Brown", costPrice: 1.5, retailPrice: 12.99, compareAtPrice: 16.99, stock: 400, weight: 0.03 },
+      { sku: "GH-BROW-DKBR", name: "Dark Brown", costPrice: 1.5, retailPrice: 12.99, compareAtPrice: 16.99, stock: 400, weight: 0.03 },
+    ],
+    images: [
+      { url: pexels(2661256), alt: "Tinted brow styling gel tube" },
+      { url: pexels(4620843), alt: "Brow gel application" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 2,
   },
 
   // ═══════════════════════════════════════════════════════════
-  // AURAE — Jewelry / Accessories (19 products)
+  // AURAE — Jewelry / Accessories (22 products)
   // ═══════════════════════════════════════════════════════════
   {
-    title: "Hidden Love Projection Necklace",
+    title: "Herringbone CZ Pendant Necklace",
     description:
-      'Elegant gold-plated necklace with a hidden photo projection. Light shines through the pendant to reveal a custom "I Love You" message.',
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/necklace-nano-projection-customized-color-picture-photo-p-1425758597723328512.html",
-    supplierProductId: "1425758597723328512",
-    baseCost: 4.0,
+      "Delicate herringbone chain with a sparkling cubic zirconia stone accent. 316L stainless steel with 18K gold PVD plating for a waterproof, tarnish-proof finish. The flat herringbone drape catches light beautifully — the trending chain style of the season.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005003751674364.html",
+    supplierProductId: "1005003751674364",
+    baseCost: 4.22,
     category: "Necklaces",
-    tags: ["necklace", "projection", "gift", "love", "gold"],
+    tags: ["necklace", "herringbone", "cz", "gold", "waterproof", "trending"],
     variants: [
-      { sku: "AU-PROJ-GOLD", name: "Gold", costPrice: 4.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 200, weight: 0.05 },
-      { sku: "AU-PROJ-SILVER", name: "Silver", costPrice: 4.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 200, weight: 0.05 },
+      { sku: "AU-HBCZ-EMRLD", name: "Emerald", costPrice: 4.22, retailPrice: 27.99, compareAtPrice: 38.99, stock: 200, weight: 0.04 },
+      { sku: "AU-HBCZ-CLEAR", name: "Diamond Clear", costPrice: 4.22, retailPrice: 27.99, compareAtPrice: 38.99, stock: 200, weight: 0.04 },
+      { sku: "AU-HBCZ-PINK", name: "Pink", costPrice: 4.22, retailPrice: 27.99, compareAtPrice: 38.99, stock: 200, weight: 0.04 },
+      { sku: "AU-HBCZ-PURPL", name: "Purple", costPrice: 4.22, retailPrice: 27.99, compareAtPrice: 38.99, stock: 200, weight: 0.04 },
     ],
     images: [
-      { url: pexels(860009), alt: "Gold heart pendant necklace" },
-      { url: pexels(6153885), alt: "Gold projection pendant" },
+      { url: "https://cdn.shopify.com/s/files/1/0549/8090/3141/files/cz_charm_herringbone_necklace_1.jpg?v=1730405380", alt: "Herringbone CZ pendant necklace gold" },
+      { url: "https://cdn.shopify.com/s/files/1/0549/8090/3141/products/herringbone-zircon-necklace-babeina-jewelry-8.jpg?v=1678130712", alt: "Herringbone chain necklace with CZ stone" },
     ],
     storeIndex: 1,
     isFeatured: true,
@@ -760,21 +835,22 @@ const products: ProductData[] = [
     position: 12,
   },
   {
-    title: "Gold Ear Cuff Set - No Piercing Required",
+    title: "18K Gold Twist Chunky Hoop Earrings",
     description:
-      "Set of 5 clip-on ear cuffs in assorted styles: chain, CZ bar, twisted wire, huggie, and star. Create a curated ear stack without any piercings.",
+      "Bold twist-texture chunky hoops in waterproof 18K gold-plated stainless steel. Lightweight yet statement-making with a braided rope texture. Hypoallergenic and fade-resistant — the everyday hoop that survives showers, pools, and workouts.",
     supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005010258655723.html",
-    supplierProductId: "1005010258655723",
-    baseCost: 2.8,
+    supplierUrl: "https://www.aliexpress.com/item/1005002009200911.html",
+    supplierProductId: "1005002009200911",
+    baseCost: 6.49,
     category: "Earrings",
-    tags: ["ear-cuff", "no-piercing", "clip-on", "stacking", "set"],
+    tags: ["earrings", "hoops", "twist", "chunky", "gold", "waterproof"],
     variants: [
-      { sku: "AU-ECUF-GOLD", name: "Gold (5-piece)", costPrice: 2.8, retailPrice: 13.99, compareAtPrice: 19.99, stock: 300, weight: 0.02 },
-      { sku: "AU-ECUF-SILVER", name: "Silver (5-piece)", costPrice: 2.8, retailPrice: 13.99, compareAtPrice: 19.99, stock: 300, weight: 0.02 },
+      { sku: "AU-TWST-GOLD", name: "Gold", costPrice: 6.49, retailPrice: 22.99, compareAtPrice: 32.99, stock: 250, weight: 0.02 },
+      { sku: "AU-TWST-SILVER", name: "Silver", costPrice: 6.49, retailPrice: 22.99, compareAtPrice: 32.99, stock: 250, weight: 0.02 },
     ],
     images: [
-      { url: pexels(8070562), alt: "Gold Ear Cuff Set" },
+      { url: "https://cdn.shopify.com/s/files/1/0636/6180/1725/files/chunky-twist2.jpg?v=1738722770", alt: "18K gold twist chunky hoop earrings" },
+      { url: "https://cdn.shopify.com/s/files/1/0636/6180/1725/files/chunky-twist-earrings-worn2.jpg?v=1738722770", alt: "Gold twist hoop earrings worn" },
     ],
     storeIndex: 1,
     isFeatured: false,
@@ -824,22 +900,22 @@ const products: ProductData[] = [
     position: 15,
   },
   {
-    title: "Adjustable Birthstone Ring",
+    title: "Chunky Gold Dome Adjustable Ring",
     description:
-      "Delicate adjustable ring featuring a colored cubic zirconia stone for your birth month. Set in 18K gold-plated or sterling silver. The adjustable design eliminates sizing issues — perfect for gifting. Available in all 12 birth months.",
+      "Minimalist chunky dome ring in 18K gold-plated 316L stainless steel. The adjustable open-band design fits all sizes — no more sizing guesswork. Waterproof and scratch-resistant with a bold, modern silhouette that stacks beautifully.",
     supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005008802889794.html",
-    supplierProductId: "1005008802889794",
-    baseCost: 2.5,
+    supplierUrl: "https://www.aliexpress.com/item/1005002494538148.html",
+    supplierProductId: "1005002494538148",
+    baseCost: 2.91,
     category: "Rings",
-    tags: ["birthstone", "adjustable", "personalized", "gift", "cz"],
+    tags: ["ring", "dome", "chunky", "adjustable", "gold", "stacking"],
     variants: [
-      { sku: "AU-BSTN-GOLD", name: "Gold", costPrice: 2.5, retailPrice: 18.99, compareAtPrice: 26.99, stock: 300, weight: 0.01 },
-      { sku: "AU-BSTN-SILVER", name: "Silver", costPrice: 2.5, retailPrice: 18.99, compareAtPrice: 26.99, stock: 300, weight: 0.01 },
-      { sku: "AU-BSTN-ROSE", name: "Rose Gold", costPrice: 2.5, retailPrice: 18.99, compareAtPrice: 26.99, stock: 300, weight: 0.01 },
+      { sku: "AU-DOME-GOLD", name: "Gold", costPrice: 2.91, retailPrice: 16.99, compareAtPrice: 24.99, stock: 300, weight: 0.02 },
+      { sku: "AU-DOME-SILVER", name: "Silver", costPrice: 2.91, retailPrice: 16.99, compareAtPrice: 24.99, stock: 300, weight: 0.02 },
     ],
     images: [
-      { url: pexels(32382386), alt: "Adjustable Birthstone Ring" },
+      { url: "https://cdn.shopify.com/s/files/1/0277/8778/8427/products/14k-gold-filled-rings-dome-ring-linkd-31221669363851.jpg?v=1669509313", alt: "Chunky gold dome adjustable ring" },
+      { url: "https://cdn.shopify.com/s/files/1/0277/8778/8427/products/14k-gold-filled-rings-dome-ring-linkd-29292161564811.jpg?v=1674255533", alt: "Gold dome ring alternate view" },
     ],
     storeIndex: 1,
     isFeatured: false,
@@ -888,6 +964,77 @@ const products: ProductData[] = [
     isFeatured: false,
     position: 18,
   },
+  {
+    title: "18K Gold Layered Waist Chain",
+    description:
+      "Double-layer body chain in 18K PVD gold-plated stainless steel. Adjustable lobster-clasp closure fits over clothing or on bare skin. Waterproof, tarnish-free, and lightweight enough for all-day festival or beach wear.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005006123456789.html",
+    supplierProductId: "1005006123456789",
+    baseCost: 3.5,
+    category: "Body Jewelry",
+    tags: ["waist-chain", "body-chain", "gold", "layered", "festival"],
+    variants: [
+      { sku: "AU-WSTC-SG", name: "Small - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
+      { sku: "AU-WSTC-MG", name: "Medium - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
+      { sku: "AU-WSTC-LG", name: "Large - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
+      { sku: "AU-WSTC-SS", name: "Small - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
+      { sku: "AU-WSTC-MS", name: "Medium - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
+      { sku: "AU-WSTC-LS", name: "Large - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
+    ],
+    images: [
+      { url: "https://cdn.shopify.com/s/files/1/0478/0847/9387/files/two-layer-dainty-waist-chain-in-gold-n231-685693.jpg", alt: "18K Gold Layered Waist Chain front view" },
+      { url: "https://cdn.shopify.com/s/files/1/0478/0847/9387/files/two-layer-dainty-waist-chain-in-gold-n231-374512.jpg", alt: "18K Gold Layered Waist Chain side view" },
+    ],
+    storeIndex: 1,
+    isFeatured: false,
+    position: 19,
+  },
+  {
+    title: "Pearl Bow Bag Charm",
+    description:
+      "Elegant pearl and bow keychain charm with gold-tone hardware. Clip onto handbags, tote bags, or use as a statement keyring. Faux-pearl beads with a satin ribbon bow — the perfect finishing touch to any outfit.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005006234567890.html",
+    supplierProductId: "1005006234567890",
+    baseCost: 2.0,
+    category: "Accessories",
+    tags: ["bag-charm", "pearl", "bow", "keychain", "handbag"],
+    variants: [
+      { sku: "AU-PBCH-PGB", name: "Pearl & Gold Bow", costPrice: 2.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 300, weight: 0.03 },
+      { sku: "AU-PBCH-PHB", name: "Pearl Heart & Bow", costPrice: 2.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 300, weight: 0.03 },
+    ],
+    images: [
+      { url: "https://cdn.shopify.com/s/files/1/1768/7757/files/22715307_08a715ad-446a-47e1-b41a-99e485a8e451.jpg?v=1734029171", alt: "Pearl Bow Bag Charm on handbag" },
+      { url: "https://cdn.shopify.com/s/files/1/1768/7757/files/22715307_46b90e48-fe78-4477-a3cf-68c816ecdacb.jpg?v=1734029171", alt: "Pearl Bow Bag Charm close-up" },
+    ],
+    storeIndex: 1,
+    isFeatured: false,
+    position: 20,
+  },
+  {
+    title: "Pearl & Crystal Bobby Pin Set — 18 Pieces",
+    description:
+      "Luxe set of 18 decorative bobby pins featuring faux pearls, tiny crystals, and minimalist gold-tone clips. Mix and match styles for bridal updos, everyday half-up looks, or accent braids. Comes in a velvet pouch.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/32850636511.html",
+    supplierProductId: "32850636511",
+    baseCost: 1.85,
+    category: "Hair Accessories",
+    tags: ["bobby-pins", "pearl", "crystal", "bridal", "hair-clips"],
+    variants: [
+      { sku: "AU-BPIN-GOLD", name: "Gold Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
+      { sku: "AU-BPIN-SILVER", name: "Silver Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
+      { sku: "AU-BPIN-ROSE", name: "Rose Gold Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
+    ],
+    images: [
+      { url: "https://cdn.shopify.com/s/files/1/0286/8926/8867/products/Nume-Clips9987_1.jpg", alt: "Pearl & Crystal Bobby Pin Set arranged" },
+      { url: "https://cdn.shopify.com/s/files/1/0286/8926/8867/products/NUME-CLIPS-FINAL3569_1.jpg", alt: "Pearl & Crystal Bobby Pin Set in hair" },
+    ],
+    storeIndex: 1,
+    isFeatured: false,
+    position: 21,
+  },
 
   // ═══════════════════════════════════════════════════════════
   // NESTWELL — Home Decor / Cozy Living (19 products)
@@ -906,7 +1053,7 @@ const products: ProductData[] = [
       { sku: "NW-RAIN-WHITE", name: "White", costPrice: 17.0, retailPrice: 54.99, compareAtPrice: 69.99, stock: 75, weight: 0.8 },
     ],
     images: [
-      { url: pexels(6915261), alt: "Rain cloud diffuser with illuminated mist" },
+      { url: "https://s.alicdn.com/@sc04/kf/Hb17fb622d4374b07945fede1cc07ad5cs.jpg_960x960.jpg", alt: "Rain cloud diffuser with illuminated mist" },
     ],
     storeIndex: 2,
     isFeatured: true,
@@ -927,7 +1074,7 @@ const products: ProductData[] = [
       { sku: "NW-SNST-RAIN", name: "Rainbow", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.35 },
     ],
     images: [
-      { url: pexels(7677970), alt: "Warm sunset glow projected on wall" },
+      { url: "https://s.alicdn.com/@sc04/kf/Hd00b1db7213145e6827bf69e271e3617M.jpg_960x960.jpg", alt: "Sunset lamp projector with warm golden glow on wall" },
     ],
     storeIndex: 2,
     isFeatured: true,
@@ -1056,7 +1203,7 @@ const products: ProductData[] = [
       { sku: "NW-DORG-5PC", name: "5-Piece Set", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 80, weight: 0.7 },
     ],
     images: [
-      { url: "https://plus.unsplash.com/premium_photo-1663076392017-5f88012f3c22?w=800&q=80", alt: "Desk organizer with supplies" },
+      { url: "https://s.alicdn.com/@sc04/kf/Hab5a8a7fd34e4ca89d59798f6640fc749.png_960x960.jpg", alt: "Clear transparent acrylic desk organizer set" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1078,7 +1225,7 @@ const products: ProductData[] = [
       { sku: "NW-PAMP-BROWN", name: "Brown (30 stems)", costPrice: 5.0, retailPrice: 19.99, compareAtPrice: 27.99, stock: 140, weight: 0.15 },
     ],
     images: [
-      { url: pexels(5797998), alt: "Pampas grass in glass vase" },
+      { url: pexels(9566054), alt: "Dried pampas grass bouquet in white vase" },
       { url: pexels(13462700), alt: "Pampas grass by mirror" },
     ],
     storeIndex: 2,
@@ -1100,7 +1247,7 @@ const products: ProductData[] = [
       { sku: "NW-STAR-WHT", name: "White", costPrice: 11.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 80, weight: 0.45 },
     ],
     images: [
-      { url: "https://images.unsplash.com/photo-1627774544099-8d2a3488f415?w=800&q=80", alt: "Purple and blue galaxy lights projected in dark room" },
+      { url: pexels(18127557), alt: "Purple and blue galaxy lights projected in dark room" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1144,7 +1291,8 @@ const products: ProductData[] = [
       { sku: "NW-INCW-LOTUS", name: "Lotus Style", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 100, weight: 0.55 },
     ],
     images: [
-      { url: pexels(3822622), alt: "Ceramic Incense Waterfall Burner" },
+      { url: pexels(6954562), alt: "Ceramic Incense Waterfall Burner with smoke" },
+      { url: "https://s.alicdn.com/@sc04/kf/H8e47b747e47a4977aeb9ac180cc97a16y.jpg_960x960.jpg", alt: "Ceramic backflow incense burner piece" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1216,9 +1364,9 @@ const products: ProductData[] = [
     position: 14,
   },
   {
-    title: "Smart WiFi RGB LED Strip Lights (5m Kit)",
+    title: "Smart WiFi RGB LED Strip Lights (16ft / 5m Kit)",
     description:
-      "5-meter smart LED strip light kit with WiFi, app control, and Alexa/Google Home voice control. Music sync mode, 16 million RGB colors, timer scheduling, and self-adhesive backing. Cuttable to custom lengths. Transform any room instantly.",
+      "16.4ft (5m) smart LED strip light kit with WiFi, app control, and Alexa/Google Home voice control. Music sync mode, 16 million RGB colors, timer scheduling, and self-adhesive backing. Cuttable to custom lengths. Transform any room instantly.",
     supplierType: SupplierType.CJ_DROPSHIPPING,
     supplierUrl: "https://cjdropshipping.com/product/15m-2835rgb-led-strip-lights-smart-home-wifi-strip-light-app-control-waterproof-p-1505160812912840704.html",
     supplierProductId: "1505160812912840704",
@@ -1226,12 +1374,13 @@ const products: ProductData[] = [
     category: "Lighting",
     tags: ["led-strip", "rgb", "smart-home", "wifi", "ambient"],
     variants: [
-      { sku: "NW-LEDS-5M", name: "5m Kit", costPrice: 8.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 150, weight: 0.25 },
-      { sku: "NW-LEDS-10M", name: "10m Kit", costPrice: 12.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 100, weight: 0.4 },
+      { sku: "NW-LEDS-5M", name: "16.4ft / 5m Kit", costPrice: 8.0, retailPrice: 29.99, compareAtPrice: 39.99, stock: 150, weight: 0.25 },
+      { sku: "NW-LEDS-10M", name: "32.8ft / 10m Kit", costPrice: 12.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 100, weight: 0.4 },
     ],
     images: [
       { url: "https://plus.unsplash.com/premium_photo-1764687707857-966ab86c71dc?w=800&q=80", alt: "Room with LED ambient lighting" },
       { url: "https://images.unsplash.com/photo-1760999896198-b7e780e42500?w=800&q=80", alt: "RGB gaming setup" },
+      { url: "https://s.alicdn.com/@sc04/kf/Hc5a88bfc545c4fa59f7d05de9d9d19cds.jpg_960x960.jpg", alt: "Smart WiFi RGB LED strip light kit" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1254,7 +1403,6 @@ const products: ProductData[] = [
     ],
     images: [
       { url: pexels(29791985), alt: "Minimalist Scandinavian Wall Clock" },
-      { url: pexels(19801745), alt: "Modern wall clock on wall" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1298,7 +1446,7 @@ const products: ProductData[] = [
       { sku: "NW-EUCL-SAGE", name: "Sage Pot", costPrice: 4.5, retailPrice: 22.99, compareAtPrice: 29.99, stock: 150, weight: 0.4 },
     ],
     images: [
-      { url: pexels(5978715), alt: "Faux Eucalyptus in Ceramic Planter" },
+      { url: pexels(2092553), alt: "Minimalist ceramic planter with greenery" },
     ],
     storeIndex: 2,
     isFeatured: false,
