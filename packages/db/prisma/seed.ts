@@ -496,8 +496,8 @@ const products: ProductData[] = [
       { sku: "GH-LTNT-CORL", name: "Coral", costPrice: 1.2, retailPrice: 11.99, compareAtPrice: 15.99, stock: 450, weight: 0.03 },
     ],
     images: [
-      { url: pexels(7290710), alt: "Dewy lip and cheek tint tubes" },
-      { url: pexels(4041392), alt: "Lip tint application" },
+      { url: pexels(12587070), alt: "Cosmetic tint tube product shot" },
+      { url: pexels(13153662), alt: "Woman wearing dewy lip tint" },
     ],
     storeIndex: 0,
     isFeatured: true,
@@ -519,8 +519,8 @@ const products: ProductData[] = [
       { sku: "GH-BLSH-MAUV", name: "Mauve", costPrice: 1.8, retailPrice: 13.99, compareAtPrice: 18.99, stock: 400, weight: 0.04 },
     ],
     images: [
-      { url: pexels(2587370), alt: "Cream blush stick product" },
-      { url: pexels(3018845), alt: "Cream blush application on cheek" },
+      { url: pexels(10126006), alt: "Cream blush makeup product" },
+      { url: pexels(7510154), alt: "Blush application on cheek" },
     ],
     storeIndex: 0,
     isFeatured: true,
@@ -542,8 +542,8 @@ const products: ProductData[] = [
       { sku: "GH-BROW-DKBR", name: "Dark Brown", costPrice: 1.5, retailPrice: 12.99, compareAtPrice: 16.99, stock: 400, weight: 0.03 },
     ],
     images: [
-      { url: pexels(2661256), alt: "Tinted brow styling gel tube" },
-      { url: pexels(4620843), alt: "Brow gel application" },
+      { url: pexels(4889707), alt: "Brow gel tube with spoolie wand applicator" },
+      { url: pexels(7588357), alt: "Close-up of groomed laminated brows" },
     ],
     storeIndex: 0,
     isFeatured: true,
@@ -1074,7 +1074,7 @@ const products: ProductData[] = [
       { sku: "NW-SNST-RAIN", name: "Rainbow", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.35 },
     ],
     images: [
-      { url: "https://s.alicdn.com/@sc04/kf/Hd00b1db7213145e6827bf69e271e3617M.jpg_960x960.jpg", alt: "Sunset lamp projector with warm golden glow on wall" },
+      { url: "https://s.alicdn.com/@sc04/kf/H4b8996486e09469f99fcc652e985d17as.jpg_960x960.jpg", alt: "Sunset lamp projector casting warm orange glow" },
     ],
     storeIndex: 2,
     isFeatured: true,
@@ -1203,7 +1203,7 @@ const products: ProductData[] = [
       { sku: "NW-DORG-5PC", name: "5-Piece Set", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 80, weight: 0.7 },
     ],
     images: [
-      { url: "https://s.alicdn.com/@sc04/kf/Hab5a8a7fd34e4ca89d59798f6640fc749.png_960x960.jpg", alt: "Clear transparent acrylic desk organizer set" },
+      { url: pexels(7718714), alt: "Clear acrylic desk organizer with compartments" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1292,7 +1292,7 @@ const products: ProductData[] = [
     ],
     images: [
       { url: pexels(6954562), alt: "Ceramic Incense Waterfall Burner with smoke" },
-      { url: "https://s.alicdn.com/@sc04/kf/H8e47b747e47a4977aeb9ac180cc97a16y.jpg_960x960.jpg", alt: "Ceramic backflow incense burner piece" },
+      { url: pexels(3822622), alt: "Candles and incense for meditation" },
     ],
     storeIndex: 2,
     isFeatured: false,
@@ -1380,7 +1380,7 @@ const products: ProductData[] = [
     images: [
       { url: "https://plus.unsplash.com/premium_photo-1764687707857-966ab86c71dc?w=800&q=80", alt: "Room with LED ambient lighting" },
       { url: "https://images.unsplash.com/photo-1760999896198-b7e780e42500?w=800&q=80", alt: "RGB gaming setup" },
-      { url: "https://s.alicdn.com/@sc04/kf/Hc5a88bfc545c4fa59f7d05de9d9d19cds.jpg_960x960.jpg", alt: "Smart WiFi RGB LED strip light kit" },
+      { url: "https://s.alicdn.com/@sc04/kf/H0e73034028f24223a5c0262191618242o.jpg_960x960.jpg", alt: "RGB COB LED strip light tape close-up" },
     ],
     storeIndex: 2,
     isFeatured: false,
