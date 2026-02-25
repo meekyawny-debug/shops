@@ -41,7 +41,7 @@ export const storefrontRouter = router({
         storeSlug: z.string(),
         search: z.string().optional(),
         category: z.string().optional(),
-        sort: z.enum(["newest", "price-asc", "price-desc", "name"]).default("newest"),
+        sort: z.enum(["newest", "best-selling", "price-asc", "price-desc", "name"]).default("newest"),
         page: z.number().int().min(1).default(1),
         limit: z.number().int().min(1).max(100).default(12),
       })
@@ -67,6 +67,66 @@ export const storefrontRouter = router({
           }),
         },
       };
+
+      // Best-selling sort: rank by order revenue, then fall back to position
+      if (input.sort === "best-selling") {
+        const allProducts = await prisma.storeProduct.findMany({
+          where,
+          include: {
+            product: {
+              include: {
+                variants: { where: { isActive: true } },
+                images: { orderBy: { position: "asc" } },
+              },
+            },
+          },
+          orderBy: { position: "asc" },
+        });
+
+        // Aggregate revenue per product from non-cancelled/refunded orders
+        const revenueByProduct = new Map<string, number>();
+        const variantToProduct = new Map<string, string>();
+        for (const sp of allProducts) {
+          for (const v of sp.product.variants) {
+            variantToProduct.set(v.id, sp.productId);
+          }
+        }
+
+        const orderItems = await prisma.orderItem.findMany({
+          where: {
+            variantId: { in: [...variantToProduct.keys()] },
+            order: {
+              storeId: (await prisma.store.findUniqueOrThrow({ where: { slug: input.storeSlug } })).id,
+              status: { notIn: ["CANCELLED", "REFUNDED"] },
+            },
+          },
+          select: { variantId: true, totalPrice: true },
+        });
+
+        for (const item of orderItems) {
+          const productId = variantToProduct.get(item.variantId);
+          if (productId) {
+            revenueByProduct.set(productId, (revenueByProduct.get(productId) || 0) + Number(item.totalPrice));
+          }
+        }
+
+        // Sort: products with revenue first (desc), then no-revenue by position
+        allProducts.sort((a, b) => {
+          const revA = revenueByProduct.get(a.productId) || 0;
+          const revB = revenueByProduct.get(b.productId) || 0;
+          if (revA !== revB) return revB - revA;
+          return a.position - b.position;
+        });
+
+        const total = allProducts.length;
+        const start = (input.page - 1) * input.limit;
+        return {
+          products: allProducts.slice(start, start + input.limit),
+          total,
+          page: input.page,
+          totalPages: Math.ceil(total / input.limit),
+        };
+      }
 
       const orderBy = (() => {
         switch (input.sort) {
@@ -114,6 +174,92 @@ export const storefrontRouter = router({
         where: { slug: input.storeSlug },
       });
 
+      return prisma.storeProduct.findMany({
+        where: {
+          storeId: store.id,
+          isActive: true,
+          isFeatured: true,
+          product: { isActive: true },
+        },
+        include: {
+          product: {
+            include: {
+              variants: { where: { isActive: true } },
+              images: { orderBy: { position: "asc" } },
+            },
+          },
+        },
+        orderBy: { position: "asc" },
+        take: input.limit,
+      });
+    }),
+
+  getBestSellingProducts: publicProcedure
+    .input(z.object({ storeSlug: z.string(), limit: z.number().default(8) }))
+    .query(async ({ input }) => {
+      const store = await prisma.store.findUniqueOrThrow({
+        where: { slug: input.storeSlug },
+      });
+
+      // Aggregate revenue per variant from non-cancelled/refunded orders
+      const topVariants = await prisma.orderItem.groupBy({
+        by: ["variantId"],
+        where: {
+          order: {
+            storeId: store.id,
+            status: { notIn: ["CANCELLED", "REFUNDED"] },
+          },
+        },
+        _sum: { totalPrice: true },
+        orderBy: { _sum: { totalPrice: "desc" } },
+      });
+
+      if (topVariants.length > 0) {
+        // Map variants → products, deduplicate by productId, keep revenue rank
+        const variantIds = topVariants.map((v) => v.variantId);
+        const variants = await prisma.productVariant.findMany({
+          where: { id: { in: variantIds } },
+          select: { id: true, productId: true },
+        });
+        const variantToProduct = new Map(variants.map((v) => [v.id, v.productId]));
+
+        const seenProducts = new Set<string>();
+        const rankedProductIds: string[] = [];
+        for (const tv of topVariants) {
+          const productId = variantToProduct.get(tv.variantId);
+          if (productId && !seenProducts.has(productId)) {
+            seenProducts.add(productId);
+            rankedProductIds.push(productId);
+          }
+          if (rankedProductIds.length >= input.limit) break;
+        }
+
+        if (rankedProductIds.length > 0) {
+          const storeProducts = await prisma.storeProduct.findMany({
+            where: {
+              storeId: store.id,
+              isActive: true,
+              productId: { in: rankedProductIds },
+              product: { isActive: true },
+            },
+            include: {
+              product: {
+                include: {
+                  variants: { where: { isActive: true } },
+                  images: { orderBy: { position: "asc" } },
+                },
+              },
+            },
+          });
+
+          // Sort by revenue rank order
+          const rankMap = new Map(rankedProductIds.map((id, i) => [id, i]));
+          storeProducts.sort((a, b) => (rankMap.get(a.productId) ?? 999) - (rankMap.get(b.productId) ?? 999));
+          return storeProducts;
+        }
+      }
+
+      // Fallback: featured products (same as getFeaturedProducts)
       return prisma.storeProduct.findMany({
         where: {
           storeId: store.id,
@@ -330,7 +476,7 @@ export const storefrontRouter = router({
       });
 
       const subtotal = orderItems.reduce((sum, item) => sum + item.totalPrice, 0);
-      const shippingCost = subtotal >= 75 ? 0 : 5.99;
+      const shippingCost = subtotal >= 40 ? 0 : 5.99;
       const tax = subtotal * 0.08;
       const total = subtotal + shippingCost + tax;
 

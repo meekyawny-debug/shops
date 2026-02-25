@@ -1,55 +1,82 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@shops/ui";
 import { useStore } from "@/lib/store-context";
 
 const storeHeroes: Record<
   string,
-  { tagline: string; subtitle: string; gradient: string }
+  {
+    label: string;
+    tagline: string;
+    subtitle: string;
+    primaryCta: string;
+    secondaryCta: string;
+  }
 > = {
   glowhaven: {
-    tagline: "Glow From Within",
+    label: "Clean Beauty Essentials",
+    tagline: "Bestselling Beauty\nUnder $35",
     subtitle:
-      "Discover clean beauty essentials that let your natural radiance shine through.",
-    gradient: "from-pink-100 via-rose-50 to-white",
+      "Trending skincare & tools loved by 25,000+ customers. Free shipping on orders $40+.",
+    primaryCta: "Shop Bestsellers",
+    secondaryCta: "View All",
   },
   aurae: {
-    tagline: "Timeless Elegance",
+    label: "Handcrafted Fine Jewelry",
+    tagline: "Timeless\nElegance",
     subtitle:
-      "Handcrafted fine jewelry designed for everyday luxury and lasting beauty.",
-    gradient: "from-amber-50 via-yellow-50 to-white",
+      "Handcrafted fine jewelry designed for everyday luxury and lasting beauty. Each piece tells your story.",
+    primaryCta: "Explore Pieces",
+    secondaryCta: "New Arrivals",
   },
   nestwell: {
-    tagline: "Make It Home",
+    label: "Curated Home Decor",
+    tagline: "Make It\nHome",
     subtitle:
-      "Curated home decor that transforms your space into a warm, inviting sanctuary.",
-    gradient: "from-orange-50 via-amber-50 to-white",
+      "Curated home decor that transforms your space into a warm, inviting sanctuary. Beauty meets function.",
+    primaryCta: "Shop Now",
+    secondaryCta: "View Collections",
   },
 };
 
 export function HeroSection() {
   const store = useStore();
   const hero = storeHeroes[store.slug] || {
-    tagline: `Welcome to ${store.name}`,
-    subtitle: "Discover our curated collection.",
-    gradient: "from-muted to-background",
+    label: "Curated Collection",
+    tagline: `Welcome to\n${store.name}`,
+    subtitle: "Discover our curated collection of premium products.",
+    primaryCta: "Shop Now",
+    secondaryCta: "Browse All",
+  };
+
+  const scrollToProducts = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className={`bg-gradient-to-b ${hero.gradient} py-20 md:py-32`}>
-      <div className="container mx-auto px-4 text-center">
-        <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-6">
-          {hero.tagline}
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          {hero.subtitle}
-        </p>
-        <Link href={`/${store.slug}/products`}>
-          <Button size="lg" className="px-8">
-            Shop Now
-          </Button>
-        </Link>
+    <section className="relative overflow-hidden md:min-h-[35vh] flex items-center">
+      <div className="container mx-auto px-4 relative z-10 py-5 md:py-14">
+        <div className="max-w-3xl">
+          <span className="inline-block text-sm font-medium uppercase tracking-widest text-primary/70 mb-2 md:mb-4">
+            {hero.label}
+          </span>
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-2 md:mb-4 whitespace-pre-line leading-[1.1]">
+            {hero.tagline}
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 md:mb-8 leading-relaxed line-clamp-1 sm:line-clamp-none">
+            {hero.subtitle}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button
+              size="lg"
+              className="px-8 h-12 text-base"
+              onClick={scrollToProducts}
+            >
+              {hero.primaryCta}
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );
