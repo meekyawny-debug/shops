@@ -28,6 +28,12 @@ const colorMap: Record<string, string> = {
   blush: "bg-pink-200",
   amber: "bg-amber-500",
   terracotta: "bg-orange-700",
+  emerald: "bg-emerald-600",
+  peach: "bg-orange-200",
+  berry: "bg-rose-700",
+  mauve: "bg-fuchsia-300",
+  honey: "bg-amber-300",
+  wood: "bg-amber-600",
   // Base colors
   black: "bg-black",
   white: "bg-white border border-gray-200",
