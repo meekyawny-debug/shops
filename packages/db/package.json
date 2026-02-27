@@ -15,7 +15,10 @@
     "push": "prisma db push",
     "seed": "tsx prisma/seed.ts",
     "studio": "prisma studio",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "shopify-migrate": "tsx prisma/shopify-migrate.ts",
+    "shopify-theme": "tsx prisma/shopify-theme-customize.ts",
+    "shopify-launch": "tsx prisma/shopify-launch-ready.ts"
   },
   "dependencies": {
     "@prisma/client": "^6"
