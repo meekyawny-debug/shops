@@ -46,29 +46,8 @@ function pexels(id: number): string {
 
 const products: ProductData[] = [
   // ═══════════════════════════════════════════════════════════
-  // GLOWHAVEN — Beauty / Skincare (23 products)
+  // GLOWHAVEN — Beauty / Skincare (21 products)
   // ═══════════════════════════════════════════════════════════
-  {
-    title: "Peeling Exfoliating Serum",
-    description:
-      "Gentle AHA/BHA peeling serum for smooth, radiant skin. Removes dead skin cells and unclogs pores for a glass-skin finish.",
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/facial-exfoliating-serum-repair-hyaluronic-acid-facial-skin-care-30ml-p-1514435521135783936.html",
-    supplierProductId: "1514435521135783936",
-    baseCost: 4.5,
-    category: "Skincare",
-    tags: ["serum", "exfoliant", "glass-skin", "aha", "bha"],
-    variants: [
-      { sku: "GH-PEEL-30ML", name: "30ml", costPrice: 4.5, retailPrice: 24.99, compareAtPrice: 32.99, stock: 100, weight: 0.15 },
-    ],
-    images: [
-      { url: pexels(30968097), alt: "Peeling Exfoliating Serum bottle" },
-      { url: pexels(7321723), alt: "Peeling Exfoliating Serum product" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 15,
-  },
   {
     title: "LED Light Therapy Face Mask",
     description:
@@ -176,27 +155,6 @@ const products: ProductData[] = [
     position: 10,
   },
   {
-    title: "Professional Derma Pen Microneedling Device",
-    description:
-      "Adjustable needle depth (0.25-2.0mm) electric microneedling pen for collagen induction, scar reduction, and product absorption. Includes 12-pin cartridges.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005002839897827.html",
-    supplierProductId: "1005002839897827",
-    baseCost: 12.0,
-    category: "Tools",
-    tags: ["derma-pen", "microneedling", "collagen", "anti-aging", "professional"],
-    variants: [
-      { sku: "GH-DRMP-STD", name: "Device + 3 Cartridges", costPrice: 12.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 80, weight: 0.25 },
-      { sku: "GH-DRMP-PRO", name: "Device + 7 Cartridges", costPrice: 15.0, retailPrice: 59.99, compareAtPrice: 79.99, stock: 50, weight: 0.3 },
-    ],
-    images: [
-      { url: "https://images.unsplash.com/flagged/photo-1570698500117-0c1785821fe1?w=800&q=80", alt: "Derma Pen Microneedling Device" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 21,
-  },
-  {
     title: "Peel-Off Hydro Jelly Face Mask Kit",
     description:
       "Salon-grade peel-off jelly mask powder kit. Mix, apply, and peel for deeply hydrated, bouncy skin. Includes mixing bowl and spatula. 6 treatments per jar.",
@@ -219,48 +177,6 @@ const products: ProductData[] = [
     storeIndex: 0,
     isFeatured: false,
     position: 11,
-  },
-  {
-    title: "Electric Silicone Face Cleansing Brush",
-    description:
-      "Sonic vibration silicone cleansing brush with 5 speed settings. Waterproof, USB-rechargeable. Deep cleans pores while being gentle on sensitive skin.",
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/silicone-face-cleansing-brush-sonic-vibration-p-1457892610235678720.html",
-    supplierProductId: "1457892610235678720",
-    baseCost: 6.5,
-    category: "Tools",
-    tags: ["cleansing-brush", "sonic", "silicone", "pore-cleaner", "electric"],
-    variants: [
-      { sku: "GH-CLBR-PINK", name: "Pink", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 120, weight: 0.15 },
-      { sku: "GH-CLBR-MINT", name: "Mint", costPrice: 6.5, retailPrice: 24.99, compareAtPrice: 34.99, stock: 120, weight: 0.15 },
-    ],
-    images: [
-      { url: pexels(9775328), alt: "Silicone Face Cleansing Brush" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 17,
-  },
-  {
-    title: "2.5% Retinol Anti-Aging Night Cream",
-    description:
-      "Encapsulated retinol night cream with peptides and squalane. Reduces fine lines, firms skin, and accelerates cell turnover while you sleep. Non-irritating formula.",
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/retinol-anti-aging-night-cream-moisturizer-p-1523891045129830400.html",
-    supplierProductId: "1523891045129830400",
-    baseCost: 4.8,
-    category: "Skincare",
-    tags: ["retinol", "anti-aging", "night-cream", "peptides", "firming"],
-    variants: [
-      { sku: "GH-RETN-50ML", name: "50ml", costPrice: 4.8, retailPrice: 19.99, compareAtPrice: 28.99, stock: 160, weight: 0.18 },
-    ],
-    images: [
-      { url: pexels(8140902), alt: "Retinol Anti-Aging Night Cream" },
-      { url: pexels(3785147), alt: "Night cream jar on vanity" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 18,
   },
   {
     title: "Honey Lip Sleeping Mask",
@@ -369,29 +285,6 @@ const products: ProductData[] = [
     position: 3,
   },
   {
-    title: "Nano Ionic Facial Steamer",
-    description:
-      "Professional-grade nano ionic facial steamer that produces ultra-fine steam particles 10x more effective at penetrating pores than regular steam. Large water tank for 15+ minutes of continuous steaming. Deep cleanses, detoxifies, and enhances product absorption.",
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/nano-ionic-facial-steamer-moisturizing-p-1489201653045288960.html",
-    supplierProductId: "1489201653045288960",
-    baseCost: 11.0,
-    category: "Tools",
-    tags: ["facial-steamer", "nano-ionic", "pore-cleansing", "spa", "self-care"],
-    variants: [
-      { sku: "GH-STMR-WHITE", name: "White", costPrice: 11.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 70, weight: 0.65 },
-      { sku: "GH-STMR-PINK", name: "Pink", costPrice: 11.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 70, weight: 0.65 },
-    ],
-    images: [
-      { url: pexels(6915261), alt: "Nano ionic facial steamer device with mist" },
-      { url: pexels(3738349), alt: "Woman receiving facial steamer treatment" },
-      { url: pexels(6811364), alt: "Facial steam treatment with visible mist" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 20,
-  },
-  {
     title: "Silk Heatless Curling Ribbon Set",
     description:
       "Premium satin heatless curling ribbon with scrunchies and styling clips. Wrap damp hair before bed and wake up with bouncy, defined curls — zero heat damage. Includes silk scrunchie, curling rod, and clips in a reusable pouch.",
@@ -412,49 +305,6 @@ const products: ProductData[] = [
     storeIndex: 0,
     isFeatured: true,
     position: 5,
-  },
-  {
-    title: "22-Momme Mulberry Silk Beauty Pillowcase",
-    description:
-      "100% Grade 6A mulberry silk pillowcase in 22-momme weight with hidden zipper closure. Reduces hair breakage, prevents sleep creases, and helps skin retain moisture overnight. Hypoallergenic and temperature-regulating.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005002352814506.html",
-    supplierProductId: "1005002352814506",
-    baseCost: 6.5,
-    category: "Beauty Sleep",
-    tags: ["silk-pillowcase", "mulberry-silk", "beauty-sleep", "anti-wrinkle", "hair-care"],
-    variants: [
-      { sku: "GH-SILK-IVORY", name: "Ivory - Standard", costPrice: 6.5, retailPrice: 34.99, compareAtPrice: 44.99, stock: 150, weight: 0.2 },
-      { sku: "GH-SILK-BLUSH", name: "Blush - Standard", costPrice: 6.5, retailPrice: 34.99, compareAtPrice: 44.99, stock: 150, weight: 0.2 },
-      { sku: "GH-SILK-CHARCOAL", name: "Charcoal - Standard", costPrice: 6.5, retailPrice: 34.99, compareAtPrice: 44.99, stock: 150, weight: 0.2 },
-    ],
-    images: [
-      { url: pexels(8465948), alt: "Smooth cream silk satin fabric" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 19,
-  },
-  {
-    title: "Ultrasonic Facial Skin Scrubber",
-    description:
-      "Rechargeable ultrasonic skin spatula with 28,000 Hz vibrations. 4 modes: deep cleansing, nutrient infusion, EMS lifting, and moisture mode. Stainless steel spatula gently exfoliates, removes blackheads, and pushes serums deeper into skin. USB-C rechargeable.",
-    supplierType: SupplierType.CJ_DROPSHIPPING,
-    supplierUrl: "https://cjdropshipping.com/product/ultrasonic-skin-scrubber-facial-peeling-ems-p-1501823940123598848.html",
-    supplierProductId: "1501823940123598848",
-    baseCost: 8.0,
-    category: "Tools",
-    tags: ["skin-scrubber", "ultrasonic", "ems", "blackhead-removal", "pore-cleaner"],
-    variants: [
-      { sku: "GH-SCRB-WHITE", name: "White", costPrice: 8.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 100, weight: 0.12 },
-      { sku: "GH-SCRB-GOLD", name: "Gold", costPrice: 8.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 100, weight: 0.12 },
-    ],
-    images: [
-      { url: pexels(6621355), alt: "Ultrasonic Facial Skin Scrubber" },
-    ],
-    storeIndex: 0,
-    isFeatured: false,
-    position: 22,
   },
   {
     title: "Hydra-Plump Crystal Lip Oil",
@@ -550,8 +400,112 @@ const products: ProductData[] = [
     position: 12,
   },
 
+  {
+    title: "Silicone Scalp Massager",
+    description:
+      "Ergonomic handheld scalp massager with soft silicone bristles. Stimulates blood flow, promotes hair growth, and relieves tension headaches. Use in the shower with shampoo for a deep-clean, spa-like scalp scrub. The viral shower routine essential seen on millions of TikTok videos.",
+    supplierType: SupplierType.CJ_DROPSHIPPING,
+    supplierUrl: "https://cjdropshipping.com/product/silicone-scalp-massager-shampoo-brush-p-1500000000000000001.html",
+    supplierProductId: "1500000000000000001",
+    baseCost: 0.8,
+    category: "Hair Care",
+    tags: ["scalp-massager", "silicone", "shower", "hair-growth", "tiktok-viral"],
+    variants: [
+      { sku: "GH-SCMS-PINK", name: "Pink", costPrice: 0.8, retailPrice: 8.99, compareAtPrice: 14.99, stock: 500, weight: 0.06 },
+      { sku: "GH-SCMS-GREEN", name: "Sage Green", costPrice: 0.8, retailPrice: 8.99, compareAtPrice: 14.99, stock: 500, weight: 0.06 },
+      { sku: "GH-SCMS-PURPL", name: "Purple", costPrice: 0.8, retailPrice: 8.99, compareAtPrice: 14.99, stock: 500, weight: 0.06 },
+    ],
+    images: [
+      { url: pexels(5269515), alt: "Woman washing hair in shower with scalp massager" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 15,
+  },
+  {
+    title: "Microneedle Acne Patches (36 Pack)",
+    description:
+      "Self-dissolving microneedle pimple patches that deliver salicylic acid and niacinamide directly into blemishes. 36 patches per pack. Works overnight on cystic, hormonal, and stubborn acne. The #1 most-sold beauty item on TikTok Shop.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007500000001.html",
+    supplierProductId: "1005007500000001",
+    baseCost: 0.8,
+    category: "Skincare",
+    tags: ["acne-patches", "microneedle", "pimple", "salicylic-acid", "tiktok-viral"],
+    variants: [
+      { sku: "GH-ACNP-36PK", name: "36 Pack", costPrice: 0.8, retailPrice: 9.99, compareAtPrice: 14.99, stock: 600, weight: 0.02 },
+    ],
+    images: [
+      { url: pexels(9038626), alt: "Woman with clear glowing skin after acne treatment" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 17,
+  },
+  {
+    title: "Rosemary Hair Growth Oil",
+    description:
+      "Cold-pressed rosemary essential oil blend for hair growth and scalp health. Stimulates follicles, reduces hair loss, and adds shine. Apply to scalp before bed or mix into shampoo. The 'hair growth journey' staple trending across TikTok with millions of before-and-after videos.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007500000002.html",
+    supplierProductId: "1005007500000002",
+    baseCost: 2.0,
+    category: "Hair Care",
+    tags: ["rosemary-oil", "hair-growth", "scalp-care", "essential-oil", "tiktok-viral"],
+    variants: [
+      { sku: "GH-RSMY-60ML", name: "60ml", costPrice: 2.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 400, weight: 0.12 },
+    ],
+    images: [
+      { url: pexels(4856564), alt: "Amber glass bottle with green herbs — rosemary oil" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 18,
+  },
+  {
+    title: "DIY Lash Extension Cluster Kit",
+    description:
+      "Professional-quality lash cluster kit with 72 individual lash segments in mixed lengths (10mm-16mm), bond-and-seal duo, and precision applicator tweezers. Achieve salon-quality lash extensions at home that last 5-7 days. The 'salon lashes at home' trend exploding on TikTok.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007500000003.html",
+    supplierProductId: "1005007500000003",
+    baseCost: 2.5,
+    category: "Makeup",
+    tags: ["lash-clusters", "diy-lashes", "lash-extensions", "at-home", "tiktok-viral"],
+    variants: [
+      { sku: "GH-LSHK-NATRL", name: "Natural Mix", costPrice: 2.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 350, weight: 0.05 },
+      { sku: "GH-LSHK-DRAMA", name: "Dramatic Mix", costPrice: 2.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 350, weight: 0.05 },
+    ],
+    images: [
+      { url: pexels(5128316), alt: "Eyelash extension tools and tweezers on gold tray" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 19,
+  },
+  {
+    title: "LED Teeth Whitening Kit",
+    description:
+      "At-home LED teeth whitening kit with blue light accelerator mouthpiece and 3 whitening gel syringes. Non-sensitive hydrogen peroxide formula whitens up to 8 shades in 7 days. USB rechargeable, 10-minute sessions. The viral smile transformation trending on TikTok.",
+    supplierType: SupplierType.CJ_DROPSHIPPING,
+    supplierUrl: "https://cjdropshipping.com/product/led-teeth-whitening-kit-blue-light-p-1500000000000000002.html",
+    supplierProductId: "1500000000000000002",
+    baseCost: 4.0,
+    category: "Oral Care",
+    tags: ["teeth-whitening", "led", "smile", "whitening-kit", "tiktok-viral"],
+    variants: [
+      { sku: "GH-TWHT-KIT", name: "Full Kit", costPrice: 4.0, retailPrice: 19.99, compareAtPrice: 34.99, stock: 200, weight: 0.15 },
+    ],
+    images: [
+      { url: pexels(6529110), alt: "LED blue light teeth whitening treatment" },
+    ],
+    storeIndex: 0,
+    isFeatured: true,
+    position: 20,
+  },
+
   // ═══════════════════════════════════════════════════════════
-  // AURAE — Jewelry / Accessories (22 products)
+  // AURAE — Jewelry / Accessories (19 products)
   // ═══════════════════════════════════════════════════════════
   {
     title: "Herringbone CZ Pendant Necklace",
@@ -620,28 +574,6 @@ const products: ProductData[] = [
     storeIndex: 1,
     isFeatured: true,
     position: 2,
-  },
-  {
-    title: "Vintage Gold Signet Pinky Ring",
-    description:
-      "Minimalist vintage-inspired signet ring with a high-polish oval face. Stackable, tarnish-resistant. Old-money aesthetic essential.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005008802889794.html",
-    supplierProductId: "1005008802889794",
-    baseCost: 2.5,
-    category: "Rings",
-    tags: ["signet", "vintage", "stackable", "old-money", "minimalist"],
-    variants: [
-      { sku: "AU-SGNT-6G", name: "Size 6 - Gold", costPrice: 2.5, retailPrice: 12.99, compareAtPrice: 18.99, stock: 200, weight: 0.01 },
-      { sku: "AU-SGNT-7G", name: "Size 7 - Gold", costPrice: 2.5, retailPrice: 12.99, compareAtPrice: 18.99, stock: 200, weight: 0.01 },
-      { sku: "AU-SGNT-8G", name: "Size 8 - Gold", costPrice: 2.5, retailPrice: 12.99, compareAtPrice: 18.99, stock: 200, weight: 0.01 },
-    ],
-    images: [
-      { url: pexels(10944883), alt: "Vintage Gold Signet Ring" },
-    ],
-    storeIndex: 1,
-    isFeatured: false,
-    position: 3,
   },
   {
     title: "3-Layer Gold Chain Necklace Set",
@@ -725,7 +657,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: true,
-    position: 6,
+    position: 7,
   },
   {
     title: "18K Gold Croissant Dome Ring",
@@ -747,7 +679,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: true,
-    position: 5,
+    position: 6,
   },
   {
     title: "Dainty Butterfly Charm Anklet",
@@ -832,7 +764,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: true,
-    position: 7,
+    position: 8,
   },
   {
     title: "18K Gold Twist Chunky Hoop Earrings",
@@ -854,29 +786,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: false,
-    position: 13,
-  },
-  {
-    title: "Flat Herringbone Chain Necklace",
-    description:
-      "Sleek, flat herringbone chain with a liquid-gold drape. The sophisticated everyday necklace that layers beautifully or stuns alone. PVD waterproof coating.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005004260243887.html",
-    supplierProductId: "1005004260243887",
-    baseCost: 4.5,
-    category: "Necklaces",
-    tags: ["herringbone", "chain", "flat", "waterproof", "everyday"],
-    variants: [
-      { sku: "AU-HERB-16G", name: '16" - Gold', costPrice: 4.5, retailPrice: 21.99, compareAtPrice: 29.99, stock: 180, weight: 0.03 },
-      { sku: "AU-HERB-18G", name: '18" - Gold', costPrice: 5.0, retailPrice: 23.99, compareAtPrice: 32.99, stock: 180, weight: 0.04 },
-      { sku: "AU-HERB-16S", name: '16" - Silver', costPrice: 4.5, retailPrice: 21.99, compareAtPrice: 29.99, stock: 180, weight: 0.03 },
-    ],
-    images: [
-      { url: pexels(1454168), alt: "Flat Herringbone Chain Necklace" },
-    ],
-    storeIndex: 1,
-    isFeatured: false,
-    position: 14,
+    position: 12,
   },
   {
     title: "Baroque Freshwater Pearl Pendant Necklace",
@@ -897,7 +807,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: false,
-    position: 15,
+    position: 13,
   },
   {
     title: "Chunky Gold Dome Adjustable Ring",
@@ -919,7 +829,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: false,
-    position: 16,
+    position: 14,
   },
   {
     title: "Zodiac Constellation Layering Necklace Set",
@@ -940,7 +850,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: false,
-    position: 17,
+    position: 15,
   },
   {
     title: "Cuban Link Chain Bracelet - Unisex",
@@ -962,82 +872,57 @@ const products: ProductData[] = [
     ],
     storeIndex: 1,
     isFeatured: false,
+    position: 17,
+  },
+
+  {
+    title: "Magnetic Couple Heart Bracelet Set",
+    description:
+      "Matching his-and-hers bracelets with magnetic heart halves that snap together. Braided leather cord with stainless steel magnetic clasp. The viral 'matching with my bf' couples accessory blowing up on TikTok. Perfect anniversary, Valentine's, or 'just because' gift.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007600000001.html",
+    supplierProductId: "1005007600000001",
+    baseCost: 1.5,
+    category: "Bracelets",
+    tags: ["couple-bracelet", "magnetic", "heart", "matching", "tiktok-viral"],
+    variants: [
+      { sku: "AU-MGHB-BKWH", name: "Black & White Set", costPrice: 1.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 400, weight: 0.04 },
+      { sku: "AU-MGHB-BKRD", name: "Black & Red Set", costPrice: 1.5, retailPrice: 16.99, compareAtPrice: 24.99, stock: 400, weight: 0.04 },
+    ],
+    images: [
+      { url: pexels(1667850), alt: "Couple holding hands wearing matching bracelets" },
+    ],
+    storeIndex: 1,
+    isFeatured: true,
+    position: 16,
+  },
+  {
+    title: "Gold Stackable Rings Set (8 Piece)",
+    description:
+      "Curated set of 8 dainty gold-plated stacking rings in varying textures — twisted rope, smooth band, CZ accent, hammered, beaded, signet mini, knot, and wave. Mix, match, and stack across all fingers. 18K PVD gold-plated stainless steel, waterproof and tarnish-free. Ring stacking is trending hard on TikTok right now.",
+    supplierType: SupplierType.ALIEXPRESS,
+    supplierUrl: "https://www.aliexpress.com/item/1005007600000002.html",
+    supplierProductId: "1005007600000002",
+    baseCost: 2.5,
+    category: "Rings",
+    tags: ["stacking-rings", "ring-set", "gold", "dainty", "tiktok-viral"],
+    variants: [
+      { sku: "AU-STKR-6G", name: "Size 6 - Gold", costPrice: 2.5, retailPrice: 14.99, compareAtPrice: 24.99, stock: 300, weight: 0.03 },
+      { sku: "AU-STKR-7G", name: "Size 7 - Gold", costPrice: 2.5, retailPrice: 14.99, compareAtPrice: 24.99, stock: 300, weight: 0.03 },
+      { sku: "AU-STKR-8G", name: "Size 8 - Gold", costPrice: 2.5, retailPrice: 14.99, compareAtPrice: 24.99, stock: 300, weight: 0.03 },
+      { sku: "AU-STKR-6S", name: "Size 6 - Silver", costPrice: 2.5, retailPrice: 14.99, compareAtPrice: 24.99, stock: 250, weight: 0.03 },
+      { sku: "AU-STKR-7S", name: "Size 7 - Silver", costPrice: 2.5, retailPrice: 14.99, compareAtPrice: 24.99, stock: 250, weight: 0.03 },
+    ],
+    images: [
+      { url: pexels(1616096), alt: "Collection of gold rings displayed together" },
+    ],
+    storeIndex: 1,
+    isFeatured: true,
     position: 18,
-  },
-  {
-    title: "18K Gold Layered Waist Chain",
-    description:
-      "Double-layer body chain in 18K PVD gold-plated stainless steel. Adjustable lobster-clasp closure fits over clothing or on bare skin. Waterproof, tarnish-free, and lightweight enough for all-day festival or beach wear.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005006123456789.html",
-    supplierProductId: "1005006123456789",
-    baseCost: 3.5,
-    category: "Body Jewelry",
-    tags: ["waist-chain", "body-chain", "gold", "layered", "festival"],
-    variants: [
-      { sku: "AU-WSTC-SG", name: "Small - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
-      { sku: "AU-WSTC-MG", name: "Medium - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
-      { sku: "AU-WSTC-LG", name: "Large - Gold", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 200, weight: 0.04 },
-      { sku: "AU-WSTC-SS", name: "Small - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
-      { sku: "AU-WSTC-MS", name: "Medium - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
-      { sku: "AU-WSTC-LS", name: "Large - Silver", costPrice: 3.5, retailPrice: 19.99, compareAtPrice: 29.99, stock: 150, weight: 0.04 },
-    ],
-    images: [
-      { url: "https://cdn.shopify.com/s/files/1/0478/0847/9387/files/two-layer-dainty-waist-chain-in-gold-n231-685693.jpg", alt: "18K Gold Layered Waist Chain front view" },
-      { url: "https://cdn.shopify.com/s/files/1/0478/0847/9387/files/two-layer-dainty-waist-chain-in-gold-n231-374512.jpg", alt: "18K Gold Layered Waist Chain side view" },
-    ],
-    storeIndex: 1,
-    isFeatured: false,
-    position: 19,
-  },
-  {
-    title: "Pearl Bow Bag Charm",
-    description:
-      "Elegant pearl and bow keychain charm with gold-tone hardware. Clip onto handbags, tote bags, or use as a statement keyring. Faux-pearl beads with a satin ribbon bow — the perfect finishing touch to any outfit.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005006234567890.html",
-    supplierProductId: "1005006234567890",
-    baseCost: 2.0,
-    category: "Accessories",
-    tags: ["bag-charm", "pearl", "bow", "keychain", "handbag"],
-    variants: [
-      { sku: "AU-PBCH-PGB", name: "Pearl & Gold Bow", costPrice: 2.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 300, weight: 0.03 },
-      { sku: "AU-PBCH-PHB", name: "Pearl Heart & Bow", costPrice: 2.0, retailPrice: 14.99, compareAtPrice: 22.99, stock: 300, weight: 0.03 },
-    ],
-    images: [
-      { url: "https://cdn.shopify.com/s/files/1/1768/7757/files/22715307_08a715ad-446a-47e1-b41a-99e485a8e451.jpg?v=1734029171", alt: "Pearl Bow Bag Charm on handbag" },
-      { url: "https://cdn.shopify.com/s/files/1/1768/7757/files/22715307_46b90e48-fe78-4477-a3cf-68c816ecdacb.jpg?v=1734029171", alt: "Pearl Bow Bag Charm close-up" },
-    ],
-    storeIndex: 1,
-    isFeatured: false,
-    position: 20,
-  },
-  {
-    title: "Pearl & Crystal Bobby Pin Set — 18 Pieces",
-    description:
-      "Luxe set of 18 decorative bobby pins featuring faux pearls, tiny crystals, and minimalist gold-tone clips. Mix and match styles for bridal updos, everyday half-up looks, or accent braids. Comes in a velvet pouch.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/32850636511.html",
-    supplierProductId: "32850636511",
-    baseCost: 1.85,
-    category: "Hair Accessories",
-    tags: ["bobby-pins", "pearl", "crystal", "bridal", "hair-clips"],
-    variants: [
-      { sku: "AU-BPIN-GOLD", name: "Gold Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
-      { sku: "AU-BPIN-SILVER", name: "Silver Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
-      { sku: "AU-BPIN-ROSE", name: "Rose Gold Set", costPrice: 1.85, retailPrice: 16.99, compareAtPrice: 24.99, stock: 250, weight: 0.05 },
-    ],
-    images: [
-      { url: "https://cdn.shopify.com/s/files/1/0286/8926/8867/products/Nume-Clips9987_1.jpg", alt: "Pearl & Crystal Bobby Pin Set arranged" },
-      { url: "https://cdn.shopify.com/s/files/1/0286/8926/8867/products/NUME-CLIPS-FINAL3569_1.jpg", alt: "Pearl & Crystal Bobby Pin Set in hair" },
-    ],
-    storeIndex: 1,
-    isFeatured: false,
-    position: 21,
   },
 
   // ═══════════════════════════════════════════════════════════
-  // NESTWELL — Home Decor / Cozy Living (24 products)
+  // NESTWELL — Home Decor / Cozy Living (17 products)
   // ═══════════════════════════════════════════════════════════
   {
     title: "Rain Cloud Aroma Diffuser",
@@ -1057,7 +942,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 0,
+    position: 7,
   },
   {
     title: "Sunset Lamp Projector",
@@ -1074,11 +959,11 @@ const products: ProductData[] = [
       { sku: "NW-SNST-RAIN", name: "Rainbow", costPrice: 8.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.35 },
     ],
     images: [
-      { url: "https://s.alicdn.com/@sc04/kf/H4b8996486e09469f99fcc652e985d17as.jpg_960x960.jpg", alt: "Sunset lamp projector casting warm orange glow" },
+      { url: "https://images.unsplash.com/photo-1743192323078-e87254f1a625?w=800&q=80", alt: "Lamp casting warm sunset glow on wall" },
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 1,
+    position: 0,
   },
   {
     title: "Mushroom LED Table Lamp",
@@ -1100,27 +985,6 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 2,
-  },
-  {
-    title: "Floating Cloud Wall Shelf",
-    description:
-      "Whimsical cloud-shaped floating shelf for nursery, bedroom, or bathroom. Sturdy MDF construction with invisible mounting hardware. Holds up to 10 lbs.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005005113246946.html",
-    supplierProductId: "1005005113246946",
-    baseCost: 8.5,
-    category: "Wall Decor",
-    tags: ["cloud-shelf", "floating", "nursery", "whimsical", "wall-shelf"],
-    variants: [
-      { sku: "NW-CLSH-WHITE", name: "White", costPrice: 8.5, retailPrice: 29.99, compareAtPrice: 39.99, stock: 80, weight: 0.9 },
-      { sku: "NW-CLSH-WOOD", name: "Natural Wood", costPrice: 9.0, retailPrice: 32.99, compareAtPrice: 42.99, stock: 60, weight: 0.95 },
-    ],
-    images: [
-      { url: "https://images.unsplash.com/photo-1745636624902-0c11c981d71e?w=800&q=80", alt: "Cloud shelf in cozy nursery" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
     position: 3,
   },
   {
@@ -1142,8 +1006,8 @@ const products: ProductData[] = [
       { url: pexels(4635231), alt: "Nordic Knot Throw Pillow" },
     ],
     storeIndex: 2,
-    isFeatured: true,
-    position: 4,
+    isFeatured: false,
+    position: 11,
   },
   {
     title: "Hand-Knit Chunky Knit Throw Blanket",
@@ -1166,7 +1030,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: false,
-    position: 5,
+    position: 15,
   },
   {
     title: "Hand-Poured Soy Candle Set (3 Pack)",
@@ -1186,7 +1050,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 7,
+    position: 4,
   },
   {
     title: "Dried Pampas Grass Bouquet",
@@ -1208,7 +1072,7 @@ const products: ProductData[] = [
       { url: pexels(13462700), alt: "Pampas grass by mirror" },
     ],
     storeIndex: 2,
-    isFeatured: false,
+    isFeatured: true,
     position: 8,
   },
   {
@@ -1230,30 +1094,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 5,
-  },
-  {
-    title: "Japanese Waffle Weave Bath Towel Set",
-    description:
-      "Ultra-absorbent, quick-dry waffle-weave towels in the Japanese minimalist style. Set includes 2 bath towels and 2 hand towels. Lightweight and lint-free.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005002476918030.html",
-    supplierProductId: "1005002476918030",
-    baseCost: 10.0,
-    category: "Textiles",
-    tags: ["waffle-towel", "japanese", "bath-towel", "quick-dry", "minimalist"],
-    variants: [
-      { sku: "NW-WAFL-WHITE", name: "White", costPrice: 10.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 80, weight: 0.8 },
-      { sku: "NW-WAFL-BEIGE", name: "Oat Beige", costPrice: 10.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 80, weight: 0.8 },
-      { sku: "NW-WAFL-SAGE", name: "Sage", costPrice: 10.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 80, weight: 0.8 },
-    ],
-    images: [
-      { url: pexels(12679), alt: "Waffle Weave Bath Towel Set" },
-      { url: pexels(271711), alt: "Stack of towels on rack" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
-    position: 10,
+    position: 9,
   },
   {
     title: "Ceramic Incense Waterfall Burner",
@@ -1275,29 +1116,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 6,
-  },
-  {
-    title: "Minimalist Adhesive Wall Hook Set (8 Pack)",
-    description:
-      "Damage-free adhesive hooks with a sleek Nordic design. Each holds up to 15 lbs. Perfect for towels, bags, keys, and coats. Renter-friendly, no drilling.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005005250267247.html",
-    supplierProductId: "1005005250267247",
-    baseCost: 3.0,
-    category: "Organization",
-    tags: ["wall-hooks", "adhesive", "minimalist", "renter-friendly", "nordic"],
-    variants: [
-      { sku: "NW-HOOK-WHITE", name: "White (8 pack)", costPrice: 3.0, retailPrice: 12.99, compareAtPrice: 18.99, stock: 250, weight: 0.2 },
-      { sku: "NW-HOOK-BLACK", name: "Black (8 pack)", costPrice: 3.0, retailPrice: 12.99, compareAtPrice: 18.99, stock: 250, weight: 0.2 },
-      { sku: "NW-HOOK-WOOD", name: "Wood Grain (8 pack)", costPrice: 3.5, retailPrice: 14.99, compareAtPrice: 19.99, stock: 200, weight: 0.22 },
-    ],
-    images: [
-      { url: pexels(4846383), alt: "Minimalist Adhesive Wall Hooks" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
-    position: 12,
+    position: 2,
   },
   {
     title: "Boho Macrame Round Wall Mirror",
@@ -1340,7 +1159,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 14,
+    position: 5,
   },
   {
     title: "Smart WiFi RGB LED Strip Lights (16ft / 5m Kit)",
@@ -1359,55 +1178,10 @@ const products: ProductData[] = [
     images: [
       { url: "https://plus.unsplash.com/premium_photo-1764687707857-966ab86c71dc?w=800&q=80", alt: "Room with LED ambient lighting" },
       { url: "https://images.unsplash.com/photo-1760999896198-b7e780e42500?w=800&q=80", alt: "RGB gaming setup" },
-      { url: "https://s.alicdn.com/@sc04/kf/H0e73034028f24223a5c0262191618242o.jpg_960x960.jpg", alt: "RGB COB LED strip light tape close-up" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
-    position: 15,
-  },
-  {
-    title: "Silent Minimalist Scandinavian Wall Clock",
-    description:
-      "12-inch modern wall clock with a clean, minimal face in Scandinavian design. Silent quartz movement — no ticking. Available in matte black, white, or wood-tone. Lightweight with single-nail mounting.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/4000074356330.html",
-    supplierProductId: "4000074356330",
-    baseCost: 9.0,
-    category: "Wall Decor",
-    tags: ["wall-clock", "minimalist", "scandinavian", "silent", "modern"],
-    variants: [
-      { sku: "NW-CLCK-BLACK", name: "Matte Black", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 100, weight: 0.45 },
-      { sku: "NW-CLCK-WHITE", name: "White", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 44.99, stock: 100, weight: 0.45 },
-      { sku: "NW-CLCK-WOOD", name: "Wood Tone", costPrice: 9.5, retailPrice: 36.99, compareAtPrice: 46.99, stock: 80, weight: 0.5 },
-    ],
-    images: [
-      { url: pexels(29791985), alt: "Minimalist Scandinavian Wall Clock" },
     ],
     storeIndex: 2,
     isFeatured: false,
     position: 16,
-  },
-  {
-    title: "Boho Macrame Hanging Wall Shelf Set (2 Pack)",
-    description:
-      "Set of two handwoven macrame rope hanging shelves with natural wood planks. Perfect for plants, candles, crystals, and picture frames. Renter-friendly — minimal wall damage. Available in cream, black, and sage rope.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005003621128632.html",
-    supplierProductId: "1005003621128632",
-    baseCost: 7.5,
-    category: "Organization",
-    tags: ["macrame-shelf", "hanging", "boho", "renter-friendly", "wall-decor"],
-    variants: [
-      { sku: "NW-MACS-CREAM", name: "Cream", costPrice: 7.5, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.6 },
-      { sku: "NW-MACS-BLACK", name: "Black", costPrice: 7.5, retailPrice: 32.99, compareAtPrice: 42.99, stock: 100, weight: 0.6 },
-      { sku: "NW-MACS-SAGE", name: "Sage", costPrice: 7.5, retailPrice: 32.99, compareAtPrice: 42.99, stock: 80, weight: 0.6 },
-    ],
-    images: [
-      { url: "https://s.alicdn.com/@sc04/kf/H491b7c6ee6da47869fc76fd8ff3eaf2eN.jpg_960x960.jpg", alt: "Boho Macrame Hanging Wall Shelf with plants" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
-    position: 17,
   },
   {
     title: "Faux Eucalyptus in Ceramic Minimalist Planter",
@@ -1429,7 +1203,7 @@ const products: ProductData[] = [
     ],
     storeIndex: 2,
     isFeatured: false,
-    position: 18,
+    position: 12,
   },
   {
     title: "Vintage Candle Warmer Lamp",
@@ -1447,11 +1221,11 @@ const products: ProductData[] = [
       { sku: "NW-CWLP-MARBLE", name: "Marble White", costPrice: 10.0, retailPrice: 39.99, compareAtPrice: 54.99, stock: 90, weight: 1.2 },
     ],
     images: [
-      { url: pexels(6045094), alt: "Vintage candle warmer lamp with warm golden glow" },
+      { url: pexels(35450921), alt: "Vintage candle warmer lamp with warm golden glow" },
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 19,
+    position: 1,
   },
   {
     title: "Flame Effect Aroma Diffuser",
@@ -1468,33 +1242,11 @@ const products: ProductData[] = [
       { sku: "NW-FLMD-WHITE", name: "Cloud White", costPrice: 9.0, retailPrice: 34.99, compareAtPrice: 47.99, stock: 100, weight: 0.45 },
     ],
     images: [
-      { url: "https://s.alicdn.com/@sc04/kf/Hd5f3e2c0b5a94b9f8d1e7c3a6b2f4e8dG.jpg_960x960.jpg", alt: "Flame effect aroma diffuser with flickering light" },
-    ],
-    storeIndex: 2,
-    isFeatured: false,
-    position: 20,
-  },
-  {
-    title: "Terracotta Ceramic Vase Set (3 Piece)",
-    description:
-      "Curated set of three complementary ceramic vases in warm earthy tones. Each piece features a unique organic shape with a handcrafted-look matte glaze. Perfect for dried flowers, pampas grass, or as standalone sculptural decor. Sizes: 4\", 6\", and 8\" tall.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005006921345678.html",
-    supplierProductId: "1005006921345678",
-    baseCost: 7.0,
-    category: "Decor",
-    tags: ["vase-set", "terracotta", "ceramic", "earthy", "sculptural"],
-    variants: [
-      { sku: "NW-TRVS-TERRA", name: "Terracotta", costPrice: 7.0, retailPrice: 29.99, compareAtPrice: 42.99, stock: 100, weight: 1.1 },
-      { sku: "NW-TRVS-SAND", name: "Sand Beige", costPrice: 7.0, retailPrice: 29.99, compareAtPrice: 42.99, stock: 90, weight: 1.1 },
-      { sku: "NW-TRVS-OLIVE", name: "Olive Matte", costPrice: 7.5, retailPrice: 32.99, compareAtPrice: 44.99, stock: 80, weight: 1.1 },
-    ],
-    images: [
-      { url: pexels(2179214), alt: "Terracotta ceramic vase set with dried flowers" },
+      { url: pexels(7436112), alt: "Essential oil being added to aroma diffuser" },
     ],
     storeIndex: 2,
     isFeatured: true,
-    position: 21,
+    position: 6,
   },
   {
     title: "Asymmetrical Wavy Wall Mirror",
@@ -1511,33 +1263,32 @@ const products: ProductData[] = [
       { sku: "NW-WAVM-LG", name: "Large 20\"x14\"", costPrice: 12.0, retailPrice: 44.99, compareAtPrice: 59.99, stock: 80, weight: 1.0 },
     ],
     images: [
-      { url: pexels(6585620), alt: "Asymmetrical wavy wall mirror in bedroom" },
+      { url: pexels(18177370), alt: "Oval wall-mounted decorative mirror" },
     ],
     storeIndex: 2,
     isFeatured: false,
-    position: 22,
+    position: 10,
   },
   {
-    title: "Washed Linen Throw Pillow Covers (Set of 2)",
+    title: "LED Crystal Vase Lamp",
     description:
-      "Set of two pre-washed 100% linen pillow covers with a beautiful lived-in crinkle texture. Hidden zipper closure for a clean look. 18\"x18\" — fits standard throw pillow inserts. Effortlessly elevate any couch, bed, or reading nook with the texture of the year.",
-    supplierType: SupplierType.ALIEXPRESS,
-    supplierUrl: "https://www.aliexpress.com/item/1005007345678901.html",
-    supplierProductId: "1005007345678901",
-    baseCost: 5.0,
-    category: "Textiles",
-    tags: ["pillow-cover", "linen", "washed", "texture", "boho"],
+      "Stunning crystal-effect vase with built-in LED warm-white fairy lights. Touch-dimmable with 3 brightness levels. USB-C rechargeable with 8-hour battery life. Use as a standalone ambient lamp or fill with dried flowers for a romantic centerpiece. The 'crystal vase lamp' going mega viral on TikTok right now — millions of views and counting.",
+    supplierType: SupplierType.CJ_DROPSHIPPING,
+    supplierUrl: "https://cjdropshipping.com/product/led-crystal-vase-lamp-touch-dimming-p-1800000000000000002.html",
+    supplierProductId: "1800000000000000002",
+    baseCost: 8.0,
+    category: "Lighting",
+    tags: ["crystal-vase", "led-lamp", "ambient", "romantic", "tiktok-viral"],
     variants: [
-      { sku: "NW-LNPC-OAT", name: "Oatmeal", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 150, weight: 0.3 },
-      { sku: "NW-LNPC-SAGE", name: "Sage Green", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 130, weight: 0.3 },
-      { sku: "NW-LNPC-TERRA", name: "Terracotta", costPrice: 5.0, retailPrice: 22.99, compareAtPrice: 32.99, stock: 130, weight: 0.3 },
+      { sku: "NW-CRVL-CLEAR", name: "Crystal Clear", costPrice: 8.0, retailPrice: 36.99, compareAtPrice: 49.99, stock: 150, weight: 0.55 },
+      { sku: "NW-CRVL-PINK", name: "Rose Crystal", costPrice: 8.5, retailPrice: 38.99, compareAtPrice: 52.99, stock: 120, weight: 0.55 },
     ],
     images: [
-      { url: pexels(6489083), alt: "Washed linen throw pillows on cozy sofa" },
+      { url: pexels(4087825), alt: "Decorative vases with warm glowing lamp on windowsill" },
     ],
     storeIndex: 2,
-    isFeatured: false,
-    position: 23,
+    isFeatured: true,
+    position: 14,
   },
 ];
 
@@ -1728,39 +1479,135 @@ async function main() {
     "Mia C.", "Hannah P.", "Abigail W.", "Isabella J.", "Ava G.",
     "Charlotte N.", "Amelia D.", "Ella B.", "Grace H.", "Lily F.",
     "Chloe V.", "Luna S.", "Aria Z.", "Natalie E.", "Zoey Q.",
+    "James R.", "Michael T.", "David K.", "Ryan M.", "Alex B.",
   ];
 
-  const beautyReviewBodies: Record<number, string[]> = {
-    5: [
-      "Absolutely love this product! My skin has never looked better. Will definitely repurchase.",
-      "This is a game-changer for my skincare routine. Noticed results within the first week.",
-      "Holy grail product! I've tried so many others but nothing compares to this.",
-      "The quality is incredible for the price. My friends keep asking what my secret is!",
-      "Best purchase I've made in a while. My skin is glowing and so smooth now.",
-      "Exceeded all my expectations! The packaging is beautiful and the product works amazingly.",
-    ],
-    4: [
-      "Really good product overall. Takes a bit to see results but definitely worth it.",
-      "Love the texture and how it absorbs quickly. Only wish the bottle was a bit bigger.",
-      "Great addition to my routine. Skin feels softer and looks more radiant.",
-      "Very pleased with this purchase. The scent is subtle and pleasant too.",
-      "Works well for my skin type. Would recommend to friends looking for something gentle.",
-    ],
-    3: [
-      "Decent product but nothing extraordinary. It works but I expected more dramatic results.",
-      "Average experience. Works okay for the price point but I've tried better.",
-    ],
+  type ReviewPool = { bodies: Record<number, string[]>; titles: Record<number, string[]> };
+
+  const beautyReviews: ReviewPool = {
+    bodies: {
+      5: [
+        "Absolutely love this product! My skin has never looked better. Will definitely repurchase.",
+        "This is a game-changer for my skincare routine. Noticed results within the first week.",
+        "Holy grail product! I've tried so many others but nothing compares to this.",
+        "The quality is incredible for the price. My friends keep asking what my secret is!",
+        "Best purchase I've made in a while. My skin is glowing and so smooth now.",
+        "Exceeded all my expectations! The packaging is beautiful and the product works amazingly.",
+      ],
+      4: [
+        "Really good product overall. Takes a bit to see results but definitely worth it.",
+        "Love the texture and how it absorbs quickly. Only wish the bottle was a bit bigger.",
+        "Great addition to my routine. Skin feels softer and looks more radiant.",
+        "Very pleased with this purchase. The scent is subtle and pleasant too.",
+        "Works well for my skin type. Would recommend to friends looking for something gentle.",
+      ],
+      3: [
+        "Decent product but nothing extraordinary. It works but I expected more dramatic results.",
+        "Average experience. Works okay for the price point but I've tried better.",
+        "Not bad, but not great either. My skin didn't react badly, just didn't see much change.",
+      ],
+      2: [
+        "Didn't really work for my skin type. Caused some irritation after a few days.",
+        "The product is okay but way overpriced for what you get. Wouldn't buy again.",
+      ],
+      1: [
+        "Very disappointed. Broke me out terribly and the texture was off-putting.",
+        "Would not recommend. Arrived leaking and the formula felt cheap.",
+      ],
+    },
+    titles: {
+      5: ["Obsessed!", "Best skincare find!", "Love love love", "My new favorite", "Worth every penny", "Amazing results", "So impressed", "A must-have"],
+      4: ["Really good", "Solid product", "Happy with this", "Good quality", "Nice addition", "Would repurchase"],
+      3: ["It's okay", "Average", "Decent", "Mixed feelings"],
+      2: ["Not for me", "Disappointed", "Meh"],
+      1: ["Terrible", "Don't buy", "Waste of money"],
+    },
   };
 
-  const beautyReviewTitles5 = [
-    "Obsessed!", "Best skincare find!", "Love love love", "My new favorite",
-    "Worth every penny", "Amazing results", "So impressed", "A must-have",
-  ];
-  const beautyReviewTitles4 = [
-    "Really good", "Solid product", "Happy with this", "Good quality",
-    "Nice addition", "Would repurchase",
-  ];
-  const beautyReviewTitles3 = ["It's okay", "Average", "Decent"];
+  const jewelryReviews: ReviewPool = {
+    bodies: {
+      5: [
+        "This piece is stunning! I get compliments every time I wear it. The craftsmanship is beautiful.",
+        "Bought this as a gift and she absolutely loved it. The gold hasn't tarnished at all.",
+        "Perfect everyday piece. I never take it off — shower, gym, everything. Still looks brand new.",
+        "The photos don't do it justice! It's even more delicate and beautiful in person.",
+        "I've been layering this with my other necklaces and it looks incredible. Such a versatile piece.",
+        "Got this for my anniversary and my wife was thrilled. Gorgeous packaging too.",
+      ],
+      4: [
+        "Really pretty piece. Slightly smaller than I expected but still love the look.",
+        "Great quality for the price point. The clasp is secure and it sits nicely.",
+        "Bought two colors and both are lovely. Would love to see more designs from this brand.",
+        "Looks expensive and feels well-made. Happy with this purchase overall.",
+        "Nice weight to it, not too heavy. The finish is smooth and polished.",
+      ],
+      3: [
+        "It's cute but the chain is a bit thin for my taste. Decent for the price though.",
+        "Looks nice but the clasp is a bit fiddly. Takes a while to put on by myself.",
+      ],
+      2: [
+        "The color started fading after just two weeks. Expected better quality.",
+        "Smaller than it looked in photos. Feels a bit cheap in person unfortunately.",
+      ],
+      1: [
+        "Broke within the first week of wearing it. Very poor quality, avoid.",
+        "Turned my skin green. Definitely not the material advertised.",
+      ],
+    },
+    titles: {
+      5: ["Absolutely gorgeous!", "Best jewelry find", "So elegant", "Love this piece", "Stunning quality", "Perfect gift", "Obsessed with this", "Daily wear essential"],
+      4: ["Really pretty", "Nice quality", "Happy with this", "Good value", "Lovely piece"],
+      3: ["It's fine", "Average quality", "Okay for the price"],
+      2: ["Disappointed", "Not as shown", "Could be better"],
+      1: ["Terrible quality", "Broke immediately", "Don't waste your money"],
+    },
+  };
+
+  const homeReviews: ReviewPool = {
+    bodies: {
+      5: [
+        "This completely transformed my living room! The quality is amazing and it looks so expensive.",
+        "Exactly what I was looking for. It ties the whole room together beautifully.",
+        "The warm glow from this lamp makes my bedroom feel like a cozy retreat. Love it!",
+        "Got so many compliments from guests. Everyone asks where I got it from!",
+        "Beautiful piece that adds so much character to our space. The craftsmanship is top-notch.",
+        "Packed incredibly well — zero damage. The quality exceeded my expectations for this price.",
+      ],
+      4: [
+        "Really nice addition to our home. The color is slightly warmer than the photos but still gorgeous.",
+        "Good quality and well-made. Fits perfectly on our side table. Would buy from this brand again.",
+        "Love the aesthetic. Assembly was easy and it looks great in our reading nook.",
+        "Very pleased with this purchase. The material feels premium and substantial.",
+        "Beautiful design that works with multiple room styles. Happy with the versatility.",
+      ],
+      3: [
+        "Decent quality but the color didn't quite match what I saw online. Still keeping it though.",
+        "It's okay for the price. Nothing special but it does the job and looks fine.",
+        "Average quality. Expected a bit more based on the product photos.",
+      ],
+      2: [
+        "The material feels cheaper than expected. Looks fine from a distance but not up close.",
+        "Arrived with a small scratch on the surface. Customer service was slow to respond.",
+      ],
+      1: [
+        "Arrived damaged and poorly packaged. Returning this immediately.",
+        "Looks nothing like the photos. Very cheaply made, total waste of money.",
+      ],
+    },
+    titles: {
+      5: ["Room transformation!", "Absolutely love it", "Perfect piece", "So cozy!", "Stunning quality", "Worth every penny", "Best home find", "Gorgeous addition"],
+      4: ["Really nice", "Good quality", "Happy with this", "Looks great", "Nice addition"],
+      3: ["It's okay", "Decent", "Average", "Fine for the price"],
+      2: ["Not impressed", "Disappointed", "Expected more"],
+      1: ["Terrible", "Arrived damaged", "Waste of money"],
+    },
+  };
+
+  const reviewPoolByStore: Record<string, ReviewPool> = {
+    glowhaven: beautyReviews,
+    aurae: jewelryReviews,
+    nestwell: homeReviews,
+  };
 
   // Fetch all products with their store assignments
   const allStoreProducts = await prisma.storeProduct.findMany({
@@ -1769,20 +1616,17 @@ async function main() {
 
   let reviewCount = 0;
   for (const sp of allStoreProducts) {
+    const pool = reviewPoolByStore[sp.store.slug] || beautyReviews;
+
     // 3-8 reviews per product
     const numReviews = 3 + Math.floor(Math.random() * 6);
     for (let r = 0; r < numReviews; r++) {
-      // Weighted rating: ~60% 5-star, ~30% 4-star, ~10% 3-star
+      // Weighted rating: 55% 5-star, 25% 4-star, 12% 3-star, 5% 2-star, 3% 1-star
       const roll = Math.random();
-      const rating = roll < 0.6 ? 5 : roll < 0.9 ? 4 : 3;
+      const rating = roll < 0.55 ? 5 : roll < 0.80 ? 4 : roll < 0.92 ? 3 : roll < 0.97 ? 2 : 1;
 
-      const bodies = beautyReviewBodies[rating]!;
-      const titles =
-        rating === 5
-          ? beautyReviewTitles5
-          : rating === 4
-            ? beautyReviewTitles4
-            : beautyReviewTitles3;
+      const bodies = pool.bodies[rating]!;
+      const titles = pool.titles[rating]!;
 
       const authorName = reviewNames[Math.floor(Math.random() * reviewNames.length)];
       const title = titles[Math.floor(Math.random() * titles.length)];
