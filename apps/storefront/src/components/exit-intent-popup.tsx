@@ -31,6 +31,7 @@ export function ExitIntentPopup() {
   const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
   const scrollYRef = useRef(0);
   const scrollUpCountRef = useRef(0);
+  const shownOnceRef = useRef(false);
 
   const emailConverted = wasEmailPopupConverted(store.slug);
   const discount = storeExitCodes[store.slug] || { code: "STAY15", percent: 15 };
@@ -47,7 +48,11 @@ export function ExitIntentPopup() {
 
   // Wait for email popup to resolve before arming
   useEffect(() => {
-    if (wasExitIntentDismissed(store.slug) || wasExitIntentConverted(store.slug)) {
+    if (
+      shownOnceRef.current ||
+      wasExitIntentDismissed(store.slug) ||
+      wasExitIntentConverted(store.slug)
+    ) {
       return;
     }
 
@@ -65,10 +70,11 @@ export function ExitIntentPopup() {
 
   // Desktop: detect mouse leaving viewport at top
   useEffect(() => {
-    if (!armed || show) return;
+    if (!armed || show || shownOnceRef.current) return;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0) {
+      if (e.clientY <= 0 && !shownOnceRef.current) {
+        shownOnceRef.current = true;
         setShow(true);
       }
     };
@@ -79,13 +85,14 @@ export function ExitIntentPopup() {
 
   // Mobile: detect continuous scroll-up (300px)
   useEffect(() => {
-    if (!armed || show) return;
+    if (!armed || show || shownOnceRef.current) return;
 
     const handleScroll = () => {
       const currentY = window.scrollY;
       if (currentY < scrollYRef.current) {
         scrollUpCountRef.current += scrollYRef.current - currentY;
-        if (scrollUpCountRef.current >= 300) {
+        if (scrollUpCountRef.current >= 300 && !shownOnceRef.current) {
+          shownOnceRef.current = true;
           setShow(true);
         }
       } else {

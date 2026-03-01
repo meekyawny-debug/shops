@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X, Gift } from "lucide-react";
 import { Button } from "@shops/ui";
 import { useStore } from "@/lib/store-context";
@@ -40,6 +40,7 @@ export function EmailCapturePopup() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const handledRef = useRef(false);
 
   const discount = storeDiscountCodes[store.slug] || { code: "WELCOME10", percent: 10 };
   const message = storeMessages[store.slug] || {
@@ -59,18 +60,26 @@ export function EmailCapturePopup() {
   });
 
   useEffect(() => {
+    if (handledRef.current) return;
+
     if (wasEmailPopupDismissed(store.slug) || wasEmailPopupConverted(store.slug)) {
-      // Already handled — resolve immediately so exit-intent can arm
+      handledRef.current = true;
       setTimeout(() => dispatchPopupEvent("popup-email-resolved"), 100);
       return;
     }
 
-    const timer = setTimeout(() => setShow(true), 7000);
+    const timer = setTimeout(() => {
+      if (!handledRef.current) {
+        setShow(true);
+        handledRef.current = true;
+      }
+    }, 7000);
     return () => clearTimeout(timer);
   }, [store.slug]);
 
   const handleDismiss = () => {
     setShow(false);
+    handledRef.current = true;
     setEmailPopupDismissed(store.slug);
     dispatchPopupEvent("popup-email-resolved");
   };
