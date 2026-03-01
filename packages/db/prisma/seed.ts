@@ -83,7 +83,7 @@ const products: ProductData[] = [
       { sku: "GH-ICER-WHITE", name: "White", costPrice: 2.8, retailPrice: 12.99, compareAtPrice: 18.99, stock: 300, weight: 0.18 },
     ],
     images: [
-      { url: pexels(5927933), alt: "Ice Roller Face Massager" },
+      { url: pexels(24738496), alt: "Ice Roller Face Massager" },
     ],
     storeIndex: 0,
     isFeatured: false,
@@ -147,8 +147,8 @@ const products: ProductData[] = [
       { sku: "GH-VITC-60ML", name: "60ml", costPrice: 5.5, retailPrice: 28.99, compareAtPrice: 36.99, stock: 120, weight: 0.2 },
     ],
     images: [
-      { url: pexels(29977128), alt: "Vitamin C Brightening Serum bottle" },
-      { url: pexels(34939744), alt: "Vitamin C serum dropper" },
+      { url: "https://plus.unsplash.com/premium_photo-1661696510702-ffc96ecf6b52?w=800", alt: "Amber dropper bottles with orange slices" },
+      { url: "https://images.pexels.com/photos/8140898/pexels-photo-8140898.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Hands holding amber glass dropper bottle" },
     ],
     storeIndex: 0,
     isFeatured: false,
@@ -193,7 +193,7 @@ const products: ProductData[] = [
       { sku: "GH-LIPM-BERRY", name: "Mixed Berry", costPrice: 2.2, retailPrice: 9.99, compareAtPrice: 14.99, stock: 400, weight: 0.08 },
     ],
     images: [
-      { url: pexels(3373740), alt: "Honey Lip Sleeping Mask pot" },
+      { url: pexels(8129894), alt: "Honey Lip Sleeping Mask pot" },
     ],
     storeIndex: 0,
     isFeatured: false,
@@ -300,7 +300,7 @@ const products: ProductData[] = [
       { sku: "GH-CURL-CHAMP", name: "Champagne", costPrice: 3.0, retailPrice: 22.99, compareAtPrice: 29.99, stock: 250, weight: 0.1 },
     ],
     images: [
-      { url: "https://ae01.alicdn.com/kf/H49d9bf2d6b92412ea68b4b8983f33c3ev.jpg", alt: "Silk heatless curling ribbon rod set" },
+      { url: pexels(10483564), alt: "Silk heatless curling ribbon rod set" },
     ],
     storeIndex: 0,
     isFeatured: true,
@@ -436,7 +436,8 @@ const products: ProductData[] = [
       { sku: "GH-ACNP-36PK", name: "36 Pack", costPrice: 0.8, retailPrice: 9.99, compareAtPrice: 14.99, stock: 600, weight: 0.02 },
     ],
     images: [
-      { url: pexels(9038626), alt: "Woman with clear glowing skin after acne treatment" },
+      { url: "https://plus.unsplash.com/premium_photo-1771103348703-05e07bd52672?w=800", alt: "Woman applying pimple patches to face" },
+      { url: "https://plus.unsplash.com/premium_photo-1771398422881-2e03a90ad39b?w=800", alt: "Person holding sheet of round acne patches" },
     ],
     storeIndex: 0,
     isFeatured: true,
@@ -938,7 +939,7 @@ const products: ProductData[] = [
       { sku: "NW-RAIN-WHITE", name: "White", costPrice: 17.0, retailPrice: 54.99, compareAtPrice: 69.99, stock: 75, weight: 0.8 },
     ],
     images: [
-      { url: "https://s.alicdn.com/@sc04/kf/Hb17fb622d4374b07945fede1cc07ad5cs.jpg_960x960.jpg", alt: "Rain cloud diffuser with illuminated mist" },
+      { url: pexels(6915261), alt: "Rain cloud diffuser with illuminated mist" },
     ],
     storeIndex: 2,
     isFeatured: true,
