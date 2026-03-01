@@ -20,7 +20,8 @@
     "shopify-theme": "tsx prisma/shopify-theme-customize.ts",
     "shopify-launch": "tsx prisma/shopify-launch-ready.ts",
     "shopify-enhance": "tsx prisma/shopify-enhance.ts",
-    "shopify-perfect": "tsx prisma/shopify-perfect.ts"
+    "shopify-perfect": "tsx prisma/shopify-perfect.ts",
+    "shopify-enhance-v2": "tsx prisma/shopify-enhance-v2.ts"
   },
   "dependencies": {
     "@prisma/client": "^6"
