@@ -7,8 +7,7 @@ import { Button } from "@shops/ui";
 import { useStore } from "@/lib/store-context";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/utils";
-
-const FREE_SHIPPING_THRESHOLD = 40;
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export function CartSidebar() {
   const store = useStore();
