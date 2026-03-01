@@ -45,6 +45,7 @@ model Store {
   reviews               Review[]
   coupons               Coupon[]
   newsletterSubscribers NewsletterSubscriber[]
+  abandonedCarts        AbandonedCart[]
 
   @@map("stores")
 }
@@ -216,14 +217,15 @@ model Review {
 // ─── Customers ────────────────────────────────────────────
 
 model Customer {
-  id           String   @id @default(cuid())
-  storeId      String
-  store        Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
-  email        String
-  passwordHash String?
-  firstName    String?
-  lastName     String?
-  phone        String?
+  id               String   @id @default(cuid())
+  storeId          String
+  store            Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  email            String
+  passwordHash     String?
+  firstName        String?
+  lastName         String?
+  phone            String?
+  stripeCustomerId String?
   // Saved shipping address
   shippingAddress1 String?
   shippingAddress2 String?
@@ -234,7 +236,8 @@ model Customer {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  orders Order[]
+  orders        Order[]
+  abandonedCarts AbandonedCart[]
 
   @@unique([storeId, email])
   @@index([storeId])
@@ -294,6 +297,10 @@ model Order {
   couponCode        String?
   discountAmount    Decimal     @db.Decimal(10, 2) @default(0)
   notes             String?     @db.Text
+  isUpsell          Boolean     @default(false)
+  parentOrderId     String?
+  parentOrder       Order?      @relation("UpsellOrders", fields: [parentOrderId], references: [id])
+  upsellOrders      Order[]     @relation("UpsellOrders")
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
@@ -373,4 +380,40 @@ model SyncLog {
   @@index([supplierId])
   @@index([type, status])
   @@map("sync_logs")
+}
+
+// ─── Abandoned Carts ─────────────────────────────────────
+
+enum AbandonedCartStatus {
+  ACTIVE
+  REMINDED_1
+  REMINDED_2
+  REMINDED_3
+  RECOVERED
+  EXPIRED
+}
+
+model AbandonedCart {
+  id            String             @id @default(cuid())
+  storeId       String
+  store         Store              @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  email         String
+  customerId    String?
+  customer      Customer?          @relation(fields: [customerId], references: [id])
+  status        AbandonedCartStatus @default(ACTIVE)
+  cartData      Json
+  recoveryToken String             @unique @default(cuid())
+  subtotal      Decimal            @db.Decimal(10, 2)
+  lastActiveAt  DateTime           @default(now())
+  remindedAt1   DateTime?
+  remindedAt2   DateTime?
+  remindedAt3   DateTime?
+  recoveredAt   DateTime?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@unique([storeId, email])
+  @@index([storeId])
+  @@index([status, lastActiveAt])
+  @@map("abandoned_carts")
 }

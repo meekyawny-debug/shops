@@ -61,6 +61,7 @@ export const storefrontRouter = router({
         storeSlug: z.string(),
         search: z.string().optional(),
         category: z.string().optional(),
+        tags: z.array(z.string()).optional(),
         sort: z.enum(["newest", "best-selling", "price-asc", "price-desc", "name"]).default("newest"),
         page: z.number().int().min(1).default(1),
         limit: z.number().int().min(1).max(100).default(12),
@@ -84,6 +85,9 @@ export const storefrontRouter = router({
           }),
           ...(input.category && {
             category: { equals: input.category, mode: "insensitive" as const },
+          }),
+          ...(input.tags?.length && {
+            tags: { hasSome: input.tags },
           }),
         },
       };
@@ -784,6 +788,94 @@ export const storefrontRouter = router({
       });
     }),
 
+  syncAbandonedCart: publicProcedure
+    .input(
+      z.object({
+        storeSlug: z.string(),
+        email: z.string().email(),
+        cartData: z.array(
+          z.object({
+            variantId: z.string(),
+            productId: z.string(),
+            productTitle: z.string(),
+            variantName: z.string(),
+            price: z.number(),
+            quantity: z.number(),
+            image: z.string().nullable(),
+          })
+        ),
+        subtotal: z.number(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const store = await prisma.store.findUniqueOrThrow({
+        where: { slug: input.storeSlug },
+      });
+
+      // Find customer if exists
+      const customer = await prisma.customer.findUnique({
+        where: {
+          storeId_email: {
+            storeId: store.id,
+            email: input.email.toLowerCase(),
+          },
+        },
+      });
+
+      await prisma.abandonedCart.upsert({
+        where: {
+          storeId_email: {
+            storeId: store.id,
+            email: input.email.toLowerCase(),
+          },
+        },
+        create: {
+          storeId: store.id,
+          email: input.email.toLowerCase(),
+          customerId: customer?.id,
+          cartData: input.cartData,
+          subtotal: input.subtotal,
+          lastActiveAt: new Date(),
+        },
+        update: {
+          cartData: input.cartData,
+          subtotal: input.subtotal,
+          lastActiveAt: new Date(),
+          // Reset status to ACTIVE if cart was updated (user came back)
+          status: "ACTIVE",
+          customerId: customer?.id,
+        },
+      });
+
+      return { success: true };
+    }),
+
+  getAbandonedCart: publicProcedure
+    .input(z.object({ recoveryToken: z.string() }))
+    .query(async ({ input }) => {
+      const cart = await prisma.abandonedCart.findUnique({
+        where: { recoveryToken: input.recoveryToken },
+        include: { store: true },
+      });
+
+      if (!cart || cart.status === "RECOVERED" || cart.status === "EXPIRED") {
+        return null;
+      }
+
+      return {
+        storeSlug: cart.store.slug,
+        cartData: cart.cartData as Array<{
+          variantId: string;
+          productId: string;
+          productTitle: string;
+          variantName: string;
+          price: number;
+          quantity: number;
+          image: string | null;
+        }>,
+      };
+    }),
+
   subscribeNewsletter: publicProcedure
     .input(
       z.object({
@@ -803,6 +895,210 @@ export const storefrontRouter = router({
       });
 
       return { success: true };
+    }),
+
+  getUpsellProducts: publicProcedure
+    .input(
+      z.object({
+        storeSlug: z.string(),
+        purchasedProductIds: z.array(z.string()),
+        limit: z.number().default(2),
+      })
+    )
+    .query(async ({ input }) => {
+      const store = await prisma.store.findUniqueOrThrow({
+        where: { slug: input.storeSlug },
+      });
+
+      // Get categories from purchased products
+      const purchasedProducts = await prisma.product.findMany({
+        where: { id: { in: input.purchasedProductIds } },
+        select: { category: true },
+      });
+      const categories = [
+        ...new Set(
+          purchasedProducts
+            .map((p) => p.category)
+            .filter((c): c is string => c !== null)
+        ),
+      ];
+
+      // Find complementary products from same categories, excluding purchased
+      const upsellProducts = await prisma.storeProduct.findMany({
+        where: {
+          storeId: store.id,
+          isActive: true,
+          productId: { notIn: input.purchasedProductIds },
+          product: {
+            isActive: true,
+            ...(categories.length > 0 && { category: { in: categories } }),
+          },
+        },
+        include: {
+          product: {
+            include: {
+              variants: { where: { isActive: true }, take: 1 },
+              images: { orderBy: { position: "asc" }, take: 1 },
+            },
+          },
+        },
+        orderBy: { position: "asc" },
+        take: input.limit,
+      });
+
+      return upsellProducts
+        .filter((sp) => sp.product.variants.length > 0)
+        .map((sp) => {
+          const variant = sp.product.variants[0]!;
+          const originalPrice = Number(sp.priceOverride ?? variant.retailPrice);
+          return {
+            id: sp.product.id,
+            title: sp.product.title,
+            image: sp.product.images[0]?.url || null,
+            originalPrice,
+            discountedPrice: Math.round(originalPrice * 0.7 * 100) / 100, // 30% off
+            variantId: variant.id,
+            variantName: variant.name,
+          };
+        });
+    }),
+
+  acceptUpsell: publicProcedure
+    .input(
+      z.object({
+        storeSlug: z.string(),
+        parentOrderId: z.string(),
+        variantId: z.string(),
+        discountedPrice: z.number(),
+        stripeCustomerId: z.string().optional(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const store = await prisma.store.findUniqueOrThrow({
+        where: { slug: input.storeSlug },
+      });
+
+      const parentOrder = await prisma.order.findUniqueOrThrow({
+        where: { id: input.parentOrderId },
+        include: { customer: true },
+      });
+
+      const variant = await prisma.productVariant.findUniqueOrThrow({
+        where: { id: input.variantId },
+        include: { product: true },
+      });
+
+      // Charge via Stripe if customer has saved payment method
+      let stripePaymentId: string | null = null;
+      if (stripe && input.stripeCustomerId) {
+        try {
+          const paymentMethods = await stripe.paymentMethods.list({
+            customer: input.stripeCustomerId,
+            type: "card",
+            limit: 1,
+          });
+
+          if (paymentMethods.data.length > 0) {
+            const paymentIntent = await stripe.paymentIntents.create({
+              amount: Math.round(input.discountedPrice * 100),
+              currency: "usd",
+              customer: input.stripeCustomerId,
+              payment_method: paymentMethods.data[0].id,
+              off_session: true,
+              confirm: true,
+              metadata: {
+                storeSlug: input.storeSlug,
+                storeId: store.id,
+                isUpsell: "true",
+                parentOrderId: input.parentOrderId,
+              },
+            });
+            stripePaymentId = paymentIntent.id;
+          }
+        } catch (err) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Payment failed. Please try again.",
+          });
+        }
+      }
+
+      const orderNumber = `${store.slug.toUpperCase().slice(0, 3)}-U-${Date.now().toString(36).toUpperCase()}`;
+
+      const order = await prisma.$transaction(async (tx) => {
+        // Decrement stock
+        await tx.productVariant.updateMany({
+          where: { id: input.variantId, stock: { gte: 1 } },
+          data: { stock: { decrement: 1 } },
+        });
+
+        return tx.order.create({
+          data: {
+            storeId: store.id,
+            customerId: parentOrder.customerId,
+            orderNumber,
+            status: stripePaymentId ? "PAID" : "PENDING",
+            subtotal: input.discountedPrice,
+            shippingCost: 0,
+            tax: 0,
+            total: input.discountedPrice,
+            stripePaymentId,
+            isUpsell: true,
+            parentOrderId: input.parentOrderId,
+            shippingName: parentOrder.shippingName,
+            shippingAddress1: parentOrder.shippingAddress1,
+            shippingAddress2: parentOrder.shippingAddress2,
+            shippingCity: parentOrder.shippingCity,
+            shippingState: parentOrder.shippingState,
+            shippingZip: parentOrder.shippingZip,
+            shippingCountry: parentOrder.shippingCountry,
+            items: {
+              create: [
+                {
+                  variantId: variant.id,
+                  quantity: 1,
+                  unitPrice: input.discountedPrice,
+                  unitCost: Number(variant.costPrice),
+                  totalPrice: input.discountedPrice,
+                  productTitle: variant.product.title,
+                  variantName: variant.name,
+                },
+              ],
+            },
+          },
+          include: { items: true },
+        });
+      });
+
+      return order;
+    }),
+
+  getOrderByStripeSession: publicProcedure
+    .input(z.object({ stripeSessionId: z.string() }))
+    .query(async ({ input }) => {
+      if (!stripe) return null;
+
+      try {
+        const session = await stripe.checkout.sessions.retrieve(input.stripeSessionId);
+        if (!session.payment_intent) return null;
+
+        const paymentId =
+          typeof session.payment_intent === "string"
+            ? session.payment_intent
+            : session.payment_intent.id;
+
+        const order = await prisma.order.findFirst({
+          where: { stripePaymentId: paymentId },
+          include: {
+            items: true,
+            customer: true,
+          },
+        });
+
+        return order;
+      } catch {
+        return null;
+      }
     }),
 
   createCheckoutSession: publicProcedure
@@ -904,6 +1200,7 @@ export const storefrontRouter = router({
         shipping_address_collection: { allowed_countries: ["US", "CA", "GB"] },
         shipping_options: shippingOptions,
         automatic_tax: { enabled: false },
+        payment_intent_data: { setup_future_usage: "off_session" },
         success_url: input.successUrl,
         cancel_url: input.cancelUrl,
         metadata: {
@@ -1141,6 +1438,18 @@ export const storefrontRouter = router({
           },
         });
       });
+
+      // Mark abandoned cart as recovered (fire-and-forget)
+      prisma.abandonedCart
+        .updateMany({
+          where: {
+            storeId: store.id,
+            email: input.email.toLowerCase(),
+            status: { notIn: ["RECOVERED", "EXPIRED"] },
+          },
+          data: { status: "RECOVERED", recoveredAt: new Date() },
+        })
+        .catch(() => {});
 
       // Fire Meta CAPI Purchase event (fire-and-forget)
       if (input.fbEventId) {

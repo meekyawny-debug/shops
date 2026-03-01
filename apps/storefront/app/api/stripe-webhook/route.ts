@@ -67,6 +67,12 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const [firstName, ...lastParts] = name.split(" ");
   const lastName = lastParts.join(" ") || "";
 
+  // Save Stripe customer ID if present
+  const stripeCustomerId =
+    typeof session.customer === "string"
+      ? session.customer
+      : session.customer?.id ?? null;
+
   // Upsert customer
   const customer = await prisma.customer.upsert({
     where: { storeId_email: { storeId, email } },
@@ -75,10 +81,12 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       email,
       firstName: firstName || null,
       lastName: lastName || null,
+      ...(stripeCustomerId && { stripeCustomerId }),
     },
     update: {
       firstName: firstName || undefined,
       lastName: lastName || undefined,
+      ...(stripeCustomerId && { stripeCustomerId }),
     },
   });
 
@@ -141,6 +149,18 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       },
     });
   });
+
+  // Mark abandoned cart as recovered (fire-and-forget)
+  await prisma.abandonedCart
+    .updateMany({
+      where: {
+        storeId,
+        email: email.toLowerCase(),
+        status: { notIn: ["RECOVERED", "EXPIRED"] },
+      },
+      data: { status: "RECOVERED", recoveredAt: new Date() },
+    })
+    .catch(() => {});
 
   console.log(`[Stripe Webhook] Order ${orderNumber} created for ${email} (PAID)`);
 }

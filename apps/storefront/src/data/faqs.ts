@@ -1,0 +1,32 @@
+export const storeFaqs: Record<string, { q: string; a: string }[]> = {
+  glowhaven: [
+    { q: "Are your products cruelty-free?", a: "Yes! All GLOWHAVEN products are 100% cruelty-free and never tested on animals. We're committed to ethical beauty." },
+    { q: "What skin types do your products work for?", a: "Our range is formulated for all skin types. Each product page lists specific skin type recommendations to help you find your perfect match." },
+    { q: "How long until I see results?", a: "Most customers notice visible improvements within 2-4 weeks of consistent use. Results vary depending on the product and your skin type." },
+    { q: "Are the ingredients natural?", a: "We prioritize clean, naturally-derived ingredients. Every product listing includes a full ingredient breakdown so you can make informed choices." },
+    { q: "How long does shipping take?", a: "Standard shipping takes 7-14 business days. We offer free shipping on all orders over $40." },
+    { q: "What is your return policy?", a: "We offer a 30-day hassle-free return policy. If you're not completely satisfied, contact us for a full refund or exchange." },
+    { q: "Do you offer gift wrapping?", a: "All orders ship in our signature beautiful packaging, making them gift-ready straight out of the box!" },
+    { q: "What payment methods do you accept?", a: "We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and Apple Pay for a seamless checkout experience." },
+  ],
+  aurae: [
+    { q: "Will your jewelry tarnish?", a: "Our pieces are made with high-quality materials and a protective coating to resist tarnishing. With proper care, they'll stay beautiful for years." },
+    { q: "Is it safe to wear in the shower?", a: "While our jewelry is water-resistant, we recommend removing pieces before showering or swimming to preserve their finish long-term." },
+    { q: "What materials do you use?", a: "We use 18k gold-plated brass, sterling silver, and hypoallergenic stainless steel. Each product page details the exact materials used." },
+    { q: "Do you offer gift packaging?", a: "Yes! Every order ships in an elegant jewelry box, perfect for gifting. No additional wrapping needed." },
+    { q: "How do I care for my jewelry?", a: "Store pieces individually in a dry place, avoid contact with perfumes and lotions, and gently polish with a soft cloth to maintain shine." },
+    { q: "How long does shipping take?", a: "Standard shipping takes 7-14 business days. Free shipping is available on orders over $40." },
+    { q: "What is your return policy?", a: "We offer a 30-day return policy on all unworn items in original packaging. Contact us to start a return." },
+    { q: "What payment methods do you accept?", a: "We accept Visa, Mastercard, Amex, PayPal, and Apple Pay." },
+  ],
+  nestwell: [
+    { q: "How do I care for my decor items?", a: "Most items can be cleaned with a soft, dry cloth. For specific care instructions, check the product page or reach out to our team." },
+    { q: "What if my item arrives damaged?", a: "We pack everything with care, but if something arrives damaged, contact us within 48 hours with photos and we'll send a replacement right away." },
+    { q: "Do you offer interior design advice?", a: "While we don't offer formal design services, our product descriptions include styling tips and room suggestions to help you create your perfect space." },
+    { q: "Are your products eco-friendly?", a: "We prioritize sustainably sourced materials and minimal packaging. Many of our items are made from natural or recycled materials." },
+    { q: "Can I see the items in person before buying?", a: "We're an online-only store, but our detailed photos and measurements help you visualize each piece. Plus, our 30-day return policy means risk-free shopping." },
+    { q: "How long does shipping take?", a: "Standard shipping takes 7-14 business days. Larger items may take slightly longer. Free shipping on orders over $40." },
+    { q: "What is your return policy?", a: "We offer a 30-day return policy. Items must be in original condition and packaging. Contact us to initiate a return." },
+    { q: "What payment methods do you accept?", a: "We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and Apple Pay." },
+  ],
+};

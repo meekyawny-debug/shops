@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { inter } from "@/lib/fonts";
 import { Providers } from "@/components/providers";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: "Shops Storefront",
   description: "Shop our curated collections",
 };

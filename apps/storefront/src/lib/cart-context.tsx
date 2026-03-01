@@ -6,9 +6,11 @@ import {
   useReducer,
   useEffect,
   useCallback,
+  useRef,
   type ReactNode,
 } from "react";
 import type { CartItem } from "./types";
+import { trpc } from "./trpc";
 
 interface CartState {
   items: CartItem[];
@@ -150,6 +152,52 @@ export function CartProvider({
       localStorage.setItem(storageKey, JSON.stringify(state.items));
     } catch {}
   }, [state.items, storageKey]);
+
+  // Sync abandoned cart when items and customer email are available
+  const syncAbandonedCart = trpc.storefront.syncAbandonedCart.useMutation();
+  const syncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    // Clear any pending sync
+    if (syncTimerRef.current) clearTimeout(syncTimerRef.current);
+
+    // Only sync if we have items — get email from sessionStorage or auth
+    if (state.items.length === 0) return;
+
+    let email: string | null = null;
+    try {
+      email = sessionStorage.getItem(`checkout-email-${storeSlug}`);
+    } catch {
+      // ignore
+    }
+
+    if (!email) return;
+
+    // Debounce 2s
+    syncTimerRef.current = setTimeout(() => {
+      syncAbandonedCart.mutate({
+        storeSlug,
+        email: email!,
+        cartData: state.items.map((i) => ({
+          variantId: i.variantId,
+          productId: i.productId,
+          productTitle: i.productTitle,
+          variantName: i.variantName,
+          price: i.price,
+          quantity: i.quantity,
+          image: i.image,
+        })),
+        subtotal: state.items.reduce(
+          (sum, i) => sum + i.price * i.quantity,
+          0
+        ),
+      });
+    }, 2000);
+
+    return () => {
+      if (syncTimerRef.current) clearTimeout(syncTimerRef.current);
+    };
+  }, [state.items, storeSlug]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addItem = useCallback((item: CartItem) => {
     dispatch({ type: "ADD_ITEM", item });

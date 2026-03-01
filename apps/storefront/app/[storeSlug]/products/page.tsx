@@ -1,28 +1,56 @@
-"use client";
+import type { Metadata } from "next";
+import { serverTrpc } from "@/lib/trpc-server";
+import { JsonLd, generateBreadcrumbSchema } from "@/lib/structured-data";
+import { getSiteUrl } from "@/lib/site-url";
+import ProductsClient from "./products-client";
 
-import { useParams } from "next/navigation";
-import { ProductGrid } from "@/components/product-grid";
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ storeSlug: string }>;
+}): Promise<Metadata> {
+  const { storeSlug } = await params;
 
-export default function ProductsPage() {
-  const params = useParams<{ storeSlug: string }>();
-  const storeSlug = params?.storeSlug;
+  try {
+    const store = await serverTrpc.storefront.getStore({ slug: storeSlug });
+    return {
+      title: `All Products | ${store.name}`,
+      description: `Browse our full collection of curated products at ${store.name}. Find the best deals on trending items.`,
+      alternates: {
+        canonical: `/${storeSlug}/products`,
+      },
+    };
+  } catch {
+    return { title: "Products" };
+  }
+}
 
-  if (!storeSlug) return null;
+export default async function ProductsPage({
+  params,
+}: {
+  params: Promise<{ storeSlug: string }>;
+}) {
+  const { storeSlug } = await params;
+
+  const siteUrl = getSiteUrl();
+
+  let storeName = "Store";
+  try {
+    const store = await serverTrpc.storefront.getStore({ slug: storeSlug });
+    storeName = store.name;
+  } catch {
+    // fallback
+  }
+
+  const breadcrumbJsonLd = generateBreadcrumbSchema([
+    { name: storeName, url: `${siteUrl}/${storeSlug}` },
+    { name: "Products", url: `${siteUrl}/${storeSlug}/products` },
+  ]);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-10">
-        <span className="text-sm font-medium uppercase tracking-widest text-primary/70 mb-2 block">
-          Browse
-        </span>
-        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-2">
-          All Products
-        </h1>
-        <p className="text-muted-foreground">
-          Explore our full collection of curated products.
-        </p>
-      </div>
-      <ProductGrid storeSlug={storeSlug} />
-    </div>
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <ProductsClient />
+    </>
   );
 }

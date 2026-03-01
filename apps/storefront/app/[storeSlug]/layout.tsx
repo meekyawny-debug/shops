@@ -12,6 +12,14 @@ import { MetaPixel } from "@/components/meta-pixel";
 import { AuthSessionProvider } from "@/components/session-provider";
 import { AuthModal } from "@/components/auth-modal";
 import { RecentPurchaseToastWrapper } from "@/components/recent-purchase-toast-wrapper";
+import { EmailCapturePopup } from "@/components/email-capture-popup";
+import { ExitIntentPopup } from "@/components/exit-intent-popup";
+import {
+  JsonLd,
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+} from "@/lib/structured-data";
+import { getSiteUrl } from "@/lib/site-url";
 
 export async function generateMetadata({
   params,
@@ -21,10 +29,31 @@ export async function generateMetadata({
   const { storeSlug } = await params;
   try {
     const store = await serverTrpc.storefront.getStore({ slug: storeSlug });
+    const title = store.config?.metaTitle || store.name;
+    const description =
+      store.config?.metaDescription || `Shop at ${store.name}`;
+    const logoUrl = store.config?.logoUrl;
+
     return {
-      title: store.config?.metaTitle || store.name,
-      description:
-        store.config?.metaDescription || `Shop at ${store.name}`,
+      title,
+      description,
+      metadataBase: new URL(getSiteUrl()),
+      alternates: {
+        canonical: `/${storeSlug}`,
+      },
+      openGraph: {
+        title,
+        description,
+        siteName: store.name,
+        type: "website",
+        ...(logoUrl && { images: [{ url: logoUrl }] }),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        ...(logoUrl && { images: [logoUrl] }),
+      },
     };
   } catch {
     return { title: "Store Not Found" };
@@ -80,6 +109,10 @@ export default async function StoreLayout({
             <StoreFooter />
             <AuthModal />
             <RecentPurchaseToastWrapper />
+            <EmailCapturePopup />
+            <ExitIntentPopup />
+            <JsonLd data={generateOrganizationSchema(store)} />
+            <JsonLd data={generateWebSiteSchema(store)} />
           </CartProvider>
         </StoreProvider>
       </AuthSessionProvider>
