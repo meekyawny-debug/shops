@@ -1,6 +1,7 @@
 "use client";
 
 import { useStore } from "@/lib/store-context";
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export default function ShippingReturnsClient() {
   const store = useStore();
@@ -16,7 +17,7 @@ export default function ShippingReturnsClient() {
         <h2 className="font-heading text-xl font-semibold mb-4">Shipping Policy</h2>
         <div className="space-y-3 text-muted-foreground leading-relaxed">
           <p>We offer standard shipping on all orders. Estimated delivery time is <strong className="text-foreground">7-14 business days</strong> from the date of purchase.</p>
-          <p><strong className="text-foreground">Free shipping</strong> is available on all orders over $40.</p>
+          <p><strong className="text-foreground">Free shipping</strong> is available on all orders over ${FREE_SHIPPING_THRESHOLD}.</p>
           <p>Once your order ships, you&apos;ll receive a confirmation email with tracking information so you can follow your package every step of the way.</p>
           <p>Please note that delivery times may vary depending on your location and customs processing for international orders.</p>
         </div>

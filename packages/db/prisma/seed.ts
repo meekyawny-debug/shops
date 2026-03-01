@@ -1344,6 +1344,7 @@ async function main() {
             metaDescription:
               "Premium skincare tools and serums for the glass skin aesthetic.",
             socialInstagram: "https://instagram.com/glowhaven",
+            socialTiktok: "https://tiktok.com/@glowhaven",
           },
         },
       },
@@ -1367,6 +1368,7 @@ async function main() {
             metaDescription:
               "Affordable luxury jewelry that makes the perfect gift.",
             socialInstagram: "https://instagram.com/aurae.jewelry",
+            socialTiktok: "https://tiktok.com/@aurae.jewelry",
           },
         },
       },
@@ -1390,6 +1392,7 @@ async function main() {
             metaDescription:
               "Curated home decor for the aesthetic lifestyle.",
             socialInstagram: "https://instagram.com/nestwell.home",
+            socialTiktok: "https://tiktok.com/@nestwell.home",
           },
         },
       },

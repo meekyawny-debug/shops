@@ -2,8 +2,9 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "@shops/db";
 import { hash } from "crypto";
+import bcrypt from "bcryptjs";
 
-function hashPassword(password: string): string {
+function legacySha256(password: string): string {
   return hash("sha256", password);
 }
 
@@ -33,8 +34,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         if (!customer || !customer.passwordHash) return null;
 
-        const passwordHash = hashPassword(credentials.password as string);
-        if (customer.passwordHash !== passwordHash) return null;
+        const password = credentials.password as string;
+        const isBcrypt = customer.passwordHash.startsWith("$2");
+
+        if (isBcrypt) {
+          // Modern bcrypt hash
+          const match = await bcrypt.compare(password, customer.passwordHash);
+          if (!match) return null;
+        } else {
+          // Legacy SHA256 — verify then upgrade
+          const sha256Hash = legacySha256(password);
+          if (customer.passwordHash !== sha256Hash) return null;
+
+          // Opportunistically rehash to bcrypt
+          const bcryptHash = await bcrypt.hash(password, 12);
+          await prisma.customer.update({
+            where: { id: customer.id },
+            data: { passwordHash: bcryptHash },
+          });
+        }
 
         return {
           id: customer.id,

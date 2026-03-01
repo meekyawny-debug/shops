@@ -8,17 +8,15 @@ import { Button } from "@shops/ui";
 import { useCart } from "@/lib/cart-context";
 import { QuantitySelector } from "@/components/quantity-selector";
 import { formatPrice } from "@/lib/utils";
-
-const FREE_SHIPPING_THRESHOLD = 40;
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_COST } from "@/lib/constants";
 
 export default function CartClient() {
   const params = useParams<{ storeSlug: string }>();
   const storeSlug = params?.storeSlug;
   const { items, removeItem, updateQuantity, subtotal, clearCart } = useCart();
 
-  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : 5.99;
-  const tax = subtotal * 0.08;
-  const total = subtotal + shippingCost + tax;
+  const shippingCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  const total = subtotal + shippingCost;
   const shippingProgress = Math.min(
     (subtotal / FREE_SHIPPING_THRESHOLD) * 100,
     100
@@ -164,8 +162,8 @@ export default function CartClient() {
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Tax (estimated)</span>
-                <span>{formatPrice(tax)}</span>
+                <span>Tax</span>
+                <span className="text-muted-foreground text-xs">Calculated at checkout</span>
               </div>
             </div>
             <div className="border-t pt-4 flex justify-between font-medium text-lg">

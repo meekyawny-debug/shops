@@ -1,27 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { Instagram, Mail, Send } from "lucide-react";
+import { Instagram, Mail, Send, Loader2 } from "lucide-react";
 import { Button } from "@shops/ui";
 import { useStore } from "@/lib/store-context";
-
-const storeEmails: Record<string, string> = {
-  glowhaven: "hello@glowhaven.shop",
-  aurae: "hello@aurae.shop",
-  nestwell: "hello@nestwell.shop",
-};
+import { trpc } from "@/lib/trpc";
+import { STORE_EMAILS } from "@/lib/constants";
 
 export default function ContactClient() {
   const store = useStore();
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", email: "", subject: "general", message: "" });
 
-  const email = storeEmails[store.slug] || `support@${store.slug}.shop`;
+  const contactEmail = STORE_EMAILS[store.slug] || `support@${store.slug}.shop`;
   const instagram = store.config?.socialInstagram;
+
+  const submitContact = trpc.storefront.submitContactForm.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      setError(null);
+    },
+    onError: (err) => {
+      setError(err.message || "Failed to send message. Please try again.");
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    submitContact.mutate({
+      storeSlug: store.slug,
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    });
   };
 
   return (
@@ -96,8 +110,18 @@ export default function ContactClient() {
                   placeholder="How can we help?"
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full sm:w-auto px-8">
-                Send Message
+              {error && (
+                <p className="text-sm text-destructive">{error}</p>
+              )}
+              <Button type="submit" size="lg" className="w-full sm:w-auto px-8" disabled={submitContact.isPending}>
+                {submitContact.isPending ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
               </Button>
             </form>
           )}
@@ -106,9 +130,9 @@ export default function ContactClient() {
         <div className="space-y-6">
           <div>
             <h3 className="font-medium text-sm uppercase tracking-wider mb-3">Email</h3>
-            <a href={`mailto:${email}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href={`mailto:${contactEmail}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
               <Mail className="h-4 w-4" />
-              {email}
+              {contactEmail}
             </a>
           </div>
           {instagram && (

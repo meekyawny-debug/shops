@@ -44,7 +44,7 @@ export default function CartRecoverPage() {
           compareAtPrice: null,
           quantity: item.quantity,
           image: item.image,
-          stock: 99, // We don't store stock in cart data, use a high number
+          stock: item.stock ?? 0,
         });
       }
       setStatus("success");

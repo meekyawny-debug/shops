@@ -33,20 +33,12 @@ export default function CheckoutSuccessPage() {
   );
 
   // Get purchased product IDs for upsell exclusion
-  const purchasedProductIds = order?.items.map((i) => {
-    // We need the productId — get it from variant
-    return i.variantId;
-  }) ?? [];
+  const purchasedProductIds = order?.items.map((i) => (i as any).variant?.productId).filter(Boolean) as string[] ?? [];
 
-  // For upsell, we need to map variantIds back to productIds
-  // Since the order items have variantId, let's pass those to a query
   const { data: upsellProducts } = trpc.storefront.getUpsellProducts.useQuery(
     {
       storeSlug: params.storeSlug,
-      purchasedProductIds: order?.items.map(() => order.id).length
-        ? // We'll use a different approach - just pass the order's product info
-          []
-        : [],
+      purchasedProductIds,
       limit: 2,
     },
     {

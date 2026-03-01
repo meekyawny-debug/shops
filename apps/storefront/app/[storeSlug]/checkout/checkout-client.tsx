@@ -15,6 +15,7 @@ import {
   trackInitiateCheckout,
   trackPurchase,
 } from "@/lib/meta-pixel";
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_COST, TAX_RATE } from "@/lib/constants";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ZIP_RE = /^\d{5}(-\d{4})?$/;
@@ -101,8 +102,8 @@ export default function CheckoutClient() {
   const [couponError, setCouponError] = useState("");
 
   const isFreeShipping = couponDiscountType === "FREE_SHIPPING";
-  const shippingCost = isFreeShipping ? 0 : subtotal >= 40 ? 0 : 5.99;
-  const tax = (subtotal - couponDiscount) * 0.08;
+  const shippingCost = isFreeShipping ? 0 : subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  const tax = (subtotal - couponDiscount) * TAX_RATE;
   const total = subtotal - couponDiscount + shippingCost + tax;
 
   // Stripe checkout session
@@ -394,6 +395,9 @@ export default function CheckoutClient() {
               <h2 className="font-heading text-lg font-semibold">
                 Shipping Address
               </h2>
+              <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2">
+                Currently shipping to US addresses only.
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
                   <Label htmlFor="address1">Address</Label>
@@ -568,7 +572,7 @@ export default function CheckoutClient() {
               </span>
               <span className="flex items-center gap-1">
                 <Truck className="h-3.5 w-3.5" />
-                Free Shipping $40+
+                Free Shipping ${FREE_SHIPPING_THRESHOLD}+
               </span>
               <span className="flex items-center gap-1">
                 <RotateCcw className="h-3.5 w-3.5" />

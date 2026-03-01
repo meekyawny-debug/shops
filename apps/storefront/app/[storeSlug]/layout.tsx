@@ -34,9 +34,18 @@ export async function generateMetadata({
       store.config?.metaDescription || `Shop at ${store.name}`;
     const logoUrl = store.config?.logoUrl;
 
+    const faviconEmoji: Record<string, string> = {
+      glowhaven: "✨",
+      aurae: "💎",
+      nestwell: "🏡",
+    };
+    const emoji = faviconEmoji[storeSlug] || "🛍️";
+    const faviconSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>${emoji}</text></svg>`;
+
     return {
       title,
       description,
+      icons: { icon: faviconSvg },
       metadataBase: new URL(getSiteUrl()),
       alternates: {
         canonical: `/${storeSlug}`,

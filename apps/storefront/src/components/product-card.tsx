@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Zap, Flame, AlertTriangle } from "lucide-react";
+import { Zap, Flame, AlertTriangle, ImageOff } from "lucide-react";
 import { Button } from "@shops/ui";
 import { PriceDisplay } from "./price-display";
 import { StarRating } from "./star-rating";
@@ -74,9 +74,9 @@ export function ProductCard({
   };
 
   return (
-    <div className="group">
+    <div className="group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg rounded-xl">
       <Link href={productHref} className="block">
-        <div className="aspect-[3/4] relative rounded-xl overflow-hidden bg-muted mb-3">
+        <div className="aspect-[3/4] relative rounded-xl overflow-hidden bg-muted mb-3 border border-transparent group-hover:border-border/50 transition-colors duration-300">
           {firstImage ? (
             <>
               <Image
@@ -97,15 +97,23 @@ export function ProductCard({
               )}
             </>
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              No image
+            <div className="w-full h-full flex flex-col items-center justify-center text-muted-foreground gap-2">
+              <ImageOff className="h-8 w-8 opacity-40" />
+              <span className="text-xs opacity-60">No image</span>
             </div>
           )}
 
+          {/* Quick view overlay */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+            <span className="text-white text-sm font-medium bg-black/60 backdrop-blur-sm px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+              Quick View
+            </span>
+          </div>
+
           {/* Badges */}
-          <div className="absolute top-3 left-3 flex flex-col gap-1.5">
+          <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
             {isOnSale && (
-              <span className="bg-accent text-accent-foreground text-xs font-semibold px-2.5 py-1 rounded-full animate-pulse">
+              <span className="bg-accent text-accent-foreground text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
                 -{discount}%
               </span>
             )}

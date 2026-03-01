@@ -12,6 +12,7 @@
   "dependencies": {
     "@shops/api": "workspace:*",
     "@shops/db": "workspace:*",
+    "bcryptjs": "^2.4.3",
     "@shops/types": "workspace:*",
     "@shops/ui": "workspace:*",
     "@stripe/stripe-js": "^8.8.0",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@shops/tailwind-config": "workspace:*",
     "@shops/typescript-config": "workspace:*",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

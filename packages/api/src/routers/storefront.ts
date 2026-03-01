@@ -4,6 +4,8 @@ import { router, publicProcedure } from "../trpc";
 import { prisma } from "@shops/db";
 import { sendCAPIPurchaseEvent } from "../lib/meta-capi";
 import { stripe } from "../lib/stripe";
+import { resend, FROM_EMAIL } from "../lib/email";
+import bcrypt from "bcryptjs";
 
 // Simple in-memory rate limiter
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -691,8 +693,7 @@ export const storefrontRouter = router({
         });
       }
 
-      const { hash: cryptoHash } = await import("crypto");
-      const passwordHash = cryptoHash("sha256", input.password);
+      const passwordHash = await bcrypt.hash(input.password, 12);
 
       const customer = await prisma.customer.upsert({
         where: { storeId_email: { storeId: store.id, email: input.email.toLowerCase() } },
@@ -862,17 +863,30 @@ export const storefrontRouter = router({
         return null;
       }
 
+      const cartItems = cart.cartData as Array<{
+        variantId: string;
+        productId: string;
+        productTitle: string;
+        variantName: string;
+        price: number;
+        quantity: number;
+        image: string | null;
+      }>;
+
+      // Look up real stock for each variant
+      const variantIds = cartItems.map((i) => i.variantId);
+      const variants = await prisma.productVariant.findMany({
+        where: { id: { in: variantIds } },
+        select: { id: true, stock: true },
+      });
+      const stockMap = new Map(variants.map((v) => [v.id, v.stock]));
+
       return {
         storeSlug: cart.store.slug,
-        cartData: cart.cartData as Array<{
-          variantId: string;
-          productId: string;
-          productTitle: string;
-          variantName: string;
-          price: number;
-          quantity: number;
-          image: string | null;
-        }>,
+        cartData: cartItems.map((item) => ({
+          ...item,
+          stock: stockMap.get(item.variantId) ?? 0,
+        })),
       };
     }),
 
@@ -893,6 +907,49 @@ export const storefrontRouter = router({
         create: { storeId: store.id, email: input.email.toLowerCase() },
         update: {},
       });
+
+      return { success: true };
+    }),
+
+  submitContactForm: publicProcedure
+    .input(
+      z.object({
+        storeSlug: z.string(),
+        name: z.string().min(1).max(200),
+        email: z.string().email(),
+        subject: z.string().min(1).max(200),
+        message: z.string().min(1).max(5000),
+      })
+    )
+    .mutation(async ({ input }) => {
+      checkRateLimit(`contact:${input.email.toLowerCase()}`, 5, 60 * 60 * 1000);
+
+      const store = await prisma.store.findUniqueOrThrow({
+        where: { slug: input.storeSlug },
+      });
+
+      const storeEmails: Record<string, string> = {
+        glowhaven: "hello@glowhaven.shop",
+        aurae: "hello@aurae.shop",
+        nestwell: "hello@nestwell.shop",
+      };
+      const storeEmail = storeEmails[store.slug] || `hello@${store.slug}.shop`;
+
+      if (resend) {
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: storeEmail,
+          replyTo: input.email,
+          subject: `[${store.name}] Contact: ${input.subject}`,
+          text: [
+            `Name: ${input.name}`,
+            `Email: ${input.email}`,
+            `Subject: ${input.subject}`,
+            "",
+            input.message,
+          ].join("\n"),
+        });
+      }
 
       return { success: true };
     }),
@@ -1090,7 +1147,11 @@ export const storefrontRouter = router({
         const order = await prisma.order.findFirst({
           where: { stripePaymentId: paymentId },
           include: {
-            items: true,
+            items: {
+              include: {
+                variant: { select: { productId: true } },
+              },
+            },
             customer: true,
           },
         });
